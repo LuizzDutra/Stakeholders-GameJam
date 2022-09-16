@@ -6,10 +6,9 @@ signal info_saved(s_var, color)
 
 func _ready():
 	bodyPicker.color = sprites.get_node("Body").modulate
-	save_color_info(bodyPicker.color, "Body")
 
-func save_color_info(n, s_var):
-	emit_signal("info_saved", s_var + "_color", n)
+func save_color_info(color, s_var):
+	emit_signal("info_saved", s_var + "_color", color)
 	
 func _on_bodyPicker_color_changed(color):
 	sprites.get_node("Body").modulate = color

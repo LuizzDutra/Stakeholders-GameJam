@@ -5,7 +5,6 @@
 [node name="Sprites" type="Node2D"]
 
 [node name="Body" type="Sprite" parent="."]
-modulate = Color( 0.858824, 0.662745, 0.556863, 1 )
 texture = ExtResource( 1 )
 vframes = 5
 frame = 4

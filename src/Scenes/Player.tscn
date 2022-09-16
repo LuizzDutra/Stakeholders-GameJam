@@ -12,7 +12,6 @@ script = ExtResource( 2 )
 [node name="Sprites" type="Node2D" parent="."]
 
 [node name="Body" type="Sprite" parent="Sprites"]
-modulate = Color( 0.858824, 0.662745, 0.556863, 1 )
 texture = ExtResource( 1 )
 vframes = 5
 frame = 4
