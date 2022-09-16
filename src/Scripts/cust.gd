@@ -1,7 +1,6 @@
 extends Control
 onready var bodyPicker = $bodyPicker
 onready var sprites = $Sprites
-onready var metadata = load("res://data/player_metadata.tres")
 
 func _ready():
 	bodyPicker.color = sprites.get_node("Body").modulate
