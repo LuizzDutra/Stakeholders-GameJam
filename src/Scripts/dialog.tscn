@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://dialog.gd" type="Script" id=1]
+[ext_resource path="res://dogicabold.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://I-pixel-u.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 12
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 6
+font_data = ExtResource( 2 )
+
+[node name="dialog" type="Node2D"]
+position = Vector2( 15, 17 )
+script = ExtResource( 1 )
+dialog_file = "res://teste.json"
+
+[node name="dialogo" type="NinePatchRect" parent="."]
+margin_left = 1.0
+margin_right = 192.0
+margin_bottom = 75.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="dialogo"]
+modulate = Color( 0.0941176, 0.0823529, 0.0823529, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="texto" type="RichTextLabel" parent="dialogo"]
+margin_left = 10.0
+margin_top = 19.0
+margin_right = 180.0
+margin_bottom = 67.0
+custom_fonts/normal_font = SubResource( 1 )
+
+[node name="nome" type="RichTextLabel" parent="dialogo"]
+margin_left = 4.0
+margin_top = 2.0
+margin_right = 107.0
+margin_bottom = 20.0
+custom_fonts/normal_font = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="dialogo"]
+wait_time = 0.05
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[connection signal="timeout" from="dialogo/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]
