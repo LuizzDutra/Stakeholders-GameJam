@@ -11,9 +11,5 @@ script = ExtResource( 2 )
 script = ExtResource( 3 )
 
 [node name="Menu" parent="." instance=ExtResource( 1 )]
-margin_left = -3.0
-margin_top = -3.0
-margin_right = 637.0
-margin_bottom = 357.0
 
 [connection signal="start_game" from="Menu" to="." method="_on_Menu_start_game"]
