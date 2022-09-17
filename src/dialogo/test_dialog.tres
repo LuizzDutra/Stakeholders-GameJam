@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/metadata.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+dialog_text = [ {
+"name": "Bill",
+"text": "Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos."
+}, {
+"name": "Lucas",
+"text": "Foi mal ai pela demora luiz. i am sorry : /"
+} ]
