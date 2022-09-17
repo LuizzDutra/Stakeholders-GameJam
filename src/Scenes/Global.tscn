@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Menu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Global.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/dialogo.tscn" type="PackedScene" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://Shaders/daltonic.tres" type="Material" id=5]
 
 [node name="Global" type="Node2D"]
 script = ExtResource( 2 )
@@ -12,4 +14,20 @@ script = ExtResource( 2 )
 [node name="dialogo" parent="." instance=ExtResource( 3 )]
 position = Vector2( -68, -25 )
 
+[node name="daltonicCanvas" type="CanvasLayer" parent="."]
+layer = 0
+visible = false
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="daltonicCanvas"]
+position = Vector2( 322, 185 )
+scale = Vector2( 3.63, 2.335 )
+copy_mode = 2
+
+[node name="Sprite" type="Sprite" parent="daltonicCanvas/BackBufferCopy"]
+material = ExtResource( 5 )
+scale = Vector2( 3.38326, 2.95771 )
+texture = ExtResource( 4 )
+
+[connection signal="dalt_int_change" from="Menu" to="." method="_on_Menu_dalt_int_change"]
+[connection signal="daltonic_change" from="Menu" to="." method="_on_Menu_daltonic_change"]
 [connection signal="start_game" from="Menu" to="." method="_on_Menu_start_game"]
