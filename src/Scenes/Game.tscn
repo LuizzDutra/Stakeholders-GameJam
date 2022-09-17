@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=2]
@@ -6,13 +6,21 @@
 [ext_resource path="res://Scenes/NPC.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scripts/positionCluster.gd" type="Script" id=5]
 
+[sub_resource type="NavigationPolygon" id=3]
+vertices = PoolVector2Array( 171, 18, 264, 18, 265, 77, 171, 79 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+outlines = [ PoolVector2Array( 171, 79, 265, 77, 264, 18, 171, 18 ) ]
+
 [sub_resource type="NavigationPolygon" id=2]
-vertices = PoolVector2Array( 18, 16, 271, 15, 271, 127, 14, 271, 483, 279, 353, 126, 483, 16, 359, 13 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 3, 2, 5 ), PoolIntArray( 6, 4, 5, 7 ) ]
-outlines = [ PoolVector2Array( 18, 16, 271, 15, 271, 127, 353, 126, 359, 13, 483, 16, 483, 279, 14, 271 ) ]
+vertices = PoolVector2Array( 267, 162, 264, 18, 483, 16, 483, 279, 14, 271, 170, 162, 18, 16, 171, 18 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 0, 3, 4, 5 ), PoolIntArray( 5, 4, 6, 7 ) ]
+outlines = [ PoolVector2Array( 18, 16, 171, 18, 170, 162, 267, 162, 264, 18, 483, 16, 483, 279, 14, 271 ) ]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 2 )
+
+[node name="NavigationPolygonInstance2" type="NavigationPolygonInstance" parent="."]
+navpoly = SubResource( 3 )
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
 navpoly = SubResource( 2 )
@@ -28,6 +36,7 @@ position = Vector2( 208, 123 )
 width = 5.0
 
 [node name="NPC" parent="." instance=ExtResource( 4 )]
+position = Vector2( 141, 92 )
 
 [node name="positionCluster" type="Position2D" parent="."]
 position = Vector2( 34, 131 )

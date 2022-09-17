@@ -80,7 +80,7 @@ func _on_eyesPicker_color_changed(color):
 
 
 func _on_Button2_pressed():
-	sprites.r_data = sprites.data_player.get_default()
+	sprites.data_player.reset_to_default()
 	sprites.load_modulate()
 	load_picker_color()
 	
