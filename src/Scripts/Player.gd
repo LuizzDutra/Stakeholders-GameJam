@@ -1,11 +1,19 @@
 extends KinematicBody2D
 
+export(Resource) var data_player
+
 var dir = Vector2.ZERO
 var vel = Vector2.ZERO
 var speed = 300
 var frict = 2400
 var acel = 1200 + frict
 onready var eye = $Sprites/Eyes
+
+func _ready():
+	var data = data_player.get_data()
+	get_node("Sprites/Body").modulate = data["Body_color"]
+	get_node("Sprites/Hair").modulate = data["Hair_color"]
+	get_node("Sprites/Eyes").get_material().set_shader_param("modulate", data["Eyes_color"])
 
 func _process(delta):
 	#print(dir)

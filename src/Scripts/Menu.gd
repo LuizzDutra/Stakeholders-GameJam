@@ -5,6 +5,8 @@ onready var config_menu = $configMenu
 onready var cust_menu = $cust
 onready var pickers = $cust/pickers
 onready var clickSound = $clickSound
+onready var sprites = $cust/Sprites
+var player_data = load("res://resources/data_cust.tres")
 var font_default = load("res://Fonts/font_default.tres")
 var font_dyslexic = load("res://Fonts/font_dyslexic.tres")
 signal start_game
@@ -15,12 +17,15 @@ func _ready():
 	config_menu.visible = false
 	buttons.visible = true
 	cust_menu.visible = false
+	load_picker_color()
+
+func load_picker_color():
 	#seta a cor dos color pickers
-	pickers.get_node("bodyPicker").color = cust_menu.get_node("Sprites").get_node("Body").modulate
-	pickers.get_node("hairPicker").color = cust_menu.get_node("Sprites").get_node("Hair").modulate
-	pickers.get_node("eyesPicker").color = cust_menu.get_node("Sprites").get_node("Eyes").get_material().get_shader_param("modulate")
-	
-	
+	pickers.get_node("bodyPicker").color = sprites.get_node("Body").modulate
+	pickers.get_node("hairPicker").color = sprites.get_node("Hair").modulate
+	pickers.get_node("eyesPicker").color = sprites.get_node("Eyes").get_material().get_shader_param("modulate")
+
+
 func _on_Start_pressed():
 	buttons.visible = false
 	cust_menu.visible = true
@@ -72,3 +77,10 @@ func _on_hairPicker_color_changed(color):
 func _on_eyesPicker_color_changed(color):
 	cust_menu.get_node("Sprites").get_node("Eyes").get_material().set_shader_param("modulate", color)
 	save_color_info(color, "Eyes")
+
+
+func _on_Button2_pressed():
+	sprites.r_data = sprites.data_player.get_default()
+	sprites.load_modulate()
+	load_picker_color()
+	
