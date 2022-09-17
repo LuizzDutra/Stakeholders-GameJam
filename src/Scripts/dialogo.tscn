@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://dialogo.gd" type="Script" id=1]
+[ext_resource path="res://dialogo/test_dialog.tres" type="Resource" id=2]
+
+[node name="dialogo" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+dialog_file = ExtResource( 2 )
+
+[node name="dialog" type="NinePatchRect" parent="."]
+margin_left = 160.0
+margin_top = 57.0
+margin_right = 447.0
+margin_bottom = 136.0
+
+[node name="ColorRect" type="ColorRect" parent="dialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.160784, 0.141176, 0.141176, 1 )
+
+[node name="texto" type="RichTextLabel" parent="dialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_top = 23.0
+margin_right = -13.0
+margin_bottom = -5.0
+
+[node name="nome" type="RichTextLabel" parent="dialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 9.0
+margin_top = 5.0
+margin_right = -13.0
+margin_bottom = -50.0
+
+[node name="Timer" type="Timer" parent="dialog"]
+wait_time = 0.063
+
+[node name="Timer2" type="Timer" parent="."]
+
+[connection signal="timeout" from="dialog/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]

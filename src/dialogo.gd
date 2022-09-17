@@ -1,11 +1,11 @@
 extends Node2D
 
-export(String, FILE, "*.json") var dialog_file
+export(Resource) var dialog_file
 
-onready var texto = $dialogo/texto
-onready var nome = $dialogo/nome
-onready var tempo = $dialogo/Timer
-onready var dialogo = $dialogo
+onready var texto = $dialog/texto
+onready var nome = $dialog/nome
+onready var tempo = $dialog/Timer
+onready var dialogo = $dialog
 onready var cooldown_dialog = $Timer2
 
 var dialog = []
@@ -13,7 +13,7 @@ var current_index = 0
 var dialog_ativo = false
 
 func _ready():
-	dialogo.visible = false
+	
 	play_dialog()
 
 func show_message():
@@ -41,7 +41,7 @@ func _input(event):
 		
 	if event is InputEventKey:
 		
-		if event.is_action_pressed("E"):
+		if event.is_action_pressed("space"):
 			show_message()
 
 func load_dialog():
@@ -60,6 +60,7 @@ func play_dialog():
 		return
 		
 	dialog = load_dialog()
+	print(dialog)
 	current_index = -1
 	dialogo.visible = true
 	dialog_ativo = true
