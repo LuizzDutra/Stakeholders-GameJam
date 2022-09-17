@@ -13,8 +13,8 @@ var current_index = 0
 var dialog_ativo = false
 
 func _ready():
-	
-	play_dialog()
+	#play_dialog()
+	pass
 
 func show_message():
 	
@@ -60,7 +60,7 @@ func play_dialog():
 		return
 		
 	dialog = load_dialog()
-	print(dialog)
+	#print(dialog)
 	current_index = -1
 	dialogo.visible = true
 	dialog_ativo = true

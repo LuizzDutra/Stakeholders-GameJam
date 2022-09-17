@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://dialogo.gd" type="Script" id=1]
 [ext_resource path="res://dialogo/test_dialog.tres" type="Resource" id=2]
+[ext_resource path="res://Themes/default_theme.tres" type="Theme" id=3]
 
 [node name="dialogo" type="Node2D"]
 script = ExtResource( 1 )
@@ -11,10 +12,12 @@ __meta__ = {
 dialog_file = ExtResource( 2 )
 
 [node name="dialog" type="NinePatchRect" parent="."]
+visible = false
 margin_left = 160.0
 margin_top = 57.0
 margin_right = 447.0
 margin_bottom = 136.0
+theme = ExtResource( 3 )
 
 [node name="ColorRect" type="ColorRect" parent="dialog"]
 anchor_right = 1.0
@@ -36,11 +39,13 @@ margin_left = 9.0
 margin_top = 5.0
 margin_right = -13.0
 margin_bottom = -50.0
+scroll_active = false
 
 [node name="Timer" type="Timer" parent="dialog"]
 wait_time = 0.063
 
 [node name="Timer2" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="timeout" from="dialog/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]
