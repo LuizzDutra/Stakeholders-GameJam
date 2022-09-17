@@ -40,8 +40,8 @@ border_width = 2.3
 editor_only = false
 
 [node name="Sprites" parent="cust" instance=ExtResource( 2 )]
-position = Vector2( 245, 172 )
-scale = Vector2( 2, 2 )
+position = Vector2( 245, 165 )
+scale = Vector2( 1.5, 1.5 )
 
 [node name="pickers" type="Control" parent="cust"]
 margin_right = 40.0
@@ -302,6 +302,13 @@ margin_right = 272.0
 margin_bottom = 255.0
 text = "Create"
 
+[node name="reload" type="Button" parent="cust"]
+margin_left = 92.0
+margin_top = 204.0
+margin_right = 148.0
+margin_bottom = 235.0
+text = "reload"
+
 [node name="Buttons" type="GridContainer" parent="."]
 visible = false
 anchor_left = 0.423438
@@ -372,6 +379,7 @@ stream = ExtResource( 3 )
 [connection signal="pressed" from="cust/pickers/eyesPicker" to="." method="_on_bodyPicker_pressed"]
 [connection signal="pressed" from="cust/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="cust/Create" to="." method="_on_Create_pressed"]
+[connection signal="pressed" from="cust/reload" to="." method="_on_Button2_pressed"]
 [connection signal="pressed" from="Buttons/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="Buttons/Config" to="." method="_on_Config_pressed"]
 [connection signal="pressed" from="configMenu/configBack" to="." method="_on_configBack_pressed"]
