@@ -47,6 +47,15 @@ scale = Vector2( 1.5, 1.5 )
 margin_right = 40.0
 margin_bottom = 40.0
 
+[node name="colorText" type="RichTextLabel" parent="cust/pickers"]
+margin_left = 64.0
+margin_top = 122.0
+margin_right = 256.0
+margin_bottom = 269.0
+text = "Cor do Cabelo:
+Cor do Corpo:
+Cor dos Olhos:"
+
 [node name="bodyPicker" type="ColorPickerButton" parent="cust/pickers"]
 margin_left = 178.0
 margin_top = 155.0
@@ -70,15 +79,6 @@ margin_right = 208.0
 margin_bottom = 212.0
 rect_min_size = Vector2( 30, 30 )
 rect_scale = Vector2( 0.5, 0.5 )
-
-[node name="colorText" type="RichTextLabel" parent="cust/pickers"]
-margin_left = 64.0
-margin_top = 122.0
-margin_right = 172.0
-margin_bottom = 209.0
-text = "Cor do Cabelo:
-Cor do Corpo:
-Cor dos Olhos:"
 
 [node name="persButtons" type="Control" parent="cust"]
 margin_left = 311.0
