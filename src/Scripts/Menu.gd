@@ -11,6 +11,8 @@ var font_default = load("res://Fonts/font_default.tres")
 var font_dyslexic = load("res://Fonts/font_dyslexic.tres")
 signal start_game
 signal info_saved(s_var, color)
+signal daltonic_change(index)
+signal dalt_int_change(value)
 
 func _ready():
 	visible = true
@@ -84,3 +86,11 @@ func _on_Button2_pressed():
 	sprites.load_modulate()
 	load_picker_color()
 	
+
+
+func _on_modoDalto_item_selected(index):
+	emit_signal("daltonic_change", index - 1)
+
+
+func _on_HSlider_value_changed(value):
+	emit_signal("dalt_int_change", value)
