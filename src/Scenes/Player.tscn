@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Sprites/sprites.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
+[ext_resource path="res://Shaders/grayscale.tres" type="Material" id=3]
+[ext_resource path="res://Scripts/green_eye.tres" type="Material" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 6.0
@@ -26,11 +28,13 @@ texture = ExtResource( 1 )
 vframes = 5
 
 [node name="Hair" type="Sprite" parent="Sprites"]
+material = ExtResource( 3 )
 texture = ExtResource( 1 )
 vframes = 5
 frame = 1
 
 [node name="Eyes" type="Sprite" parent="Sprites"]
+material = ExtResource( 4 )
 texture = ExtResource( 1 )
 vframes = 5
 frame = 2
