@@ -7,7 +7,6 @@ var vel = Vector2.ZERO
 var speed = 300
 var frict = 2400
 var acel = 1200 + frict
-var interactable = null
 
 func _ready():
 	load_modulate()
@@ -29,18 +28,3 @@ func _process(delta):
 	vel = vel.limit_length(speed)
 	#print(vel)
 	vel = move_and_slide(vel)
-
-
-func interact():
-	print(interactable)
-	if interactable != null:
-		if interactable.has_method("interact"):
-			interactable.interact()
-
-func _on_InteractArea_area_entered(area):
-	interactable = area
-
-
-func _on_InteractArea_area_exited(area):
-	if area == interactable:
-		interactable = null
