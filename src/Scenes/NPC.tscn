@@ -29,4 +29,7 @@ path_desired_distance = 10.0
 target_desired_distance = 10.0
 max_speed = 400.0
 
+[node name="WanderTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_NavigationAgent2D_navigation_finished"]

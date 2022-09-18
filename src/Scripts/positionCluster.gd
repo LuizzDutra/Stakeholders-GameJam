@@ -2,6 +2,7 @@ extends Node2D
 
 var pos_quant := 0
 var pos_states := []
+var facing = 0 setget set_facing
 #var random = false
 
 func _ready():
@@ -10,7 +11,7 @@ func _ready():
 		var child = get_child(i) 
 		child.position = global_position + child.position
 		pos_states.append(0)
-	create_points(20, 30, 0)
+	create_points(20, 0, 30)
 
 func create_points(quant, xoffset, yoffset):
 	for i in range(quant):
@@ -30,3 +31,7 @@ func get_next_point():
 	var ind = pos_states.find(0)
 	if ind != -1:
 		return [get_child(ind).position, ind].duplicate()
+		
+
+func set_facing(n):
+	facing = n % 4
