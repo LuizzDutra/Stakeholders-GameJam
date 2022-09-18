@@ -4,11 +4,8 @@
 [ext_resource path="res://dialogo/test_dialog.tres" type="Resource" id=2]
 [ext_resource path="res://Themes/default_theme.tres" type="Theme" id=3]
 
-[node name="dialogo" type="Node2D"]
+[node name="dialogo" type="CanvasLayer"]
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 dialog_file = ExtResource( 2 )
 
 [node name="dialog" type="NinePatchRect" parent="."]

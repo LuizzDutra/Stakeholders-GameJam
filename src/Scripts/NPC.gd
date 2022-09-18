@@ -23,5 +23,3 @@ func set_path_location(location):
 
 func _on_NavigationAgent2D_navigation_finished():
 	moving = false
-
-	
