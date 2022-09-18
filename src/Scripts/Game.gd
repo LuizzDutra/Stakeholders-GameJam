@@ -37,6 +37,7 @@ func npc_set_path(npc, pos):
 	if npc.cur_cluster != null:
 		npc.cur_cluster.free_point(npc.cluster_index)
 		npc.cluster_index = -1
+		npc.cur_cluster = null
 	npc.set_path_location(pos)
 
 
