@@ -34,9 +34,6 @@ texture = ExtResource( 3 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 208, 123 )
 
-[node name="Line2D" type="Line2D" parent="."]
-width = 5.0
-
 [node name="Npcs" type="Node2D" parent="."]
 
 [node name="NPC" parent="Npcs" instance=ExtResource( 4 )]
