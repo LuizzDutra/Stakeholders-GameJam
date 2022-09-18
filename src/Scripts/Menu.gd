@@ -6,6 +6,7 @@ onready var cust_menu = $cust
 onready var pickers = $cust/pickers
 onready var clickSound = $clickSound
 onready var sprites = $cust/Sprites
+onready var vol_sliders = $configMenu/VolSliders
 var player_data = load("res://resources/data_cust.tres")
 var font_default = load("res://Fonts/font_default.tres")
 var font_dyslexic = load("res://Fonts/font_dyslexic.tres")
@@ -94,3 +95,24 @@ func _on_modoDalto_item_selected(index):
 
 func _on_HSlider_value_changed(value):
 	emit_signal("dalt_int_change", value)
+
+
+func _on_mestre_drag_ended(value_changed):
+	if value_changed:
+		var value = linear2db(vol_sliders.get_node("mestre").value)
+		#print(value)
+		AudioServer.set_bus_volume_db(0, value)
+
+
+func _on_efeitos_drag_ended(value_changed):
+	if value_changed:
+		var value = linear2db(vol_sliders.get_node("efeitos").value)
+		#print(value)
+		AudioServer.set_bus_volume_db(1, value)
+
+
+func _on_musica_drag_ended(value_changed):
+	if value_changed:
+		var value = linear2db(vol_sliders.get_node("musica").value)
+		#print(value)
+		AudioServer.set_bus_volume_db(2, value)

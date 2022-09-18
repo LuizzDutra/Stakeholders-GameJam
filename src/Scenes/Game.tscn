@@ -1,18 +1,27 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/NPC.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scripts/positionCluster.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/clock.gd" type="Script" id=6]
 
 [sub_resource type="NavigationPolygon" id=2]
-vertices = PoolVector2Array( -427, -277, 1473, -200, 1486, 990, -450, 1033 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( -427, -277, 1473, -200, 1486, 990, -450, 1033 ) ]
+vertices = PoolVector2Array( -34.6407, 387.811, 509, 375, -808, 1065, -821, -466, -121.198, -451.749, 112, 229, 204, 179, 112, -447, 358, 212, 1545, 1038, 1576, -426, 463.551, -444.564 )
+polygons = [ PoolIntArray( 0, 1, 2 ), PoolIntArray( 0, 2, 3, 4, 5 ), PoolIntArray( 6, 0, 5 ), PoolIntArray( 6, 5, 7 ), PoolIntArray( 6, 7, 8 ), PoolIntArray( 9, 6, 8 ), PoolIntArray( 10, 9, 8, 11 ) ]
+outlines = [ PoolVector2Array( -821, -466, -121.198, -451.749, 112, 229, 112, -447, 358, 212, 463.551, -444.564, 1576, -426, 1545, 1038, 204, 179, -34.6407, 387.811, 509, 375, -808, 1065 ) ]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 2 )
+
+[node name="clock" type="Node2D" parent="."]
+script = ExtResource( 6 )
+class_time = [ 50 ]
+interval_time = [ 100 ]
+
+[node name="signalDelay" type="Timer" parent="clock"]
+one_shot = true
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
 position = Vector2( 5, -3 )
@@ -25,30 +34,18 @@ texture = ExtResource( 3 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 208, 123 )
 
-[node name="Line2D" type="Line2D" parent="."]
-width = 5.0
-
 [node name="Npcs" type="Node2D" parent="."]
 
 [node name="NPC" parent="Npcs" instance=ExtResource( 4 )]
-position = Vector2( 141, 92 )
 
 [node name="positionCluster" type="Position2D" parent="."]
-position = Vector2( 35, 141 )
+position = Vector2( -83, 60 )
 script = ExtResource( 5 )
-
-[node name="Position2D" type="Position2D" parent="positionCluster"]
-position = Vector2( 226, -114 )
-
-[node name="Position2D2" type="Position2D" parent="positionCluster"]
-position = Vector2( 180, -130 )
-
-[node name="Position2D3" type="Position2D" parent="positionCluster"]
-position = Vector2( 180, -103 )
-
-[node name="Position2D4" type="Position2D" parent="positionCluster"]
-position = Vector2( 200, -115 )
 
 [node name="positionCluster2" type="Position2D" parent="."]
-position = Vector2( 36, 258 )
+position = Vector2( -264, 64 )
 script = ExtResource( 5 )
+
+[connection signal="class_signal" from="clock" to="." method="_on_clock_class_signal"]
+[connection signal="interval_signal" from="clock" to="." method="_on_clock_interval_signal"]
+[connection signal="lunch_signal" from="clock" to="." method="_on_clock_lunch_signal"]

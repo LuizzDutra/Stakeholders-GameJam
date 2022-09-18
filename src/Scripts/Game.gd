@@ -2,7 +2,6 @@ extends Node2D
 
 signal return_to_menu
 
-onready var line = $Line2D
 onready var npcs = $Npcs
 onready var my_npc = $Npcs/NPC
 onready var my_cluster = $positionCluster
@@ -13,9 +12,13 @@ func _ready():
 	for i in range(15):
 		var new_npc = load("res://Scenes/NPC.tscn").instance()
 		new_npc.position = player.position
+		if i % 2 == 0:
+			new_npc.class_cluster = my_cluster2
+		else:
+			new_npc.class_cluster = my_cluster
 		npcs.add_child(new_npc)
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("Return"):
 		emit_signal("return_to_menu")
 	
@@ -27,10 +30,10 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_down"):
 		for i in range(npcs.get_child_count()):
 			npc_set_path_cluster(my_cluster, npcs.get_child(i))
+			npcs.get_child(i).wander_state = true
 	
 	if Input.is_action_just_pressed("ui_up"):
-		for i in range(npcs.get_child_count()):
-			npc_set_path_cluster(my_cluster2, npcs.get_child(i))
+		_on_clock_class_signal()
 
 #desapega npc do cluster faz andar para qualquer posição
 func npc_set_path(npc, pos):
@@ -43,7 +46,7 @@ func npc_set_path(npc, pos):
 
 #função usada para fazer o npc ir para uma posição disponivel em um cluster
 #a ordem é equivalente a que os filhos foram criados -> colocados à mão > código
-func npc_set_path_cluster(cluster, npc, overwite = true):
+func npc_set_path_cluster(cluster, npc, overwite = true, best_pos = false):
 	var point = cluster.get_next_point()
 	#print(npc.cluster_index)
 	#print(point)
@@ -61,10 +64,31 @@ func npc_set_path_cluster(cluster, npc, overwite = true):
 					npc.cur_cluster = cluster
 
 		if npc.cluster_index >= 0:
+			if best_pos and (npc.cluster_index > point[1]):
+				return
 			#print("hey")
 			cluster.free_point(npc.cluster_index)
 		npc.set_path_location(point[0])
-		npc.cluster_pos = point[0]
+		npc.cluster_fac = cluster.facing
 		npc.cluster_index = point[1]
 		cluster.occup_point(point[1])
 		#print(npc.cluster_pos, npc.cluster_index)
+
+
+func _on_clock_class_signal():
+	for i in range(npcs.get_child_count()):
+		if npcs.get_child(i).class_cluster != null:
+			npcs.get_child(i).wander_state = false
+			npc_set_path_cluster(npcs.get_child(i).class_cluster, npcs.get_child(i))
+
+
+func _on_clock_interval_signal():
+	for i in range(npcs.get_child_count()):
+		npcs.get_child(i).wander_state = true
+		#npc_set_path(npcs.get_child(i), Vector2(rand_range(-100, 100), rand_range(-100, 100)))
+
+
+func _on_clock_lunch_signal():
+	for i in range(npcs.get_child_count()):
+		npcs.get_child(i).wander_state = false
+		npc_set_path_cluster(my_cluster, npcs.get_child(i))
