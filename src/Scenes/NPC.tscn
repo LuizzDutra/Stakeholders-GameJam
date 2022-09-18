@@ -8,10 +8,13 @@ radius = 4.0
 height = 4.0
 
 [node name="NPC" type="KinematicBody2D"]
-position = Vector2( 173, 75 )
+position = Vector2( 1, 0 )
 collision_layer = 2
 collision_mask = 0
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
