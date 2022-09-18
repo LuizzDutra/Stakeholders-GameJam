@@ -6,10 +6,11 @@ var speed = 200
 var vel = Vector2.ZERO
 var dir = Vector2.ZERO
 var moving = false
+var cur_cluster
+var cluster_pos: Vector2
+var cluster_index := -1
 
 func _physics_process(delta):
-	if Input.is_action_pressed("click"):
-		set_path_location(get_global_mouse_position())
 	if moving:
 		dir = position.direction_to(nav_agent.get_next_location())
 		vel = dir * speed
