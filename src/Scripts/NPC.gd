@@ -49,4 +49,3 @@ func wander_set_timer(state):
 	if state:
 		wander_start_timer()
 	wander_state = state
-

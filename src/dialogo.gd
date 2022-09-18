@@ -1,4 +1,4 @@
-extends Node2D
+extends CanvasLayer
 
 export(Resource) var dialog_file
 
@@ -7,6 +7,7 @@ onready var nome = $dialog/nome
 onready var tempo = $dialog/Timer
 onready var dialogo = $dialog
 onready var cooldown_dialog = $Timer2
+var random_number = RandomNumberGenerator.new()
 
 var dialog = []
 var current_index = 0
@@ -45,8 +46,8 @@ func _input(event):
 			show_message()
 
 func load_dialog():
-	
-	return dialog_file.dialog_text
+	random_number.randomize()
+	return dialog_file.dialog_text[random_number.randi_range(0,5)]
 
 func _on_Timer_timeout():
 	if texto.visible_characters == texto.text.length():
@@ -58,9 +59,8 @@ func play_dialog():
 	
 	if dialog_ativo:
 		return
-		
 	dialog = load_dialog()
-	#print(dialog)
+	print(dialog)
 	current_index = -1
 	dialogo.visible = true
 	dialog_ativo = true
