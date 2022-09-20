@@ -11,6 +11,7 @@ onready var my_cluster2 = $positionCluster2
 onready var player = $Player
 var random_number = RandomNumberGenerator.new()
 
+
 func _ready():
 	for i in range(15):
 		random_number.randomize()
