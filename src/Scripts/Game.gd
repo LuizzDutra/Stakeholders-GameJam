@@ -6,7 +6,7 @@ onready var npcs = $Npcs
 onready var my_npc = $Npcs/NPC
 onready var my_cluster = $positionCluster
 onready var my_cluster2 = $positionCluster2
-onready var player = $Player
+onready var player = $YSort/Player
 
 var score = 0 setget set_score, get_score
 
