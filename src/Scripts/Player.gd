@@ -8,7 +8,11 @@ var speed = 300
 var frict = 2400
 var acel = 1200 + frict
 
+var nome = "Gab"
+
 func _ready():
+	nome = data_player.get_data()["nome"]
+	print(nome)
 	load_modulate()
 
 func load_modulate():

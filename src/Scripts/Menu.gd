@@ -11,7 +11,7 @@ var player_data = load("res://resources/data_cust.tres")
 var font_default = load("res://Fonts/font_default.tres")
 var font_dyslexic = load("res://Fonts/font_dyslexic.tres")
 signal start_game
-signal info_saved(s_var, color)
+signal info_saved(s_var, info)
 signal daltonic_change(index)
 signal dalt_int_change(value)
 
@@ -20,6 +20,7 @@ func _ready():
 	config_menu.visible = false
 	buttons.visible = true
 	cust_menu.visible = false
+	cust_menu.get_node("LineEdit").text = player_data.data["nome"]
 	load_picker_color()
 
 func load_picker_color():
@@ -116,3 +117,7 @@ func _on_musica_drag_ended(value_changed):
 		var value = linear2db(vol_sliders.get_node("musica").value)
 		#print(value)
 		AudioServer.set_bus_volume_db(2, value)
+
+
+func _on_LineEdit_text_changed(new_text):
+	emit_signal("info_saved", "nome", new_text)
