@@ -10,13 +10,14 @@ var clock_running := true
 var time := 0.0
 
 export var timescale := 10
-export var class_time := [10, 30]
-export var interval_time := [20]
-export var lunch_time := []
+export var class_time := [50, 100]
+export var interval_time := [150]
+export var lunch_time := [70]
 
 func _process(delta):
 	if clock_running:
 		time += delta * timescale
+		print(time)
 	
 	if signalDelay.is_stopped():
 		if int(time) in class_time:

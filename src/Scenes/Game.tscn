@@ -19,14 +19,12 @@ dialog_file = ExtResource( 7 )
 
 [node name="clock" type="Node2D" parent="."]
 script = ExtResource( 6 )
-class_time = [ 50 ]
-interval_time = [ 100 ]
 
 [node name="signalDelay" type="Timer" parent="clock"]
 one_shot = true
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
-position = Vector2( 5, -3 )
+position = Vector2( 41, -218 )
 navpoly = SubResource( 2 )
 
 [node name="Icon" type="Sprite" parent="."]
