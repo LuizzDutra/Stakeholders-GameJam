@@ -8,6 +8,8 @@ onready var my_cluster = $positionCluster
 onready var my_cluster2 = $positionCluster2
 onready var player = $Player
 
+var score = 0 setget set_score, get_score
+
 func _ready():
 	for i in range(15):
 		var new_npc = load("res://Scenes/NPC.tscn").instance()
@@ -74,6 +76,14 @@ func npc_set_path_cluster(cluster, npc, overwite = true, best_pos = false):
 		cluster.occup_point(point[1])
 		#print(npc.cluster_pos, npc.cluster_index)
 
+func set_score(value, soma = true):
+	if soma:
+		score += value
+	else:
+		score = value
+
+func get_score():
+	return score
 
 func _on_clock_class_signal():
 	for i in range(npcs.get_child_count()):

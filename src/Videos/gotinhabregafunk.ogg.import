@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/gotinhabregafunk.ogg-b97810a8b7aa8ed9d5a804597277baf3.oggstr"
+
+[deps]
+
+source_file="res://Videos/gotinhabregafunk.ogg"
+dest_files=[ "res://.import/gotinhabregafunk.ogg-b97810a8b7aa8ed9d5a804597277baf3.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

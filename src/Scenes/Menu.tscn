@@ -317,11 +317,12 @@ margin_right = 291.0
 margin_bottom = 107.0
 
 [node name="Buttons" type="GridContainer" parent="."]
-visible = false
-anchor_left = 0.423438
+anchor_left = 0.413
 anchor_top = 0.111111
 anchor_right = 0.579687
-anchor_bottom = 0.222222
+anchor_bottom = 0.328
+margin_left = 6.68033
+margin_bottom = -38.0801
 grow_horizontal = 2
 custom_constants/vseparation = 16
 
@@ -342,7 +343,6 @@ grow_vertical = 2
 text = "Configurações"
 
 [node name="configMenu" type="Control" parent="."]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
