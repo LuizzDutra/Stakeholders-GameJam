@@ -85,7 +85,7 @@ func _on_clock_class_signal():
 func _on_clock_interval_signal():
 	for i in range(npcs.get_child_count()):
 		npcs.get_child(i).wander_state = true
-		#npc_set_path(npcs.get_child(i), Vector2(rand_range(-100, 100), rand_range(-100, 100)))
+		npcs.get_child(i).cur_cluster = null
 
 
 func _on_clock_lunch_signal():
