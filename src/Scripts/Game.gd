@@ -11,6 +11,7 @@ onready var my_cluster2 = $positionCluster2
 onready var player = $Player
 var random_number = RandomNumberGenerator.new()
 
+
 func _ready():
 	for i in range(15):
 		random_number.randomize()
@@ -90,7 +91,7 @@ func _on_clock_class_signal():
 func _on_clock_interval_signal():
 	for i in range(npcs.get_child_count()):
 		npcs.get_child(i).wander_state = true
-		npcs.get_child(i).cur_cluster = null
+		#npc_set_path(npcs.get_child(i), Vector2(rand_range(-100, 100), rand_range(-100, 100)))
 
 
 func _on_clock_lunch_signal():
