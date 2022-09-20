@@ -64,7 +64,7 @@ scroll_active = false
 wait_time = 0.063
 
 [node name="Timer2" type="Timer" parent="."]
-wait_time = 0.484
+wait_time = 0.016
 one_shot = true
 
 [connection signal="timeout" from="dialog/Timer" to="." method="_on_Timer_timeout"]

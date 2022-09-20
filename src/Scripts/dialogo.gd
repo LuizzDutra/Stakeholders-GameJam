@@ -26,6 +26,7 @@ func show_message():
 	
 	if current_index >= len(dialog):
 		cooldown_dialog.start()
+		turn_on_the_player()
 		dialogo.visible = false
 		return
 		
@@ -55,7 +56,7 @@ func play_dialog(dialogu):
 	if dialog_ativo:
 		return
 	dialog = dialogu
-	print(dialog)
+	turn_off_the_player()
 	current_index = -1
 	dialogo.visible = true
 	dialog_ativo = true
@@ -63,3 +64,13 @@ func play_dialog(dialogu):
 
 func _on_Timer2_timeout():
 	dialog_ativo = false
+	
+func turn_on_the_player():
+	var player = get_tree().get_root().find_node("Player", true, false)
+	if player:
+		player.set_active(true)
+
+func turn_off_the_player():
+	var player = get_tree().get_root().find_node("Player", true, false)
+	if player:
+		player.set_active(false)

@@ -31,3 +31,9 @@ func _process(delta):
 	vel = vel.limit_length(speed)
 	#print(vel)
 	vel = move_and_slide(vel)
+	
+func set_active(active):
+	set_physics_process(active)
+	set_process(active)
+	set_process_input(active)
+	
