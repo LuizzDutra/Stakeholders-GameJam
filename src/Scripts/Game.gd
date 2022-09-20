@@ -2,16 +2,21 @@ extends Node2D
 
 signal return_to_menu
 
+export(Resource) var dialog_file
+
 onready var npcs = $Npcs
 onready var my_npc = $Npcs/NPC
 onready var my_cluster = $positionCluster
 onready var my_cluster2 = $positionCluster2
 onready var player = $Player
+var random_number = RandomNumberGenerator.new()
 
 func _ready():
 	for i in range(15):
+		random_number.randomize()
 		var new_npc = load("res://Scenes/NPC.tscn").instance()
 		new_npc.position = player.position
+		new_npc.dialogo_npc = dialog_file.dialog_text[random_number.randi_range(0,5)]
 		if i % 2 == 0:
 			new_npc.class_cluster = my_cluster2
 		else:

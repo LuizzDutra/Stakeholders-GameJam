@@ -14,8 +14,7 @@ var current_index = 0
 var dialog_ativo = false
 
 func _ready():
-	#play_dialog()
-	pass
+	dialogo.visible = false
 
 func show_message():
 	
@@ -45,21 +44,17 @@ func _input(event):
 		if event.is_action_pressed("space"):
 			show_message()
 
-func load_dialog():
-	random_number.randomize()
-	return dialog_file.dialog_text[random_number.randi_range(0,5)]
-
 func _on_Timer_timeout():
 	if texto.visible_characters == texto.text.length():
 		tempo.stop()
 		return
 	texto.visible_characters += 1
 
-func play_dialog():
+func play_dialog(dialogu):
 	
 	if dialog_ativo:
 		return
-	dialog = load_dialog()
+	dialog = dialogu
 	print(dialog)
 	current_index = -1
 	dialogo.visible = true
