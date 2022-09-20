@@ -9,12 +9,22 @@
 [ext_resource path="res://Tilesets/paredestiles.tres" type="TileSet" id=7]
 
 [sub_resource type="NavigationPolygon" id=1]
-vertices = PoolVector2Array( -676, -204, 1294, -212, 1278, 1091, -682, 1102 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-outlines = [ PoolVector2Array( -676, -204, 1294, -212, 1278, 1091, -682, 1102 ) ]
+vertices = PoolVector2Array( -185.637, 284.657, -665, 285, -663, -49, 741, -29, 173, 282, 172, 889, -184, 891, 734, 284 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 5, 6, 0, 4 ), PoolIntArray( 4, 3, 7 ) ]
+outlines = [ PoolVector2Array( -663, -49, 741, -29, 734, 284, 173, 282, 172, 889, -184, 891, -185.637, 284.657, -665, 285 ) ]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 2 )
+
+[node name="Icon" type="Sprite" parent="."]
+position = Vector2( 220, 120 )
+texture = ExtResource( 3 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 7 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -524308, 536870919, 0, -524307, 1, 0, -524306, 1, 0, -524305, 1, 0, -524304, 1, 0, -524303, 1, 0, -524302, 1, 0, -524301, 1, 0, -524300, 1, 0, -524299, 1, 0, -524298, 1, 0, -524297, 1, 0, -524296, 1, 0, -524295, 1, 0, -524294, 1, 0, -524293, 1, 0, -524292, 1, 0, -524291, 1, 0, -524290, 1, 0, -524289, 1, 0, -589824, 1, 0, -589823, 1, 0, -589822, 1, 0, -589821, 1, 0, -589820, 1, 0, -589819, 1, 0, -589818, 1, 0, -589817, 1, 0, -589816, 1, 0, -589815, 1, 0, -589814, 1, 0, -589813, 1, 0, -589812, 1, 0, -589811, 1, 0, -589810, 1, 0, -589809, 1, 0, -589808, 1, 0, -589807, 1, 0, -589806, 1, 0, -589805, 1, 0, -589804, 1, 0, -589803, 1, 0, -589802, 1, 0, -589801, 1, 0, -589800, 7, 0, -458772, 536870915, 0, -524264, 3, 0, -393236, 536870915, 0, -458728, 3, 0, -327700, 536870915, 0, -393192, 3, 0, -262164, 536870915, 0, -327656, 3, 0, -196628, 536870915, 0, -262120, 3, 0, -131092, 536870915, 0, -196584, 3, 0, -65556, 536870915, 0, -131048, 3, 0, -20, 536870915, 0, -65512, 3, 0, 65516, 536870915, 0, 24, 3, 0, 131052, 536870915, 0, 65560, 3, 0, 196588, 536870921, 0, 196589, 1, 0, 196590, 1, 0, 196591, 1, 0, 196592, 1, 0, 196593, 1, 0, 196594, 1, 0, 196595, 1, 0, 196596, 1, 0, 196597, 1, 0, 196598, 1, 0, 196599, 1, 0, 196600, 1, 0, 196601, 1, 0, 196602, 1, 0, 196603, 536870924, 0, 131078, 12, 0, 131079, 1, 0, 131080, 1, 0, 131081, 1, 0, 131082, 1, 0, 131083, 1, 0, 131084, 1, 0, 131085, 1, 0, 131086, 1, 0, 131087, 1, 0, 131088, 1, 0, 131089, 1, 0, 131090, 1, 0, 131091, 1, 0, 131092, 1, 0, 131093, 1, 0, 131094, 1, 0, 131095, 1, 0, 131096, 9, 0, 262139, 536870915, 0, 196614, 3, 0, 327675, 536870915, 0, 262150, 3, 0, 393211, 536870915, 0, 327686, 3, 0, 458747, 536870915, 0, 393222, 3, 0, 524283, 536870915, 0, 458758, 3, 0, 589819, 536870915, 0, 524294, 3, 0, 655355, 536870915, 0, 589830, 3, 0, 720891, 536870915, 0, 655366, 3, 0, 786427, 536870915, 0, 720902, 3, 0, 851963, 536870915, 0, 786438, 3, 0, 917499, 536870915, 0, 851974, 3, 0, 983035, 536870915, 0, 917510, 3, 0, 1048571, 536870915, 0, 983046, 3, 0, 1114107, 536870915, 0, 1048582, 3, 0, 1179643, 536870915, 0, 1114118, 3, 0, 1245179, 536870915, 0, 1179654, 3, 0, 1310715, 536870915, 0, 1245190, 3, 0, 1376251, 536870915, 0, 1310726, 3, 0 )
 
 [node name="clock" type="Node2D" parent="."]
 script = ExtResource( 6 )
@@ -23,33 +33,23 @@ script = ExtResource( 6 )
 one_shot = true
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
-visible = false
 position = Vector2( 41, -218 )
 navpoly = SubResource( 1 )
 
-[node name="Icon" type="Sprite" parent="."]
-position = Vector2( 220, 120 )
-texture = ExtResource( 3 )
-
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 132, 616 )
+position = Vector2( 99, 611 )
 
 [node name="Npcs" type="Node2D" parent="."]
 
 [node name="NPC" parent="Npcs" instance=ExtResource( 4 )]
 
 [node name="positionCluster" type="Position2D" parent="."]
-position = Vector2( -83, 60 )
+position = Vector2( 46, -114 )
 script = ExtResource( 5 )
 
 [node name="positionCluster2" type="Position2D" parent="."]
-position = Vector2( -264, 64 )
+position = Vector2( -77, -109 )
 script = ExtResource( 5 )
-
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = ExtResource( 7 )
-cell_size = Vector2( 32, 32 )
-format = 1
 
 [connection signal="class_signal" from="clock" to="." method="_on_clock_class_signal"]
 [connection signal="interval_signal" from="clock" to="." method="_on_clock_interval_signal"]
