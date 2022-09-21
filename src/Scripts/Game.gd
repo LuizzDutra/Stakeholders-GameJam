@@ -4,8 +4,7 @@ signal return_to_menu
 
 export(Resource) var dialog_file
 
-onready var npcs = $Npcs
-onready var my_npc = $Npcs/NPC
+onready var npcs = $YSort/Npcs
 onready var my_cluster = $positionCluster
 onready var my_cluster2 = $positionCluster2
 var random_number = RandomNumberGenerator.new()
