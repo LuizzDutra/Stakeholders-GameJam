@@ -10,6 +10,7 @@ onready var vol_sliders = $configMenu/VolSliders
 onready var gotinha = $configMenu/VideoPlayer
 onready var musica_brega = $Musicabrega
 onready var Musica_default = $MusicaPadrao
+onready var musica_loop = $MusicaLoop
 var player_data = load("res://resources/data_cust.tres")
 var font_default = load("res://Fonts/font_default.tres")
 var font_dyslexic = load("res://Fonts/font_dyslexic.tres")
@@ -136,8 +137,15 @@ func _on_gotinhaButton_toggled(button_pressed):
 		gotinha.play()
 		#musica_brega.play()
 		Musica_default.stop()
+		musica_loop.stop()
 	else:
 		gotinha.visible = false
 		gotinha.stop()
-		#musica_brega.stop()
+		musica_loop.stop()
 		Musica_default.play()
+
+
+func _on_MusicaPadrao_finished():
+	if !gotinha.visible:
+		musica_loop.play()
+	
