@@ -146,6 +146,6 @@ func _on_gotinhaButton_toggled(button_pressed):
 
 
 func _on_MusicaPadrao_finished():
-	if !gotinha.visible:
+	if !gotinha.visible and !get_parent().cutscene_active:
 		musica_loop.play()
 	
