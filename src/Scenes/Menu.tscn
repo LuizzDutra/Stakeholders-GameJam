@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/PlayerCust.tscn" type="PackedScene" id=2]
@@ -6,9 +6,10 @@
 [ext_resource path="res://Scripts/modoDalto.gd" type="Script" id=4]
 [ext_resource path="res://Themes/default_theme.tres" type="Theme" id=5]
 [ext_resource path="res://Videos/gotinha_sincronia.webm" type="VideoStream" id=6]
-[ext_resource path="res://Sounds/menuofficial.wav" type="AudioStream" id=7]
-[ext_resource path="res://Sounds/menu1.wav" type="AudioStream" id=8]
+[ext_resource path="res://Sounds/musicaultraofficial.wav" type="AudioStream" id=7]
+[ext_resource path="res://Sounds/MENUOFFICIAL OFICIAL.wav" type="AudioStream" id=8]
 [ext_resource path="res://Art/fundo-gamejan.png" type="Texture" id=9]
+[ext_resource path="res://Sounds/Musica4loopofficial.wav" type="AudioStream" id=10]
 
 [node name="Menu" type="Control"]
 margin_right = 640.0
@@ -329,14 +330,19 @@ margin_right = 291.0
 margin_bottom = 107.0
 
 [node name="Buttons" type="GridContainer" parent="."]
-anchor_left = 0.413
-anchor_top = 0.111111
-anchor_right = 0.579687
-anchor_bottom = 0.328
-margin_left = 6.68033
-margin_bottom = -38.0801
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -56.5
+margin_top = -39.0
+margin_right = 56.5
+margin_bottom = 39.0
 grow_horizontal = 2
 custom_constants/vseparation = 16
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Start" type="Button" parent="Buttons"]
 margin_right = 113.0
@@ -442,13 +448,21 @@ text = "Volume"
 
 [node name="VideoPlayer" type="VideoPlayer" parent="configMenu"]
 visible = false
-margin_left = 408.0
-margin_top = 5.0
-margin_right = 481.0
-margin_bottom = 78.0
+margin_left = 387.0
+margin_top = 114.0
+margin_right = 547.0
+margin_bottom = 274.0
 stream = ExtResource( 6 )
 buffering_msec = 100
 bus = "Music"
+
+[node name="Label" type="Label" parent="configMenu/VideoPlayer"]
+margin_left = 50.0
+margin_top = -27.0
+margin_right = 120.0
+margin_bottom = 26.0
+text = "Vacine-se
+"
 
 [node name="VolSliders" type="Control" parent="configMenu"]
 margin_right = 40.0
@@ -482,12 +496,13 @@ step = 0.05
 value = 1.0
 
 [node name="gotinhaButton" type="Button" parent="configMenu"]
-margin_left = 403.0
-margin_top = 82.0
-margin_right = 423.0
-margin_bottom = 134.0
-rect_scale = Vector2( 0.4, 0.2 )
+margin_left = 414.0
+margin_top = 295.0
+margin_right = 502.0
+margin_bottom = 326.0
+rect_scale = Vector2( 0.6, 0.6 )
 toggle_mode = true
+text = "Não clique"
 
 [node name="clickSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
@@ -495,13 +510,16 @@ bus = "Effects"
 
 [node name="MusicaPadrao" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
-volume_db = -6.0
+volume_db = 6.0
 autoplay = true
 bus = "Music"
 
 [node name="Musicabrega" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 bus = "Music"
+
+[node name="MusicaLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
 
 [connection signal="color_changed" from="cust/pickers/bodyPicker" to="." method="_on_bodyPicker_color_changed"]
 [connection signal="pressed" from="cust/pickers/bodyPicker" to="." method="_on_bodyPicker_pressed"]
@@ -524,3 +542,4 @@ bus = "Music"
 [connection signal="drag_ended" from="configMenu/VolSliders/efeitos" to="." method="_on_efeitos_drag_ended"]
 [connection signal="drag_ended" from="configMenu/VolSliders/musica" to="." method="_on_musica_drag_ended"]
 [connection signal="toggled" from="configMenu/gotinhaButton" to="." method="_on_gotinhaButton_toggled"]
+[connection signal="finished" from="MusicaPadrao" to="." method="_on_MusicaPadrao_finished"]
