@@ -6,14 +6,20 @@
 [ext_resource path="res://Shaders/green_eye.tres" type="Material" id=4]
 [ext_resource path="res://resources/data_cust.tres" type="Resource" id=5]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 6.0
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 4.0
+height = 4.0
 
 [node name="Player" type="KinematicBody2D" groups=["player"]]
 script = ExtResource( 2 )
 data_player = ExtResource( 5 )
 
 [node name="Sprites" type="Node2D" parent="."]
+position = Vector2( 0, 2 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Body" type="Sprite" parent="Sprites"]
 texture = ExtResource( 1 )
@@ -42,6 +48,8 @@ vframes = 5
 frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 4 )
+rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
