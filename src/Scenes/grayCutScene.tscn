@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Shaders/grayCutscene.tres" type="Material" id=2]
+
+[node name="grayCutScene" type="CanvasLayer"]
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+copy_mode = 2
+
+[node name="Sprite" type="Sprite" parent="BackBufferCopy"]
+material = ExtResource( 2 )
+position = Vector2( 329.5, 171 )
+scale = Vector2( 11.2969, 6.34375 )
+texture = ExtResource( 1 )
