@@ -2,12 +2,29 @@
 
 [ext_resource path="res://Sprites/silhueta.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/NPC.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/Area2D.gd" type="Script" id=3]
-[ext_resource path="res://Scripts/dialogo.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/dialogo.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.0
 height = 4.0
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Area2D
+
+func _ready():
+	pass
+	
+\"\"\"func _input(event):
+	if event.is_action_pressed(\"space\") and len(get_overlapping_bodies()) > 0:
+		find_and_use_dialogue()
+		print(get_overlapping_bodies())
+		
+func find_and_use_dialogue():
+	var dialogue_player = get_node_or_null(\"dialogo\")
+	
+	if dialogue_player:
+		dialogue_player.play_dialog()\"\"\"
+"
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 7, 12.5 )
@@ -34,9 +51,8 @@ path_desired_distance = 10.0
 target_desired_distance = 10.0
 max_speed = 400.0
 
-
 [node name="Area2D" type="Area2D" parent="."]
-script = ExtResource( 3 )
+script = SubResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 0, -5.5 )
@@ -46,6 +62,5 @@ shape = SubResource( 2 )
 
 [node name="WanderTimer" type="Timer" parent="."]
 one_shot = true
-
 
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_NavigationAgent2D_navigation_finished"]

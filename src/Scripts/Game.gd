@@ -2,18 +2,23 @@ extends Node2D
 
 signal return_to_menu
 
+export(Resource) var dialog_file
+
 onready var npcs = $Npcs
 onready var my_npc = $Npcs/NPC
 onready var my_cluster = $positionCluster
 onready var my_cluster2 = $positionCluster2
+var random_number = RandomNumberGenerator.new()
 onready var player = $YSort/Player
 
 var score = 0 setget set_score, get_score
 
 func _ready():
 	for i in range(15):
+		random_number.randomize()
 		var new_npc = load("res://Scenes/NPC.tscn").instance()
 		new_npc.position = player.position
+		new_npc.dialogo_npc = dialog_file.dialog_text[random_number.randi_range(0,5)]
 		if i % 2 == 0:
 			new_npc.class_cluster = my_cluster2
 		else:
@@ -95,7 +100,7 @@ func _on_clock_class_signal():
 func _on_clock_interval_signal():
 	for i in range(npcs.get_child_count()):
 		npcs.get_child(i).wander_state = true
-		npcs.get_child(i).cur_cluster = null
+		#npc_set_path(npcs.get_child(i), Vector2(rand_range(-100, 100), rand_range(-100, 100)))
 
 
 func _on_clock_lunch_signal():

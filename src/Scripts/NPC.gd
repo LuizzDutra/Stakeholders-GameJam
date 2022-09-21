@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 onready var nav_agent = $NavigationAgent2D
 onready var wander_timer = $WanderTimer
+onready var hitbox_npc = $Area2D
 
 var speed = 200
 var vel = Vector2.ZERO
@@ -15,6 +16,8 @@ var wander_state = false setget wander_set_timer
 var wander_delay = 5
 var wander_range = 100
 var delay_rand = 3
+
+var dialogo_npc
 
 #referencia que indica a sala do npc
 var class_cluster
@@ -49,3 +52,12 @@ func wander_set_timer(state):
 	if state:
 		wander_start_timer()
 	wander_state = state
+
+func _input(event):
+	if event.is_action_pressed("space") and len(hitbox_npc.get_overlapping_bodies()) > 0:
+		find_and_use_dialogue()
+		
+func find_and_use_dialogue():
+	var dialogue_player = get_node_or_null("Area2D/dialogo")
+	if dialogue_player:
+		dialogue_player.play_dialog(dialogo_npc)

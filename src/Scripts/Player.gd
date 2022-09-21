@@ -10,6 +10,8 @@ var acel = 1200 + frict
 
 var nome = "Gab"
 
+var oculos: bool = false
+
 func _ready():
 	nome = data_player.get_data()["nome"]
 	load_modulate()
@@ -31,3 +33,8 @@ func _process(delta):
 	vel = vel.limit_length(speed)
 	#print(vel)
 	vel = move_and_slide(vel)
+	
+func set_active(active):
+	set_physics_process(active)
+	set_process(active)
+	set_process_input(active)

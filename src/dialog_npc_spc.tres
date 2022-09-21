@@ -1,0 +1,25 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://resources/metadata.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+dialog_text = [ [ {
+"name": "",
+"text": "Olá Meu nome é Bill"
+} ], [ {
+"name": "",
+"text": "Eae meu amigo como vai seu dia ?"
+} ], [ {
+"name": "",
+"text": "Olá Luiz!!! vc viu o Bill em algum Lugar ?"
+} ], [ {
+"name": "",
+"text": "Bora bill kkkkk"
+} ], [ {
+"name": "",
+"text": "Bom dia meu amor : )"
+} ], [ {
+"name": "",
+"text": "Lucas se fudeu kkkk. Ele não estudou para o teste de Karlas"
+} ] ]

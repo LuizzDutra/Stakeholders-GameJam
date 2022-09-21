@@ -14,8 +14,7 @@ var current_index = 0
 var dialog_ativo = false
 
 func _ready():
-	#play_dialog()
-	pass
+	dialogo.visible = false
 
 func show_message():
 	
@@ -27,6 +26,7 @@ func show_message():
 	
 	if current_index >= len(dialog):
 		cooldown_dialog.start()
+		turn_on_the_player()
 		dialogo.visible = false
 		return
 		
@@ -45,22 +45,18 @@ func _input(event):
 		if event.is_action_pressed("space"):
 			show_message()
 
-func load_dialog():
-	random_number.randomize()
-	return dialog_file.dialog_text[random_number.randi_range(0,5)]
-
 func _on_Timer_timeout():
 	if texto.visible_characters == texto.text.length():
 		tempo.stop()
 		return
 	texto.visible_characters += 1
 
-func play_dialog():
+func play_dialog(dialogu):
 	
 	if dialog_ativo:
 		return
-	dialog = load_dialog()
-	print(dialog)
+	dialog = dialogu
+	turn_off_the_player()
 	current_index = -1
 	dialogo.visible = true
 	dialog_ativo = true
@@ -68,3 +64,13 @@ func play_dialog():
 
 func _on_Timer2_timeout():
 	dialog_ativo = false
+	
+func turn_on_the_player():
+	var player = get_tree().get_root().find_node("Player", true, false)
+	if player:
+		player.set_active(true)
+
+func turn_off_the_player():
+	var player = get_tree().get_root().find_node("Player", true, false)
+	if player:
+		player.set_active(false)

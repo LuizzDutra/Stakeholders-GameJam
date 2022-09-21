@@ -15,12 +15,18 @@ _global_script_classes=[ {
 "path": "res://resources/data_player.gd"
 }, {
 "base": "Resource",
+"class": "Luiza_metadata",
+"language": "GDScript",
+"path": "res://luiza_metadata.gd"
+}, {
+"base": "Resource",
 "class": "metadata",
 "language": "GDScript",
-"path": "res://Scripts/metadata.gd"
+"path": "res://resources/metadata.gd"
 } ]
 _global_script_class_icons={
 "DataRes": "",
+"Luiza_metadata": "",
 "metadata": ""
 }
 
@@ -108,6 +114,12 @@ space={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":32,"unicode":0,"echo":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="Jogador"
+2d_physics/layer_2="npc"
+2d_physics/layer_3="mapa"
 
 [physics]
 
