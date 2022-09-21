@@ -54,7 +54,7 @@ func wander_set_timer(state):
 	wander_state = state
 
 func _input(event):
-	if event.is_action_pressed("space") and len(hitbox_npc.get_overlapping_bodies()) > 0:
+	if event.is_action_pressed("space") and len(hitbox_npc.get_overlapping_areas()) > 0:
 		find_and_use_dialogue()
 		
 func find_and_use_dialogue():

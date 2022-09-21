@@ -7,17 +7,20 @@ onready var player_data = load("res://resources/data_cust.tres")
 onready var daltonic_canvas = get_node("daltonicCanvas")
 var sprite_color_parts = ["Body", "Hair", "Eyes"]
 var sprite_frame_parts = ["Body", "Hair", "Eyes", "Pants", "Shirt"]
+var cutscene_active = false
 
 func _ready():
 	menu.connect("info_saved", self, "_on_info_saved")
 
 func start_cutscene():
 	var cutscene = cutscene_scene.instance()
+	cutscene_active = true
 	cutscene.connect("cutscene_end", self, "_on_cutscene_end")
 	add_child(cutscene)
 
 func start_game():
 	var game = game_scene.instance()
+	cutscene_active = false
 	game.connect("return_to_menu", self, "_on_return_to_menu")
 	add_child(game)
 
@@ -31,6 +34,8 @@ func _on_return_to_menu():
 
 func _on_Menu_start_game():
 	start_cutscene()
+	menu.Musica_default.stop()
+	menu.musica_loop.stop()
 	menu.visible = false
 
 

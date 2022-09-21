@@ -18,9 +18,9 @@ func _ready():
 
 func load_modulate():
 	var r_data = data_player.get_data()
-	get_node("Sprites/Body").modulate = r_data["Body_color"]
-	get_node("Sprites/Hair").modulate = r_data["Hair_color"]
-	get_node("Sprites/Eyes").get_material().set_shader_param("modulate", r_data["Eyes_color"])
+	#get_node("Sprites/Body").modulate = r_data["Body_color"]
+	#get_node("Sprites/Hair").modulate = r_data["Hair_color"]
+	#get_node("Sprites/Eyes").get_material().set_shader_param("modulate", r_data["Eyes_color"])
 
 
 func _process(delta):

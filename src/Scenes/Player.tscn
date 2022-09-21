@@ -1,16 +1,18 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Sprites/sprites.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/New Piskel (5).png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
-[ext_resource path="res://Shaders/grayscale.tres" type="Material" id=3]
-[ext_resource path="res://Shaders/green_eye.tres" type="Material" id=4]
 [ext_resource path="res://resources/data_cust.tres" type="Resource" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.0
 height = 4.0
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 17, 21.5 )
+
 [node name="Player" type="KinematicBody2D" groups=["player"]]
+collision_mask = 9
 script = ExtResource( 2 )
 data_player = ExtResource( 5 )
 
@@ -20,31 +22,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Body" type="Sprite" parent="Sprites"]
+[node name="Sprite" type="Sprite" parent="Sprites"]
+position = Vector2( 0, -2 )
 texture = ExtResource( 1 )
-vframes = 5
-frame = 4
-
-[node name="Shirt" type="Sprite" parent="Sprites"]
-texture = ExtResource( 1 )
-vframes = 5
-frame = 3
-
-[node name="Pants" type="Sprite" parent="Sprites"]
-texture = ExtResource( 1 )
-vframes = 5
-
-[node name="Hair" type="Sprite" parent="Sprites"]
-material = ExtResource( 3 )
-texture = ExtResource( 1 )
-vframes = 5
-frame = 1
-
-[node name="Eyes" type="Sprite" parent="Sprites"]
-material = ExtResource( 4 )
-texture = ExtResource( 1 )
-vframes = 5
-frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 4 )
@@ -53,3 +33,11 @@ shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, -5.5 )
+shape = SubResource( 2 )
