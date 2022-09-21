@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Shaders/daltonic.tres" type="Material" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+[node name="daltonicCanvas" type="CanvasLayer"]
+layer = 0
+visible = false
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+position = Vector2( 322, 185 )
+scale = Vector2( 3.63, 2.335 )
+copy_mode = 2
+
+[node name="Sprite" type="Sprite" parent="BackBufferCopy"]
+material = ExtResource( 1 )
+scale = Vector2( 3.38326, 2.95771 )
+texture = ExtResource( 2 )
