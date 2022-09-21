@@ -7,9 +7,9 @@ var dialog_npc_spc_base = [
 ]
 
 var dialog_npc_spc_missao_concluida = [
-	{"name":"Luiza","text":"oq ??!!!"},
-	{"name":"Luiza","text":"Esse é meus oculos ?"},
-	{"name":"Luiza","text":"Muito obrigado"},
+	{"name":"Luiza","text":"muito obrigago garoto"},
+	{"name":"Luiza","text":"agora eu vou volta para a sala de aula"},
+	{"name":"Luiza","text":"Tenha uma boa aula"}
 ]
 
 var dialog_npc_esp
