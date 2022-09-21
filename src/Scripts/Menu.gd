@@ -7,6 +7,9 @@ onready var pickers = $cust/pickers
 onready var clickSound = $clickSound
 onready var sprites = $cust/Sprites
 onready var vol_sliders = $configMenu/VolSliders
+onready var gotinha = $configMenu/VideoPlayer
+onready var musica_brega = $Musicabrega
+onready var Musica_default = $MusicaPadrao
 var player_data = load("res://resources/data_cust.tres")
 var font_default = load("res://Fonts/font_default.tres")
 var font_dyslexic = load("res://Fonts/font_dyslexic.tres")
@@ -121,3 +124,20 @@ func _on_musica_drag_ended(value_changed):
 
 func _on_LineEdit_text_changed(new_text):
 	emit_signal("info_saved", "nome", new_text)
+
+
+func _on_VideoPlayer_finished():
+	gotinha.play()
+
+
+func _on_gotinhaButton_toggled(button_pressed):
+	if button_pressed:
+		gotinha.visible = true
+		gotinha.play()
+		#musica_brega.play()
+		Musica_default.stop()
+	else:
+		gotinha.visible = false
+		gotinha.stop()
+		#musica_brega.stop()
+		Musica_default.play()
