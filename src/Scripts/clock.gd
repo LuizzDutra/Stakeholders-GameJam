@@ -17,7 +17,7 @@ export var lunch_time := [70]
 func _process(delta):
 	if clock_running:
 		time += delta * timescale
-		print(time)
+		#print(time)
 	
 	if signalDelay.is_stopped():
 		if int(time) in class_time:
