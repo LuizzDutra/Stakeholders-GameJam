@@ -6,11 +6,10 @@
 [ext_resource path="res://Shaders/green_eye.tres" type="Material" id=4]
 [ext_resource path="res://resources/data_cust.tres" type="Resource" id=5]
 
-
 [sub_resource type="CircleShape2D" id=1]
 radius = 6.0
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=["player"]]
 script = ExtResource( 2 )
 data_player = ExtResource( 5 )
 

@@ -15,12 +15,18 @@ _global_script_classes=[ {
 "path": "res://resources/data_player.gd"
 }, {
 "base": "Resource",
+"class": "Luiza_metadata",
+"language": "GDScript",
+"path": "res://luiza_metadata.gd"
+}, {
+"base": "Resource",
 "class": "metadata",
 "language": "GDScript",
-"path": "res://Scripts/metadata.gd"
+"path": "res://resources/metadata.gd"
 } ]
 _global_script_class_icons={
 "DataRes": "",
+"Luiza_metadata": "",
 "metadata": ""
 }
 

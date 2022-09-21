@@ -2,6 +2,7 @@ extends Resource
 
 class_name metadata
 
+
 export var dialog_text = [
 	[{"name":"","text":"Olá Meu nome é Bill"}],
 	[{"name":"","text":"Eae meu amigo como vai seu dia ?"}],
