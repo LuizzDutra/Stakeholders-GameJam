@@ -1,6 +1,7 @@
 extends Node2D
 
 onready var game_scene = load("res://Scenes/Game.tscn")
+onready var cutscene_scene = load("res://Scenes/Cutscene.tscn")
 onready var menu = $Menu
 onready var player_data = load("res://resources/data_cust.tres")
 onready var daltonic_canvas = get_node("daltonicCanvas")
@@ -9,6 +10,11 @@ var sprite_frame_parts = ["Body", "Hair", "Eyes", "Pants", "Shirt"]
 
 func _ready():
 	menu.connect("info_saved", self, "_on_info_saved")
+
+func start_cutscene():
+	var cutscene = cutscene_scene.instance()
+	cutscene.connect("cutscene_end", self, "_on_cutscene_end")
+	add_child(cutscene)
 
 func start_game():
 	var game = game_scene.instance()
@@ -24,7 +30,7 @@ func _on_return_to_menu():
 	menu._ready()
 
 func _on_Menu_start_game():
-	start_game()
+	start_cutscene()
 	menu.visible = false
 
 
@@ -37,6 +43,9 @@ func _on_Menu_daltonic_change(index):
 	daltonic_canvas.get_node("BackBufferCopy/Sprite")\
 	.get_material().set_shader_param("mode", index)
 
+func _on_cutscene_end():
+	get_node("Cutscene").queue_free()
+	start_game()
 
 func _on_Menu_dalt_int_change(value):
 	daltonic_canvas.get_node("BackBufferCopy/Sprite")\

@@ -13,6 +13,8 @@ var dialog = []
 var current_index = 0
 var dialog_ativo = false
 
+signal ended
+
 func _ready():
 	dialogo.visible = false
 
@@ -28,6 +30,7 @@ func show_message():
 		cooldown_dialog.start()
 		turn_on_the_player()
 		dialogo.visible = false
+		emit_signal(("ended"))
 		return
 		
 	texto.visible_characters = 0
