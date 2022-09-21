@@ -61,10 +61,10 @@ margin_bottom = -50.0
 scroll_active = false
 
 [node name="Timer" type="Timer" parent="dialog"]
-wait_time = 0.063
+wait_time = 0.01
 
 [node name="Timer2" type="Timer" parent="."]
-wait_time = 0.016
+wait_time = 0.5
 one_shot = true
 
 [connection signal="timeout" from="dialog/Timer" to="." method="_on_Timer_timeout"]

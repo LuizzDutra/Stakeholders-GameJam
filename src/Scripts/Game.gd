@@ -23,6 +23,7 @@ func _ready():
 		else:
 			new_npc.class_cluster = my_cluster
 		npcs.add_child(new_npc)
+	get_node("AudioStreamPlayer").play()
 
 func _process(_delta):
 	if Input.is_action_just_pressed("Return"):

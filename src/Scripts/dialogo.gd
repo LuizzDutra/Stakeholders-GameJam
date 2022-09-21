@@ -42,6 +42,9 @@ func show_message():
 func _input(event):
 	if not dialog_ativo:
 		return
+	
+	if current_index >= len(dialog):
+		return
 		
 	if event is InputEventKey:
 		
