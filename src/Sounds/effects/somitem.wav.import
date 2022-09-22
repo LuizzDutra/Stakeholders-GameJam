@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/somitem.wav-9d24120c66c10541b3be359f87e8b618.sample"
+
+[deps]
+
+source_file="res://Sounds/effects/somitem.wav"
+dest_files=[ "res://.import/somitem.wav-9d24120c66c10541b3be359f87e8b618.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

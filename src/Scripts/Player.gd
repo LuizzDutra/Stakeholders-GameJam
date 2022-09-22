@@ -10,6 +10,7 @@ var speed = 300
 var frict = 2400
 var acel = 1200 + frict
 var facing = -1
+var stopped = false
 
 var nome = "Gab"
 
@@ -31,6 +32,10 @@ func _process(delta):
 	dir.x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
 	dir.y = Input.get_action_strength("Down") - Input.get_action_strength("Up")
 	
+	if stopped:
+		print("yes")
+		dir = Vector2.ZERO
+	
 	if dir.x != 0:
 		facing = dir.x
 	
@@ -48,6 +53,8 @@ func _process(delta):
 	vel = move_and_slide(vel)
 	
 func set_active(active):
+	if not active:
+		sprite.play("idle")
 	set_physics_process(active)
 	set_process(active)
 	set_process_input(active)
