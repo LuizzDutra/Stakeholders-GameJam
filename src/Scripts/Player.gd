@@ -2,11 +2,14 @@ extends KinematicBody2D
 
 export(Resource) var data_player
 
+onready var sprite = $AnimatedSprite
+
 var dir = Vector2.ZERO
 var vel = Vector2.ZERO
 var speed = 300
 var frict = 2400
 var acel = 1200 + frict
+var facing = -1
 
 var nome = "Gab"
 
@@ -28,9 +31,19 @@ func _process(delta):
 	dir.x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
 	dir.y = Input.get_action_strength("Down") - Input.get_action_strength("Up")
 	
+	if dir.x != 0:
+		facing = dir.x
+	
 	vel += dir * acel * delta
 	vel = vel.move_toward(Vector2.ZERO, frict * delta)
 	vel = vel.limit_length(speed)
+	
+	if dir != Vector2.ZERO:
+		sprite.play("walk")
+	else:
+		sprite.play("idle")
+	sprite.scale.x = facing
+	
 	#print(vel)
 	vel = move_and_slide(vel)
 	
