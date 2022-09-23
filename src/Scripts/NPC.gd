@@ -3,6 +3,9 @@ extends KinematicBody2D
 onready var nav_agent = $NavigationAgent2D
 onready var wander_timer = $WanderTimer
 onready var hitbox_npc = $Area2D
+onready var sprite = $AnimatedSprite
+
+var sprite_path = "res://spriteFrames/spriteframe"
 
 var speed = 200
 var vel = Vector2.ZERO
@@ -22,8 +25,12 @@ var dialogo_npc
 #referencia que indica a sala do npc
 var class_cluster
 
+func _ready():
+	sprite.frames = load(sprite_path + str((randi() % 4)+1) + ".tres")
+	sprite.play("idle")
+
 func _physics_process(delta):
-	if wander_state and nav_agent.is_navigation_finished():
+	if wander_state and nav_agent.is_navigation_finished() and not hitbox_npc.get_node("dialogo").dialog_ativo:
 		if wander_timer.is_stopped():
 			var rand_path = position + Vector2(rand_range(-wander_range, wander_range), rand_range(-wander_range, wander_range))
 			set_path_location(rand_path)
@@ -33,8 +40,19 @@ func _physics_process(delta):
 	
 	if moving:
 		dir = position.direction_to(nav_agent.get_next_location())
+		if dir.x != 0:
+			if dir.x < 0:
+				sprite.scale.x = -1
+			if dir.x > 0:
+				sprite.scale.x = 1
 		vel = dir * speed
+		if vel != Vector2.ZERO:
+			sprite.play("walk")
+		else:
+			sprite.play("idle")
 		vel = move_and_slide(vel)
+	else:
+		sprite.play("idle")
 
 func set_path_location(location):
 	nav_agent.set_target_location(location)
