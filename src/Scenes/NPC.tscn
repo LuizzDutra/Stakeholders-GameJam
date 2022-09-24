@@ -55,7 +55,6 @@ target_desired_distance = 10.0
 max_speed = 400.0
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
 collision_mask = 8
 script = SubResource( 3 )
 

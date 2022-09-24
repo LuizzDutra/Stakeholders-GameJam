@@ -60,7 +60,6 @@ position = Vector2( 245, 155 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 2 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="pickers" type="Control" parent="cust"]
@@ -314,6 +313,7 @@ margin_left = 220.0
 margin_top = 245.0
 margin_right = 351.0
 margin_bottom = 266.0
+min_value = -0.05
 max_value = 1.0
 step = 0.05
 value = 1.0
