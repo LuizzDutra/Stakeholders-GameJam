@@ -16,8 +16,8 @@ var cluster_fac := 0
 var cluster_index := -1
 
 var wander_state = false setget wander_set_timer
-var wander_delay = 5
-var wander_range = 100
+var wander_delay = 8
+var wander_range = 300
 var delay_rand = 3
 
 var dialogo_npc

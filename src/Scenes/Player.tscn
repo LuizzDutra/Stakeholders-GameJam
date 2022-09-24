@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://spriteFrames/spriteframe3.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://spriteFrames/spriteframe1.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://Shaders/customization.tres" type="Material" id=3]
 [ext_resource path="res://Scripts/PlayerArea2D.gd" type="Script" id=4]
@@ -22,7 +22,6 @@ material = ExtResource( 3 )
 position = Vector2( 0, -2 )
 frames = ExtResource( 1 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

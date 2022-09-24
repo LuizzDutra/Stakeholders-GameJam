@@ -1,11 +1,11 @@
 extends Node2D
 
 var dialog_cutscene_dream = [
-	{"name":"Diretor","text":"Você teve uma péssima conduta na escola"},
-	{"name":"Diretor","text":"Aqui não é um espaço para brincadeiras"},
-	{"name":"Diretor","text":"Nós não aceitamos delinquentes como você nessa escola"},
-	{"name":"Diretor","text":"Você está expulso"},
-	{"name":"Diretor","text":"Saia daqui e nunca mais volte"}
+	{"name":"Diretor","text":"Você teve uma péssima conduta na escola."},
+	{"name":"Diretor","text":"Aqui não é um espaço para brincadeiras."},
+	{"name":"Diretor","text":"Nós não aceitamos delinquentes como você nessa escola."},
+	{"name":"Diretor","text":"Você está expulso."},
+	{"name":"Diretor","text":"Saia daqui e nunca mais volte."}
 ]
 
 onready var tempo = $Timer

@@ -23,7 +23,7 @@ func _ready():
 		random_number.randomize()
 		var new_npc = load("res://Scenes/NPC.tscn").instance()
 		new_npc.position = player.position
-		new_npc.dialogo_npc = dialog_file.dialog_text[random_number.randi_range(0,5)]
+		new_npc.dialogo_npc = dialog_file.dialog_text[random_number.randi_range(0, len(dialog_file.dialog_text)-1)]
 		if i % 2 == 0:
 			new_npc.class_cluster = my_cluster2
 		else:
