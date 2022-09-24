@@ -8,5 +8,5 @@ func interact():
 	get_node("Timer").start()
 
 func _on_Timer_timeout():
-	print("uhu")
+	#print("uhu")
 	active = true

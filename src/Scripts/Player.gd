@@ -34,7 +34,7 @@ func _process(delta):
 	dir.y = Input.get_action_strength("Down") - Input.get_action_strength("Up")
 	
 	if stopped:
-		print("yes")
+		#print("yes")
 		dir = Vector2.ZERO
 	
 	if dir.x != 0:

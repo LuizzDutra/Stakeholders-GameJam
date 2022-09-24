@@ -99,5 +99,4 @@ func _input(event):
 func find_and_use_dialogue():
 	var dialogue_player = get_node_or_null("Area2D/dialogo")
 	if dialogue_player:
-		print(hitbox_npc.get_node("dialogo").dialog_file.player_name)
 		dialogue_player.play_dialog(dialogo_npc)
