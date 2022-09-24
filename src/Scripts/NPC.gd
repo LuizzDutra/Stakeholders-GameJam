@@ -94,7 +94,8 @@ func wander_set_timer(state):
 
 func _input(event):
 	if event.is_action_pressed("space") and len(hitbox_npc.get_overlapping_areas()) > 0:
-		find_and_use_dialogue()
+		if hitbox_npc.get_overlapping_areas()[0].get_parent().ativo:
+			find_and_use_dialogue()
 		
 func find_and_use_dialogue():
 	var dialogue_player = get_node_or_null("Area2D/dialogo")
