@@ -7,7 +7,6 @@
 [ext_resource path="res://resources/data_cust.tres" type="Resource" id=5]
 [ext_resource path="res://Shaders/daltonic.tres" type="Material" id=6]
 
-
 [node name="Sprites" type="Node2D"]
 script = ExtResource( 3 )
 data_player = ExtResource( 5 )

@@ -59,7 +59,6 @@ position = Vector2( 245, 155 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 2 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="pickers" type="Control" parent="cust"]
@@ -82,6 +81,7 @@ margin_right = 208.0
 margin_bottom = 186.0
 rect_min_size = Vector2( 30, 30 )
 rect_scale = Vector2( 0.5, 0.5 )
+edit_alpha = false
 
 [node name="hairPicker" type="ColorPickerButton" parent="cust/pickers"]
 margin_left = 178.0
@@ -90,6 +90,7 @@ margin_right = 208.0
 margin_bottom = 162.0
 rect_min_size = Vector2( 30, 30 )
 rect_scale = Vector2( 0.5, 0.5 )
+edit_alpha = false
 
 [node name="eyesPicker" type="ColorPickerButton" parent="cust/pickers"]
 margin_left = 178.0
@@ -98,6 +99,7 @@ margin_right = 208.0
 margin_bottom = 212.0
 rect_min_size = Vector2( 30, 30 )
 rect_scale = Vector2( 0.5, 0.5 )
+edit_alpha = false
 
 [node name="Button" type="Button" parent="cust"]
 margin_left = 41.0
@@ -113,18 +115,34 @@ margin_right = 272.0
 margin_bottom = 255.0
 text = "Create"
 
-[node name="reload" type="Button" parent="cust"]
-margin_left = 92.0
-margin_top = 204.0
-margin_right = 148.0
-margin_bottom = 235.0
-text = "reload"
-
 [node name="LineEdit" type="LineEdit" parent="cust"]
 margin_left = 197.0
 margin_top = 72.0
 margin_right = 291.0
 margin_bottom = 107.0
+
+[node name="bodyButton" type="Button" parent="cust"]
+margin_left = 301.0
+margin_top = 181.0
+margin_right = 329.0
+margin_bottom = 212.0
+rect_scale = Vector2( 0.5, 0.6 )
+text = "<-"
+
+[node name="bodyButton2" type="Button" parent="cust"]
+margin_left = 367.0
+margin_top = 181.0
+margin_right = 395.0
+margin_bottom = 212.0
+rect_scale = Vector2( 0.5, 0.6 )
+text = "->"
+
+[node name="Label" type="Label" parent="cust"]
+margin_left = 321.0
+margin_top = 177.0
+margin_right = 361.0
+margin_bottom = 202.0
+text = "Corpo"
 
 [node name="Buttons" type="GridContainer" parent="."]
 visible = false
@@ -293,6 +311,10 @@ max_value = 1.0
 step = 0.05
 value = 1.0
 
+[node name="Timer" type="Timer" parent="configMenu/VolSliders"]
+wait_time = 0.05
+one_shot = true
+
 [node name="gotinhaButton" type="Button" parent="configMenu"]
 visible = false
 margin_left = 479.0
@@ -308,8 +330,6 @@ bus = "Effects"
 
 [node name="MusicaPadrao" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
-volume_db = 6.0
-autoplay = true
 bus = "Music"
 
 [node name="Musicabrega" type="AudioStreamPlayer" parent="."]
@@ -328,8 +348,9 @@ bus = "Music"
 [connection signal="pressed" from="cust/pickers/eyesPicker" to="." method="_on_bodyPicker_pressed"]
 [connection signal="pressed" from="cust/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="cust/Create" to="." method="_on_Create_pressed"]
-[connection signal="pressed" from="cust/reload" to="." method="_on_Button2_pressed"]
 [connection signal="text_changed" from="cust/LineEdit" to="." method="_on_LineEdit_text_changed"]
+[connection signal="pressed" from="cust/bodyButton" to="." method="_on_bodyButton_pressed"]
+[connection signal="pressed" from="cust/bodyButton2" to="." method="_on_bodyButton2_pressed"]
 [connection signal="pressed" from="Buttons/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="Buttons/Config" to="." method="_on_Config_pressed"]
 [connection signal="pressed" from="configMenu/configBack" to="." method="_on_configBack_pressed"]
@@ -337,8 +358,8 @@ bus = "Music"
 [connection signal="item_selected" from="configMenu/modoDalto" to="." method="_on_modoDalto_item_selected"]
 [connection signal="value_changed" from="configMenu/HSlider" to="." method="_on_HSlider_value_changed"]
 [connection signal="finished" from="configMenu/VideoPlayer" to="." method="_on_VideoPlayer_finished"]
-[connection signal="drag_ended" from="configMenu/VolSliders/mestre" to="." method="_on_mestre_drag_ended"]
-[connection signal="drag_ended" from="configMenu/VolSliders/efeitos" to="." method="_on_efeitos_drag_ended"]
-[connection signal="drag_ended" from="configMenu/VolSliders/musica" to="." method="_on_musica_drag_ended"]
+[connection signal="value_changed" from="configMenu/VolSliders/mestre" to="." method="_on_mestre_value_changed"]
+[connection signal="value_changed" from="configMenu/VolSliders/efeitos" to="." method="_on_efeitos_value_changed"]
+[connection signal="value_changed" from="configMenu/VolSliders/musica" to="." method="_on_musica_value_changed"]
 [connection signal="toggled" from="configMenu/gotinhaButton" to="." method="_on_gotinhaButton_toggled"]
 [connection signal="finished" from="MusicaPadrao" to="." method="_on_MusicaPadrao_finished"]

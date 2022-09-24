@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource( 1 )
+player_name = "Eu"
 dialog_text = [ [ {
 "name": "",
 "text": "Olá Meu nome é Bill"

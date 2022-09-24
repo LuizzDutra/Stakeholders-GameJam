@@ -7,6 +7,7 @@ onready var nome = $dialog/nome
 onready var tempo = $dialog/Timer
 onready var dialogo = $dialog
 onready var cooldown_dialog = $Timer2
+onready var sound = $AudioStreamPlayer
 var random_number = RandomNumberGenerator.new()
 
 var dialog = []
@@ -33,6 +34,7 @@ func show_message():
 		emit_signal(("ended"))
 		return
 		
+	sound.play()
 	texto.visible_characters = 0
 	texto.text = dialog[current_index]["text"]
 	nome.text = dialog[current_index]["name"]

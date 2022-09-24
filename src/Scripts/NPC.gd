@@ -22,12 +22,29 @@ var delay_rand = 3
 
 var dialogo_npc
 
+var skin_color_array = [Color(0.32549, 0.239216, 0.172549), Color(0.785156, 0.622526, 0.496857), \
+						Color(0.664063, 0.463593, 0.308685), Color(0.84375, 0.745211, 0.669067), \
+						Color(0.347656, 0.163033, 0.02037)]
+	
+var hair_color_array = [Color(0.568627, 0.070588, 0.070588), Color(0.21875, 0.134856, 0.067505), \
+						Color(0.808594, 0.626507, 0.312698), Color(0.757813, 0.347084, 0.100647)]
+
+var eyes_color_array = [Color(0.141176, 0.047059, 0), Color(0, 0.371094, 0.59375), Color(0, 0, 0),\
+						Color(0.619608, 0.611765, 0.32549)]
+
 #referencia que indica a sala do npc
 var class_cluster
 
 func _ready():
 	sprite.frames = load(sprite_path + str((randi() % 4)+1) + ".tres")
+	#sprite.frames = load(sprite_path + "3.tres")
 	sprite.play("idle")
+	var color = skin_color_array[randi() % len(skin_color_array)]
+	sprite.get_material().set_shader_param("skin_modulate", color)
+	color = hair_color_array[randi() % len(hair_color_array)]
+	sprite.get_material().set_shader_param("hair_modulate", color)
+	color = eyes_color_array[randi() % len(eyes_color_array)]
+	sprite.get_material().set_shader_param("eyes_modulate", color)
 
 func _physics_process(delta):
 	if wander_state and nav_agent.is_navigation_finished() and not hitbox_npc.get_node("dialogo").dialog_ativo:
@@ -37,6 +54,10 @@ func _physics_process(delta):
 			#if !nav_agent.is_target_reachable():
 			#	moving = false
 			wander_start_timer()
+	
+	if not wander_state:
+		if cur_cluster != null:
+			sprite.scale.x = cur_cluster.facing
 	
 	if moving:
 		dir = position.direction_to(nav_agent.get_next_location())
@@ -78,4 +99,5 @@ func _input(event):
 func find_and_use_dialogue():
 	var dialogue_player = get_node_or_null("Area2D/dialogo")
 	if dialogue_player:
+		print(hitbox_npc.get_node("dialogo").dialog_file.player_name)
 		dialogue_player.play_dialog(dialogo_npc)
