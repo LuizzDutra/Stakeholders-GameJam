@@ -181,3 +181,7 @@ func _on_efeitos_value_changed(value):
 	if value and slider_timer.is_stopped():
 		var new_value = linear2db(vol_sliders.get_node("efeitos").value)
 		AudioServer.set_bus_volume_db(1, new_value)
+
+
+func _on_Exit_pressed():
+	get_tree().quit()
