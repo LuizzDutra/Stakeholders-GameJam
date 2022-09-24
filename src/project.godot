@@ -44,6 +44,7 @@ output_latency=5
 
 window/size/width=640
 window/size/height=360
+window/size/fullscreen=true
 window/size/test_width=1280
 window/size/test_height=720
 window/stretch/mode="2d"
@@ -68,7 +69,7 @@ texture={
 "flags/repeat": 0,
 "flags/srgb": 2,
 "process/HDR_as_SRGB": false,
-"process/fix_alpha_border": true,
+"process/fix_alpha_border": false,
 "process/invert_color": false,
 "process/normal_map_invert_y": false,
 "process/premult_alpha": false,

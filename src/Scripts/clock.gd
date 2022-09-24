@@ -10,9 +10,9 @@ var clock_running := true
 var time := 0.0
 
 export var timescale := 10
-export var class_time := [50, 100]
+export var class_time := []
 export var interval_time := [150]
-export var lunch_time := [70]
+export var lunch_time := []
 
 func _process(delta):
 	if clock_running:

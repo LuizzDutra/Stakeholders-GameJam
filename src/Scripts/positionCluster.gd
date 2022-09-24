@@ -11,7 +11,6 @@ func _ready():
 		var child = get_child(i) 
 		child.position = global_position + child.position
 		pos_states.append(0)
-	create_points(20, 0, 30)
 
 func create_points(quant, xoffset, yoffset):
 	for i in range(quant):

@@ -11,9 +11,14 @@ onready var gotinha = $configMenu/VideoPlayer
 onready var musica_brega = $Musicabrega
 onready var Musica_default = $MusicaPadrao
 onready var musica_loop = $MusicaLoop
+onready var slider_timer = $configMenu/VolSliders/Timer
 var player_data = load("res://resources/data_cust.tres")
 var font_default = load("res://Fonts/font_default.tres")
 var font_dyslexic = load("res://Fonts/font_dyslexic.tres")
+var dialog_file = load("res://dialogo/ncp_dialog.tres")
+var sprite_path = "res://spriteFrames/spriteframe"
+var selected_sprite = 0
+var in_game = false
 signal start_game
 signal info_saved(s_var, info)
 signal daltonic_change(index)
@@ -21,17 +26,34 @@ signal dalt_int_change(value)
 
 func _ready():
 	visible = true
+	get_node("TextureRect").visible = true
+	AudioServer.set_bus_volume_db(2, linear2db(0.5))
+	vol_sliders.get_node("musica").value = db2linear(AudioServer.get_bus_volume_db(2))
 	config_menu.visible = false
 	buttons.visible = true
 	cust_menu.visible = false
 	cust_menu.get_node("LineEdit").text = player_data.data["nome"]
+	dialog_file.player_name = player_data.data["nome"]
+	sprites.frames = load(sprite_path + "1.tres")
+	in_game = false
+	#Musica_default.play()
 	load_picker_color()
+
+
+func show_in_game_menu():
+	visible = true
+	get_node("TextureRect").visible = false
+	cust_menu.visible = false
+	buttons.visible = false
+	config_menu.visible = true
+	in_game = true
 
 func load_picker_color():
 	#seta a cor dos color pickers
-	pickers.get_node("bodyPicker").color = sprites.get_node("Body").modulate
-	pickers.get_node("hairPicker").color = sprites.get_node("Hair").modulate
-	pickers.get_node("eyesPicker").color = sprites.get_node("Eyes").get_material().get_shader_param("modulate")
+	if sprites.get_material():
+		pickers.get_node("bodyPicker").color = sprites.get_material().get_shader_param("skin_modulate")
+		pickers.get_node("hairPicker").color = sprites.get_material().get_shader_param("hair_modulate")
+		pickers.get_node("eyesPicker").color = sprites.get_material().get_shader_param("eyes_modulate")
 
 
 func _on_Start_pressed():
@@ -46,7 +68,8 @@ func _on_Config_pressed():
 	clickSound.play()
 
 func _on_configBack_pressed():
-	buttons.visible = true
+	if not in_game:
+		buttons.visible = true
 	config_menu.visible = false
 	clickSound.play()
 
@@ -69,7 +92,7 @@ func save_color_info(color, s_var):
 	emit_signal("info_saved", s_var + "_color", color)
 
 func _on_bodyPicker_color_changed(color):
-	cust_menu.get_node("Sprites").get_node("Body").modulate = color
+	sprites.get_material().set_shader_param("skin_modulate", color)
 	save_color_info(color, "Body")
 
 
@@ -78,19 +101,13 @@ func _on_bodyPicker_pressed():
 
 
 func _on_hairPicker_color_changed(color):
-	cust_menu.get_node("Sprites").get_node("Hair").modulate = color
+	sprites.get_material().set_shader_param("hair_modulate", color)
 	save_color_info(color, "Hair")
 
 
 func _on_eyesPicker_color_changed(color):
-	cust_menu.get_node("Sprites").get_node("Eyes").get_material().set_shader_param("modulate", color)
+	sprites.get_material().set_shader_param("eyes_modulate", color)
 	save_color_info(color, "Eyes")
-
-
-func _on_Button2_pressed():
-	sprites.data_player.reset_to_default()
-	sprites.load_modulate()
-	load_picker_color()
 	
 
 
@@ -102,28 +119,9 @@ func _on_HSlider_value_changed(value):
 	emit_signal("dalt_int_change", value)
 
 
-func _on_mestre_drag_ended(value_changed):
-	if value_changed:
-		var value = linear2db(vol_sliders.get_node("mestre").value)
-		#print(value)
-		AudioServer.set_bus_volume_db(0, value)
-
-
-func _on_efeitos_drag_ended(value_changed):
-	if value_changed:
-		var value = linear2db(vol_sliders.get_node("efeitos").value)
-		#print(value)
-		AudioServer.set_bus_volume_db(1, value)
-
-
-func _on_musica_drag_ended(value_changed):
-	if value_changed:
-		var value = linear2db(vol_sliders.get_node("musica").value)
-		#print(value)
-		AudioServer.set_bus_volume_db(2, value)
-
 
 func _on_LineEdit_text_changed(new_text):
+	dialog_file.player_name = new_text
 	emit_signal("info_saved", "nome", new_text)
 
 
@@ -146,6 +144,44 @@ func _on_gotinhaButton_toggled(button_pressed):
 
 
 func _on_MusicaPadrao_finished():
-	if !gotinha.visible and !get_parent().cutscene_active:
+	if !gotinha.visible and !get_parent().get_parent().cutscene_active:
 		musica_loop.play()
 	
+
+
+func _on_bodyButton_pressed():
+	if selected_sprite <= 0:
+		selected_sprite = 3
+	else:
+		selected_sprite -= 1
+	sprites.frames = load(sprite_path + str(selected_sprite+1) + ".tres")
+	emit_signal("info_saved", "sprite_frame", selected_sprite)
+
+
+func _on_bodyButton2_pressed():
+	selected_sprite = (selected_sprite + 1) % 4
+	sprites.frames = load(sprite_path + str(selected_sprite+1) + ".tres")
+	emit_signal("info_saved", "sprite_frame", selected_sprite)
+
+
+
+func _on_mestre_value_changed(value):
+	if value and slider_timer.is_stopped():
+		var new_value = linear2db(vol_sliders.get_node("mestre").value)
+		AudioServer.set_bus_volume_db(0, new_value)
+
+
+func _on_musica_value_changed(value):
+	if value and slider_timer.is_stopped():
+		var new_value = linear2db(vol_sliders.get_node("musica").value)
+		AudioServer.set_bus_volume_db(2, new_value)
+
+
+func _on_efeitos_value_changed(value):
+	if value and slider_timer.is_stopped():
+		var new_value = linear2db(vol_sliders.get_node("efeitos").value)
+		AudioServer.set_bus_volume_db(1, new_value)
+
+
+func _on_Exit_pressed():
+	get_tree().quit()

@@ -7,40 +7,56 @@ export(Resource) var dialog_file
 onready var npcs = $YSort/Npcs
 onready var my_cluster = $positionCluster
 onready var my_cluster2 = $positionCluster2
+onready var sub_menu = $CanvasLayer
+onready var introDialogue = $dialogo
 var random_number = RandomNumberGenerator.new()
 onready var player = $YSort/Player
+
+var dialogue_intro = []
+
 
 var score = 0 setget set_score, get_score
 
 func _ready():
+	sub_menu.visible = false
 	for i in range(15):
 		random_number.randomize()
 		var new_npc = load("res://Scenes/NPC.tscn").instance()
 		new_npc.position = player.position
-		new_npc.dialogo_npc = dialog_file.dialog_text[random_number.randi_range(0,5)]
+		new_npc.dialogo_npc = dialog_file.dialog_text[random_number.randi_range(0, len(dialog_file.dialog_text)-1)]
 		if i % 2 == 0:
 			new_npc.class_cluster = my_cluster2
 		else:
 			new_npc.class_cluster = my_cluster
 		npcs.add_child(new_npc)
 	get_node("AudioStreamPlayer").play()
+	for i in range(npcs.get_child_count()):
+		if npcs.get_child(i).class_cluster != null:
+			npcs.get_child(i).wander_state = false
+			npcs.get_child(i).position = npcs.get_child(i).class_cluster.get_next_point()[0]
+			npc_set_path_cluster(npcs.get_child(i).class_cluster, npcs.get_child(i))
+	
+	#dialogo intro
+	var player_name = player.data_player.get_data()["nome"]
+	dialogue_intro = [
+	{"name":"Professor","text":"Por hoje é só pessoal, agora é hora do intervalo."},
+	{"name":player_name,"text":"Hã?"},
+	{"name":player_name,"text":"..."},
+	{"name":player_name,"text":"Eu dormi na aula de novo."},
+	{"name":player_name,"text":"Mas que sonho estranho."},
+]
 
 func _process(_delta):
-	if Input.is_action_just_pressed("Return"):
-		emit_signal("return_to_menu")
+	if not get_parent().get_node("CanvasLayer/Menu").config_menu.visible:
+		sub_menu.visible = false
+	if Input.is_action_just_pressed("Return") and player.ativo:
+		if sub_menu.visible:
+			get_parent().get_node("CanvasLayer/Menu").config_menu.visible = false
+			sub_menu.visible = false
+		else:
+			sub_menu.visible = true
+			get_parent().get_node("CanvasLayer/Menu").show_in_game_menu()
 	
-	if Input.is_action_pressed("click"):
-		for i in range(npcs.get_child_count()):
-			npc_set_path(npcs.get_child(i), get_global_mouse_position())
-		#print(my_cluster.pos_states)
-	
-	if Input.is_action_just_pressed("ui_down"):
-		for i in range(npcs.get_child_count()):
-			npc_set_path_cluster(my_cluster, npcs.get_child(i))
-			npcs.get_child(i).wander_state = true
-	
-	if Input.is_action_just_pressed("ui_up"):
-		_on_clock_class_signal()
 
 #desapega npc do cluster faz andar para qualquer posição
 func npc_set_path(npc, pos):
@@ -107,3 +123,11 @@ func _on_clock_lunch_signal():
 	for i in range(npcs.get_child_count()):
 		npcs.get_child(i).wander_state = false
 		npc_set_path_cluster(my_cluster, npcs.get_child(i))
+
+
+func _on_Button_pressed():
+	emit_signal("return_to_menu")
+
+
+func _on_introTimer_timeout():
+	introDialogue.play_dialog(dialogue_intro)

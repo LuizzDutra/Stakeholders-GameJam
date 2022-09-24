@@ -1,0 +1,26 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform vec4 hair_modulate : hint_color = vec4(0.568627, 0.070588, 0.070588, 1.0);
+uniform vec4 eyes_modulate : hint_color = vec4(0.141176, 0.047059, 0.0, 1.0);
+uniform vec4 skin_modulate : hint_color = vec4(0.32549, 0.239216, 0.172549, 1.0);
+
+void fragment(){
+	vec4 color = texture(TEXTURE, UV);
+	if ((color.r != 0.0) && (color.g == 0.0) && (color.b == 0.0)){
+		color = hair_modulate * color.r;
+		color.a = 1.0;
+	}
+	if ((color.r == 0.0) && (color.g != 0.0) && (color.b == 0.0)){
+		color = eyes_modulate * color.g;
+		color.a = 1.0;
+	}
+	if(((color.r == color.g) && (color.g == color.b)) && color.a != 0.0){
+		color = skin_modulate * color.r;
+		color.a = 1.0;
+	}
+	
+	COLOR = color;
+}"

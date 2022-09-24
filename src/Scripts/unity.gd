@@ -2,14 +2,14 @@ extends KinematicBody2D
 
 var dialog_npc_spc_base = [
 	
-	{"name":"Luiza","text":"olá meu nome é Luiza"},
-	{"name":"Luiza", "text":"Vc poderia achar meus oculos perdido pfv"}
+	{"name":"Luiza","text":"Olá, meu nome é Luiza"},
+	{"name":"Luiza", "text":"Você poderia achar meus óculos perdidos por favor ?"}
 ]
 
 var dialog_npc_spc_missao_concluida = [
-	{"name":"Luiza","text":"muito obrigago garoto"},
-	{"name":"Luiza","text":"agora eu vou volta para a sala de aula"},
-	{"name":"Luiza","text":"Tenha uma boa aula"}
+	{"name":"Luiza","text":"Muito obrigada garoto."},
+	{"name":"Luiza","text":"Agora eu vou voltar para a sala de aula."},
+	{"name":"Luiza","text":"Tenha uma boa aula."}
 ]
 
 var dialog_npc_esp

@@ -1,41 +1,24 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/dialogo.gd" type="Script" id=1]
-[ext_resource path="res://resources/metadata.gd" type="Script" id=2]
+[ext_resource path="res://dialogo/ncp_dialog.tres" type="Resource" id=2]
 [ext_resource path="res://Themes/default_theme.tres" type="Theme" id=3]
-
-[sub_resource type="Resource" id=1]
-script = ExtResource( 2 )
-dialog_text = [ [ {
-"name": "Lucas",
-"text": "Olá meu nome é Lucas"
-} ], [ {
-"name": "Luiz",
-"text": "Olá meu nome é Luiz"
-} ], [ {
-"name": "Vinnicius",
-"text": "olá meu nome é Vinnicius"
-} ], [ {
-"name": "Mariana",
-"text": "Olá meu nome é mariana"
-} ], [ {
-"name": "danubia",
-"text": "olá meu nome é danubia e sou uma pessoa chata pra crlh que tirou 4 pontos de lucas na recuperação"
-} ], [ {
-"name": "xing xong",
-"text": "fia da puta pq não trabaia ? va toma so a cu"
-} ] ]
+[ext_resource path="res://Sounds/effects/dialogSound.wav" type="AudioStream" id=4]
 
 [node name="dialogo" type="CanvasLayer"]
 script = ExtResource( 1 )
-dialog_file = SubResource( 1 )
+dialog_file = ExtResource( 2 )
 
 [node name="dialog" type="NinePatchRect" parent="."]
 visible = false
-margin_left = 160.0
-margin_top = 57.0
-margin_right = 447.0
-margin_bottom = 136.0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -143.5
+margin_top = -110.0
+margin_right = 143.5
+margin_bottom = -31.0
 theme = ExtResource( 3 )
 
 [node name="ColorRect" type="ColorRect" parent="dialog"]
@@ -66,6 +49,10 @@ wait_time = 0.01
 [node name="Timer2" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+bus = "Effects"
 
 [connection signal="timeout" from="dialog/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]

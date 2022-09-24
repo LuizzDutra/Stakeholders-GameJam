@@ -4,6 +4,8 @@ export(Resource) var data_player
 
 onready var sprite = $AnimatedSprite
 
+var sprite_path = "res://spriteFrames/spriteframe"
+
 var dir = Vector2.ZERO
 var vel = Vector2.ZERO
 var speed = 300
@@ -11,6 +13,7 @@ var frict = 2400
 var acel = 1200 + frict
 var facing = -1
 var stopped = false
+var ativo = true
 
 var nome = "Gab"
 
@@ -22,9 +25,7 @@ func _ready():
 
 func load_modulate():
 	var r_data = data_player.get_data()
-	#get_node("Sprites/Body").modulate = r_data["Body_color"]
-	#get_node("Sprites/Hair").modulate = r_data["Hair_color"]
-	#get_node("Sprites/Eyes").get_material().set_shader_param("modulate", r_data["Eyes_color"])
+	sprite.frames = load(sprite_path + str(int(r_data["sprite_frame"]) + 1) + ".tres")
 
 
 func _process(delta):
@@ -33,7 +34,7 @@ func _process(delta):
 	dir.y = Input.get_action_strength("Down") - Input.get_action_strength("Up")
 	
 	if stopped:
-		print("yes")
+		#print("yes")
 		dir = Vector2.ZERO
 	
 	if dir.x != 0:
@@ -55,6 +56,7 @@ func _process(delta):
 func set_active(active):
 	if not active:
 		sprite.play("idle")
+	ativo = active
 	set_physics_process(active)
 	set_process(active)
 	set_process_input(active)

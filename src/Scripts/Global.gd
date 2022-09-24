@@ -2,7 +2,7 @@ extends Node2D
 
 onready var game_scene = load("res://Scenes/Game.tscn")
 onready var cutscene_scene = load("res://Scenes/Cutscene.tscn")
-onready var menu = $Menu
+onready var menu = $CanvasLayer/Menu
 onready var player_data = load("res://resources/data_cust.tres")
 onready var daltonic_canvas = get_node("daltonicCanvas")
 var sprite_color_parts = ["Body", "Hair", "Eyes"]
@@ -22,7 +22,7 @@ func start_game():
 	var game = game_scene.instance()
 	cutscene_active = false
 	game.connect("return_to_menu", self, "_on_return_to_menu")
-	add_child(game)
+	call_deferred("add_child", game)
 
 func _on_info_saved(s_var, info):
 	if player_data.data.has(s_var):
@@ -30,6 +30,7 @@ func _on_info_saved(s_var, info):
 
 func _on_return_to_menu():
 	get_node("Game").queue_free()
+	menu.Musica_default.play()
 	menu._ready()
 
 func _on_Menu_start_game():
