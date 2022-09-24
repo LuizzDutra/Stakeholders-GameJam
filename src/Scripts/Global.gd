@@ -30,6 +30,7 @@ func _on_info_saved(s_var, info):
 
 func _on_return_to_menu():
 	get_node("Game").queue_free()
+	menu.Musica_default.play()
 	menu._ready()
 
 func _on_Menu_start_game():

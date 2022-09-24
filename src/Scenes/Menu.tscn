@@ -337,6 +337,7 @@ bus = "Effects"
 
 [node name="MusicaPadrao" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
+autoplay = true
 bus = "Music"
 
 [node name="Musicabrega" type="AudioStreamPlayer" parent="."]

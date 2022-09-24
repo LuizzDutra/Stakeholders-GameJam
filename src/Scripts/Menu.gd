@@ -36,7 +36,7 @@ func _ready():
 	dialog_file.player_name = player_data.data["nome"]
 	sprites.frames = load(sprite_path + "1.tres")
 	in_game = false
-	Musica_default.play()
+	#Musica_default.play()
 	load_picker_color()
 
 
