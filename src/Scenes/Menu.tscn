@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/PlayerCust.tscn" type="PackedScene" id=2]
+[ext_resource path="res://spriteFrames/spriteframe3.tres" type="SpriteFrames" id=2]
 [ext_resource path="res://Sounds/click.mp3" type="AudioStream" id=3]
 [ext_resource path="res://Scripts/modoDalto.gd" type="Script" id=4]
 [ext_resource path="res://Themes/default_theme.tres" type="Theme" id=5]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Sounds/MENUOFFICIAL OFICIAL.wav" type="AudioStream" id=8]
 [ext_resource path="res://Art/fundo-gamejan.png" type="Texture" id=9]
 [ext_resource path="res://Sounds/Musica4loopofficial.wav" type="AudioStream" id=10]
+[ext_resource path="res://Shaders/customization.tres" type="Material" id=11]
 
 [node name="Menu" type="Control"]
 margin_right = 640.0
@@ -25,7 +26,6 @@ expand = true
 stretch_mode = 1
 
 [node name="cust" type="Control" parent="."]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -53,9 +53,14 @@ border_color = Color( 0.964706, 0.760784, 0.278431, 1 )
 border_width = 2.3
 editor_only = false
 
-[node name="Sprites" parent="cust" instance=ExtResource( 2 )]
-position = Vector2( 245, 165 )
-scale = Vector2( 1.5, 1.5 )
+[node name="Sprites" type="AnimatedSprite" parent="cust"]
+material = ExtResource( 11 )
+position = Vector2( 245, 155 )
+scale = Vector2( 2, 2 )
+frames = ExtResource( 2 )
+animation = "idle"
+frame = 1
+playing = true
 
 [node name="pickers" type="Control" parent="cust"]
 margin_right = 40.0
@@ -122,6 +127,7 @@ margin_right = 291.0
 margin_bottom = 107.0
 
 [node name="Buttons" type="GridContainer" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

@@ -29,9 +29,10 @@ func _ready():
 
 func load_picker_color():
 	#seta a cor dos color pickers
-	pickers.get_node("bodyPicker").color = sprites.get_node("Body").modulate
-	pickers.get_node("hairPicker").color = sprites.get_node("Hair").modulate
-	pickers.get_node("eyesPicker").color = sprites.get_node("Eyes").get_material().get_shader_param("modulate")
+	#pickers.get_node("bodyPicker").color = sprites.get_node("Body").modulate
+	#pickers.get_node("hairPicker").color = sprites.get_node("Hair").modulate
+	#pickers.get_node("eyesPicker").color = sprites.get_node("Eyes").get_material().get_shader_param("modulate")
+	pass
 
 
 func _on_Start_pressed():
