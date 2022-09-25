@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=2]
@@ -15,6 +15,8 @@
 [ext_resource path="res://Tilesets/janelas.tres" type="TileSet" id=13]
 [ext_resource path="res://Shaders/godrays.tres" type="Material" id=14]
 [ext_resource path="res://icon.png" type="Texture" id=15]
+[ext_resource path="res://Quest.tscn" type="PackedScene" id=16]
+[ext_resource path="res://cadeirante.tscn" type="PackedScene" id=17]
 
 [sub_resource type="GDScript" id=9]
 script/source = "extends \"res://Scripts/positionCluster.gd\"
@@ -316,6 +318,9 @@ cell_y_sort = true
 format = 1
 tile_data = PoolIntArray( -983032, 536870915, 0, -983030, 536870915, 0, -983028, 536870915, 0, -983026, 536870915, 0, -983024, 536870915, 0, -983022, 536870915, 0, -983020, 536870915, 0, -983018, 536870915, 0, -851986, 3, 0, -851984, 3, 0, -851982, 3, 0, -851980, 3, 0, -851978, 3, 0, -851976, 3, 0, -851974, 3, 0, -655378, 3, 0, -655376, 3, 0, -655374, 3, 0, -655372, 3, 0, -655370, 3, 0, -655368, 3, 0, -655366, 3, 0, -720888, 536870915, 0, -720886, 536870915, 0, -720884, 536870915, 0, -720882, 536870915, 0, -720880, 536870915, 0, -720878, 536870915, 0, -720876, 536870915, 0, -720874, 536870915, 0, -458768, 0, 0, -458767, 0, 0, -458766, 0, 0, -458765, 0, 0, -458764, 0, 0, -458763, 0, 0, -458762, 0, 0, -458761, 0, 0, -458760, 0, 0, -458759, 0, 0, -458758, 0, 0, -524280, 1, 0, -524279, 1, 0, -524278, 1, 0, -524277, 1, 0, -524276, 1, 0, -524275, 1, 0, -524274, 1, 0, -524273, 1, 0, -524272, 1, 0, -524271, 1, 0, -524270, 1, 0, -524269, 1, 0, -524268, 1, 0 )
 
+[node name="cadeirante" parent="YSort" instance=ExtResource( 17 )]
+position = Vector2( -585, -113 )
+
 [node name="godrays" type="Node2D" parent="."]
 
 [node name="godray" type="Sprite" parent="godrays"]
@@ -365,6 +370,8 @@ margin_top = 291.0
 margin_right = 558.0
 margin_bottom = 322.0
 text = " Menu Principal"
+
+[node name="Quest" parent="." instance=ExtResource( 16 )]
 
 [connection signal="timeout" from="introTimer" to="." method="_on_introTimer_timeout"]
 [connection signal="class_signal" from="clock" to="." method="_on_clock_class_signal"]
