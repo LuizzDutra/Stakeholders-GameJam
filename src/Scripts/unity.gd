@@ -23,9 +23,9 @@ var quest_descricao = "Pegar o óculos da sua amiga"
 
 
 func _ready():
-	var nodepath: NodePath = "../../Quest"
-	print(get_node(nodepath).get_children())
-	
+	#var nodepath: NodePath = "../../Quest"
+	#print(get_node(nodepath).get_children())
+	pass
 
 onready var hitbox_npc_spc = $Area2D
 
@@ -53,6 +53,7 @@ func find_and_use_dialogue():
 			if dialogue_player.current_index >= len(dialog_npc_spc_missao_concluida):
 				quest.kill_quest(quest_descricao)
 			return
-		
-#func _on_oculos_oculos_catch():
-#	dialog_state = 3
+
+func _on_missao_concluida():
+	print("hi")
+	#dialog_state = 3
