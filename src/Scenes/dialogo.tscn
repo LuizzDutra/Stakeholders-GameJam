@@ -1,46 +1,42 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/dialogo.gd" type="Script" id=1]
 [ext_resource path="res://dialogo/ncp_dialog.tres" type="Resource" id=2]
 [ext_resource path="res://Themes/default_theme.tres" type="Theme" id=3]
 [ext_resource path="res://Sounds/effects/dialogSound.wav" type="AudioStream" id=4]
+[ext_resource path="res://Sprites/caixa_de_dialogo.jpeg" type="Texture" id=5]
 
 [node name="dialogo" type="CanvasLayer"]
 script = ExtResource( 1 )
 dialog_file = ExtResource( 2 )
 
 [node name="dialog" type="NinePatchRect" parent="."]
-visible = false
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -143.5
+margin_left = -143.0
 margin_top = -110.0
-margin_right = 143.5
-margin_bottom = -31.0
+margin_right = 184.0
+margin_bottom = -3.0
 theme = ExtResource( 3 )
-
-[node name="ColorRect" type="ColorRect" parent="dialog"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0.160784, 0.141176, 0.141176, 1 )
+texture = ExtResource( 5 )
 
 [node name="texto" type="RichTextLabel" parent="dialog"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 7.0
-margin_top = 23.0
-margin_right = -13.0
-margin_bottom = -5.0
+margin_left = 14.0
+margin_top = 32.0
+margin_right = -12.0
+margin_bottom = -20.0
 
 [node name="nome" type="RichTextLabel" parent="dialog"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 9.0
-margin_top = 5.0
+margin_left = 13.0
+margin_top = 13.0
 margin_right = -13.0
-margin_bottom = -50.0
+margin_bottom = -74.0
 scroll_active = false
 
 [node name="Timer" type="Timer" parent="dialog"]
