@@ -54,5 +54,5 @@ func find_and_use_dialogue():
 				quest.kill_quest(quest_descricao)
 			return
 		
-func _on_oculos_oculos_catch():
-	dialog_state = 3
+#func _on_oculos_oculos_catch():
+#	dialog_state = 3
