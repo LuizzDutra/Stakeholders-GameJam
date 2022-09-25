@@ -38,4 +38,4 @@ func kill_quest(descr_quest:String):
 	for r in slot_quests.get_children():
 		
 		if r.bbcode_text == descr_quest:
-			r.bbcode_text = "[color=#add8e6]"+descr_quest+"[/color]"
+			r.bbcode_text = "[color=#006400]"+descr_quest+"[/color]"
