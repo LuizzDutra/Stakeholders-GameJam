@@ -16,6 +16,8 @@ func _ready():
 	
 func show_puzzle():
 	puzzle.visible = true
+	#emit teste
+	#emit_signal("missao_concluida")
 	turn_off_the_player()
 
 func _input(event):
