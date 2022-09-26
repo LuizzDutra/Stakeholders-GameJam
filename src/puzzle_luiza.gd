@@ -24,7 +24,7 @@ func _input(event):
 	
 	if event.is_action_pressed("enter"):
 		
-		if line_edit.text.to_lower() == "30":
+		if line_edit.text == "amor e paz":
 			line_edit.text = ""
 			line_edit.editable = false
 			certo.visible = true
