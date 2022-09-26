@@ -6,19 +6,19 @@ onready var dialog_state = 1
 var quest_descricao = "Pegar o livro de matématica de marcos"
 
 var dialog_npc_base = [
-	{"name":"Marcos","text":"Olá mano blz ?"},
+	{"name":"Marcos","text":"Olá tudo bem ?"},
 	{"name":"Marcos","text":"Eu estou precisando de ajuda"},
-	{"name":"Marcos","text":"Vc poderia pegar meu livro de matématica no armario pfv"}
+	{"name":"Marcos","text":"Vc poderia pegar meu livro de matématica no armário pfv"}
 ]
 
 var dialog_npc_missao_start = [
-	{"name":"Marcos","text":"Vc sabia que eu gosto de matématica"},
-	{"name":"Marcos","text":"É uma ciênçia exata incrivel!!!"}
+	{"name":"Marcos","text":"Vc sabia que eu gosto de matématica ?"},
+	{"name":"Marcos","text":"É uma ciência exata incrivel!!!"}
 ]
 
 var dialog_npc_missao_concluida = [
-	{"name":"Marcos","text":"vlw ai cara"},
-	{"name":"Marcos","text":"agora eu vou me diverti resolvendo equações kkkk"}
+	{"name":"Marcos","text":"Muito obrigado"},
+	{"name":"Marcos","text":"agora eu vou me divertir resolvendo equações kkkk"}
 ]
 
 func _input(event):

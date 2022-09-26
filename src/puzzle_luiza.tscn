@@ -51,7 +51,7 @@ margin_left = -49.5
 margin_top = -15.5
 margin_right = 49.5
 margin_bottom = 4.5
-text = "svcl huk wlhjl."
+text = "bnps f qba"
 autowrap = true
 
 [node name="Timer" type="Timer" parent="."]

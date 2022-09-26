@@ -3,7 +3,7 @@ extends KinematicBody2D
 var dialog_npc_spc_base = [
 	
 	{"name":"Luiza","text":"Olá, meu nome é Luiza"},
-	{"name":"Luiza", "text":"Você poderia achar meus óculos perdidos por favor ?"}
+	{"name":"Luiza", "text":"Você poderia achar meu óculos perdido por favor ?"}
 ]
 
 var dialog_npc_spc_missao_aceita = [
@@ -12,7 +12,7 @@ var dialog_npc_spc_missao_aceita = [
 	{"name":"Luiza","text":"..."}
 ]
 var dialog_npc_spc_missao_concluida = [
-	{"name":"Luiza","text":"Muito obrigada garoto."},
+	{"name":"Luiza","text":"Muito obrigada."},
 	{"name":"Luiza","text":"Agora eu vou voltar para a sala de aula."},
 	{"name":"Luiza","text":"Tenha uma boa aula."}
 ]
