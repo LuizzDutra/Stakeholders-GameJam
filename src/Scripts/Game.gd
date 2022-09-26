@@ -36,7 +36,8 @@ func _ready():
 			npcs.get_child(i).position = npcs.get_child(i).class_cluster.get_next_point()[0]
 			npc_set_path_cluster(npcs.get_child(i).class_cluster, npcs.get_child(i))
 		
-	get_node("armario/Area2D/puzzle_luiza").connect("missao_concluida", get_node("YSort/unity"), "_on_missao_concluida")
+	get_node("YSort/armario/Area2D/puzzle_luiza").connect("missao_concluida", get_node("YSort/unity"), "_on_missao_concluida")
+	get_node("YSort/armario_azul/Area2D/puzzle_cadeirante").connect("concluida", get_node("YSort/cadeirante"), "_on_missao_concluida")
 	
 	#dialogo intro
 	var player_name = player.data_player.get_data()["nome"]

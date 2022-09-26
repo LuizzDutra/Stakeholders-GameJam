@@ -286,6 +286,12 @@ navpoly = SubResource( 5 )
 
 [node name="YSort" type="YSort" parent="."]
 
+[node name="armario" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( -145, -240 )
+
+[node name="armario_azul" parent="YSort" instance=ExtResource( 18 )]
+position = Vector2( 244, -240 )
+
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 728, -466 )
 
@@ -370,12 +376,6 @@ margin_bottom = 322.0
 text = " Menu Principal"
 
 [node name="Quest" parent="." instance=ExtResource( 16 )]
-
-[node name="armario" parent="." instance=ExtResource( 8 )]
-position = Vector2( -145, -240 )
-
-[node name="armario_azul" parent="." instance=ExtResource( 18 )]
-position = Vector2( 244, -240 )
 
 [connection signal="timeout" from="introTimer" to="." method="_on_introTimer_timeout"]
 [connection signal="class_signal" from="clock" to="." method="_on_clock_class_signal"]

@@ -43,3 +43,6 @@ func find_and_use_dialogue():
 		3:
 			pass
 			return
+
+func _on_missao_concluida():
+	pass
