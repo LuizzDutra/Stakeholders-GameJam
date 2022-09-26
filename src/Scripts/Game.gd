@@ -37,6 +37,7 @@ func _ready():
 			npc_set_path_cluster(npcs.get_child(i).class_cluster, npcs.get_child(i))
 		
 	get_node("YSort/armario/Area2D/puzzle_luiza").connect("missao_concluida", get_node("YSort/unity"), "_on_missao_concluida")
+	
 	get_node("YSort/armario_azul/Area2D/puzzle_cadeirante").connect("concluida", get_node("YSort/cadeirante"), "_on_missao_concluida")
 	
 	#dialogo intro
