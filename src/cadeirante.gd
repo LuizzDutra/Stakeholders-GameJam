@@ -46,4 +46,4 @@ func find_and_use_dialogue():
 			return
 
 func _on_missao_concluida():
-	pass
+	dialog_state = 3
