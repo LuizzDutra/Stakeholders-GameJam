@@ -47,11 +47,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -216.5
+margin_left = -49.5
 margin_top = -15.5
-margin_right = 216.5
-margin_bottom = 15.5
-text = "Ylzwlpahy vz kpclyzvz tvkvz kl lepzapy è mbukhtluahs whyh alytvz bt tbukv mlspg."
+margin_right = 49.5
+margin_bottom = 4.5
+text = "svcl huk wlhjl."
 autowrap = true
 
 [node name="Timer" type="Timer" parent="."]

@@ -55,5 +55,4 @@ func find_and_use_dialogue():
 			return
 
 func _on_missao_concluida():
-	#print("hi")
-	pass
+	dialog_state = 3

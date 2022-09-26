@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 onready var hitbox_armario = $Area2D
-onready var player = get_node("../YSort/unity")
+onready var player = get_node("../YSort/cadeirante")
 
 func _input(event):
 	print(hitbox_armario.get_overlapping_areas())
@@ -9,6 +9,5 @@ func _input(event):
 		find_and_use_dialogue()
 		
 func find_and_use_dialogue():
-	var player_puzzle = get_node("Area2D/puzzle_luiza")
-	print("Olá mano")
+	var player_puzzle = get_node("Area2D/puzzle_cadeirante")
 	player_puzzle.show_puzzle()
