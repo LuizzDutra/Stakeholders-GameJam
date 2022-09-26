@@ -44,6 +44,3 @@ func find_and_use_dialogue():
 			dialogue_player.play_dialog(dialog_npc_missao_concluida)
 			quest.kill_quest(quest_descricao)
 			return
-
-func _on_missao_concluida():
-	pass
