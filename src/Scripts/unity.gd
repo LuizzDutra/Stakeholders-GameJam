@@ -25,13 +25,13 @@ var quest_descricao = "Pegar o óculos da sua amiga"
 func _ready():
 	var nodepath: NodePath = "../../Quest"
 	print(get_node(nodepath).get_children())
-	
 
 onready var hitbox_npc_spc = $Area2D
 
 func _input(event):
 	if event.is_action_pressed("space") and len(hitbox_npc_spc.get_overlapping_areas()) > 0:
-		find_and_use_dialogue()
+		if hitbox_npc_spc.get_overlapping_areas()[0].get_parent().ativo:
+			find_and_use_dialogue()
 		
 func find_and_use_dialogue():
 	var dialogue_player = get_node_or_null("Area2D/dialogo")
@@ -53,6 +53,6 @@ func find_and_use_dialogue():
 			if dialogue_player.current_index >= len(dialog_npc_spc_missao_concluida):
 				quest.kill_quest(quest_descricao)
 			return
-		
-func _on_oculos_oculos_catch():
+
+func _on_missao_concluida():
 	dialog_state = 3
