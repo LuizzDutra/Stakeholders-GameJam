@@ -39,7 +39,7 @@ func _input(event):
 			cool_down_text.start()
 			tempo_errado.start()
 			
-	if event.is_action_pressed("esc"):
+	if event.is_action_pressed("Return"):
 		puzzle.visible = false
 		turn_on_the_player()
 
