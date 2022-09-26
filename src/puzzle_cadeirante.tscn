@@ -43,7 +43,7 @@ margin_left = -62.5
 margin_top = -35.5
 margin_right = 20.5
 margin_bottom = -21.5
-text = "AAB = 10"
+text = "A + B = 15"
 
 [node name="Label2" type="Label" parent="puzzle_cadeir"]
 anchor_left = 0.5
@@ -52,9 +52,23 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -62.5
 margin_top = -13.5
-margin_right = -4.5
+margin_right = 3.5
 margin_bottom = 0.5
-text = "C"
+text = "A + A + B = 20"
+
+[node name="Label3" type="Label" parent="puzzle_cadeir"]
+margin_left = 186.0
+margin_top = 146.0
+margin_right = 271.0
+margin_bottom = 160.0
+text = "A + C + C =  45"
+
+[node name="Label4" type="Label" parent="puzzle_cadeir"]
+margin_left = 186.0
+margin_top = 168.0
+margin_right = 277.0
+margin_bottom = 182.0
+text = "C + C + C = ?"
 
 [node name="Timer" type="Timer" parent="."]
 

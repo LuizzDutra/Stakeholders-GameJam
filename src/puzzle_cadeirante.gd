@@ -7,7 +7,6 @@ onready var line_edit = $puzzle_cadeir/LineEdit
 onready var tempo_certo = $Timer
 onready var tempo_errado = $Timer2
 onready var cooldown_text = $Timer3
-signal concluida
 
 func _ready():
 	certo.visible = false
@@ -22,13 +21,12 @@ func _input(event):
 	
 	if event.is_action_pressed("enter"):
 		
-		if line_edit.text.to_lower() == "30":
+		if line_edit.text.to_lower() == "60":
 			line_edit.text = ""
 			line_edit.editable = false
 			certo.visible = true
 			tempo_certo.start()
 			cooldown_text.start()
-			emit_signal("concluida")
 		
 		else:
 			
