@@ -28,7 +28,8 @@ func show_message():
 	current_index += 1
 	
 	if current_index >= len(dialog):
-		cooldown_dialog.start()
+		if cooldown_dialog.is_stopped():
+			cooldown_dialog.start()
 		turn_on_the_player()
 		dialogo.visible = false
 		emit_signal(("ended"))
@@ -51,8 +52,8 @@ func _input(event):
 	if event is InputEventKey:
 		
 		if event.is_action_pressed("space"):
-			get_tree().set_input_as_handled()
 			show_message()
+			get_tree().set_input_as_handled()
 			
 		if event.is_action_pressed("Return"):
 			get_tree().set_input_as_handled()
@@ -67,6 +68,7 @@ func _on_Timer_timeout():
 func play_dialog(dialogu):
 	
 	if dialog_ativo:
+		show_message()
 		return
 	dialog = dialogu
 	turn_off_the_player()
