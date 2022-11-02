@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Themes/default_theme.tres" type="Theme" id=1]
 [ext_resource path="res://Sprites/Quadro.jpeg" type="Texture" id=2]
 [ext_resource path="res://puzzle_cadeirante.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/ExitButton.tscn" type="PackedScene" id=4]
 
 [node name="puzzle_cadeirante" type="CanvasLayer"]
 script = ExtResource( 3 )
@@ -72,11 +73,7 @@ margin_right = 277.0
 margin_bottom = 182.0
 text = "C + C + C = ?"
 
-[node name="exit" type="Button" parent="puzzle_cadeir"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -31.0
-margin_bottom = 33.0
+[node name="exit" parent="puzzle_cadeir" instance=ExtResource( 4 )]
 
 [node name="Timer" type="Timer" parent="."]
 
