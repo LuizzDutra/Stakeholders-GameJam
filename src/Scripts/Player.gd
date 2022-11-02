@@ -8,7 +8,7 @@ var sprite_path = "res://spriteFrames/spriteframe"
 
 var dir = Vector2.ZERO
 var vel = Vector2.ZERO
-var speed = 300
+var speed = 175
 var frict = 2400
 var acel = 1200 + frict
 var facing = -1

@@ -7,7 +7,7 @@ onready var sprite = $AnimatedSprite
 
 var sprite_path = "res://spriteFrames/spriteframe"
 
-var speed = 200
+var speed = 100
 var vel = Vector2.ZERO
 var dir = Vector2.ZERO
 var moving = false

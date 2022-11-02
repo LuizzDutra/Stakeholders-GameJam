@@ -11,6 +11,9 @@ onready var sub_menu = $CanvasLayer
 onready var introDialogue = $dialogo
 var random_number = RandomNumberGenerator.new()
 onready var player = $YSort/Player
+onready var camera = $YSort/Player/Camera2D
+onready var arrows = $Arrows
+onready var target = $YSort/unity
 
 var dialogue_intro = []
 
@@ -61,6 +64,22 @@ func _process(_delta):
 			sub_menu.visible = true
 			get_parent().get_node("CanvasLayer/Menu").show_in_game_menu()
 	
+	var target = get_node("YSort/cadeirante")
+	if target != null:
+		arrows.get_node("pivot").global_position = player.global_position
+		var rot = target.global_position - arrows.get_node("pivot").global_position
+		arrows.get_node("pivot").rotation = rot.angle()
+		
+		if target.get_node("Area2D") in camera.get_node("Area2D").get_overlapping_areas():
+			arrows.get_node("pivot").visible = false
+			arrows.get_node("hoverarrow").visible = true
+			arrows.get_node("hoverarrow").global_position = target.global_position
+		else:
+			arrows.get_node("pivot").visible = true
+			arrows.get_node("hoverarrow").visible = false
+	else:
+		arrows.get_node("pivot").visible = false
+		arrows.get_node("hoverarrow").visible = false
 
 #desapega npc do cluster faz andar para qualquer posição
 func npc_set_path(npc, pos):

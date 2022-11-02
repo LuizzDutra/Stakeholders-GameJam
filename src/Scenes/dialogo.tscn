@@ -11,6 +11,7 @@ script = ExtResource( 1 )
 dialog_file = ExtResource( 2 )
 
 [node name="dialog" type="NinePatchRect" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5

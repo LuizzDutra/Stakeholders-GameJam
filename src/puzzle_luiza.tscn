@@ -7,6 +7,7 @@
 script = ExtResource( 2 )
 
 [node name="puzzle" type="NinePatchRect" parent="."]
+visible = false
 margin_left = 66.0
 margin_top = 19.0
 margin_right = 559.0
