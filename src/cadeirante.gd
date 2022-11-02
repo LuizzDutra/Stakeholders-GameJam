@@ -23,8 +23,8 @@ var dialog_npc_missao_concluida = [
 
 func _input(event):
 	if event.is_action_pressed("space") and len(hitbox_npc.get_overlapping_areas()) > 0:
-		if hitbox_npc.get_overlapping_areas()[0].get_parent().ativo:
-			find_and_use_dialogue()
+		find_and_use_dialogue()
+		get_tree().set_input_as_handled()
 		
 func find_and_use_dialogue():
 	var dialogue_player = get_node_or_null("Area2D/dialogo")

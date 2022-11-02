@@ -16,8 +16,7 @@ func _ready():
 	
 func show_puzzle():
 	puzzle.visible = true
-	#emit teste
-	#emit_signal("missao_concluida")
+	line_edit.grab_focus()
 	turn_off_the_player()
 
 func _input(event):
@@ -38,10 +37,13 @@ func _input(event):
 			errado.visible = true
 			cool_down_text.start()
 			tempo_errado.start()
-			
-	if event.is_action_pressed("Return"):
-		puzzle.visible = false
-		turn_on_the_player()
+	
+	if puzzle.visible:
+		if event.is_action_pressed("Return"):
+			puzzle.visible = false
+			turn_on_the_player()
+			get_tree().set_input_as_handled()
+		
 
 func _on_Timer_timeout():
 	certo.visible = false

@@ -4,7 +4,16 @@ class_name metadata
 
 export var player_name: String = "Gab" setget changePlayerName
 
-export var dialog_text: Array = []
+export var dialog_text: Array = [
+	[{"name":"","text":"Eae."}],
+	[{"name":"","text":"Gab" + " na escola ? Vai chover."}],
+	[{"name":"","text":"Dally " + "Gab" + " dboa ?"}],
+	[{"name":"","text":"Bom dia."}],
+	[{"name":"", "text":"Que aula chata."}],
+	[{"name":"", "text":"O dia tá lindo, clima ensolarado."}],
+	[{"name":"", "text":"Opa."}],
+	[{"name":"", "text":"Qual a boa ?"}]
+]
 
 func _ready():
 	updateDialog()

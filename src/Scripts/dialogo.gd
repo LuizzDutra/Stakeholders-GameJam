@@ -51,8 +51,13 @@ func _input(event):
 	if event is InputEventKey:
 		
 		if event.is_action_pressed("space"):
+			get_tree().set_input_as_handled()
 			show_message()
-
+			
+		if event.is_action_pressed("Return"):
+			get_tree().set_input_as_handled()
+	
+	
 func _on_Timer_timeout():
 	if texto.visible_characters == texto.text.length():
 		tempo.stop()
@@ -81,4 +86,4 @@ func turn_on_the_player():
 func turn_off_the_player():
 	var player = get_tree().get_root().find_node("Player", true, false)
 	if player:
-		player.set_active(false)
+		player. set_active(false)

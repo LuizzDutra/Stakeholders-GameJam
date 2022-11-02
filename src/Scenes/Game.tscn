@@ -254,6 +254,7 @@ layer = 0
 follow_viewport_enable = true
 
 [node name="pivot" type="Position2D" parent="Arrows"]
+visible = false
 position = Vector2( 320, 180 )
 
 [node name="arrow" type="ColorRect" parent="Arrows/pivot"]
@@ -263,6 +264,7 @@ margin_right = 75.0
 margin_bottom = 7.0
 
 [node name="hoverarrow" type="Position2D" parent="Arrows"]
+visible = false
 
 [node name="arrow" type="ColorRect" parent="Arrows/hoverarrow"]
 margin_left = -6.0
