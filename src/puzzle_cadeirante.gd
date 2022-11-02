@@ -17,7 +17,8 @@ func _ready():
 func show_puzzle():
 	puzzle.visible = true
 	line_edit.grab_focus()
-	#turn_off_the_player()
+	line_edit.text = ""
+	turn_off_the_player()
 
 func _input(event):
 	
@@ -25,7 +26,7 @@ func _input(event):
 		
 		if line_edit.text.to_lower() == "60":
 			line_edit.text = ""
-			line_edit.editable = false
+			#line_edit.editable = false
 			certo.visible = true
 			tempo_certo.start()
 			cooldown_text.start()
@@ -34,7 +35,7 @@ func _input(event):
 		else:
 			
 			line_edit.text = ""
-			line_edit.editable = false
+			#line_edit.editable = false
 			errado.visible = true
 			tempo_errado.start()
 			cooldown_text.start()
@@ -43,6 +44,7 @@ func _input(event):
 		if event.is_action_pressed("Return"):
 			puzzle.visible = false
 			get_tree().set_input_as_handled()
+			turn_on_the_player()
 
 func turn_on_the_player():
 	var player = get_tree().get_root().find_node("Player", true, false)

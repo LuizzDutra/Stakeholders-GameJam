@@ -33,9 +33,6 @@ func find_and_use_dialogue():
 		
 		1:
 			dialogue_player.play_dialog(dialog_npc_base)
-			if dialogue_player.current_index >= len(dialog_npc_base):
-				quest.add_quest(quest_descricao)
-				dialog_state = 2
 			return
 		2:
 			dialogue_player.play_dialog(dialog_npc_missao_start)
@@ -47,3 +44,10 @@ func find_and_use_dialogue():
 
 func _on_missao_concluida():
 	dialog_state = 3
+
+
+func _on_dialogo_ended():
+	if dialog_state == 1:
+		quest.add_quest(quest_descricao)
+		dialog_state = 2
+	

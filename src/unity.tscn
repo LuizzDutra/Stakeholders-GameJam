@@ -32,3 +32,5 @@ position = Vector2( 2, 1 )
 shape = SubResource( 2 )
 
 [node name="dialogo" parent="Area2D" instance=ExtResource( 2 )]
+
+[connection signal="ended" from="Area2D/dialogo" to="." method="_on_dialogo_ended"]
