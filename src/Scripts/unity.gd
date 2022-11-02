@@ -30,8 +30,9 @@ onready var hitbox_npc_spc = $Area2D
 
 func _input(event):
 	if event.is_action_pressed("space") and len(hitbox_npc_spc.get_overlapping_areas()) > 0:
-		find_and_use_dialogue()
-		get_tree().set_input_as_handled()
+		if hitbox_npc_spc.get_overlapping_areas()[0].get_parent().is_processing_unhandled_input():
+			find_and_use_dialogue()
+			get_tree().set_input_as_handled()
 		
 func find_and_use_dialogue():
 	var dialogue_player = get_node_or_null("Area2D/dialogo")
