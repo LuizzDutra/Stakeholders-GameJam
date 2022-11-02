@@ -7,6 +7,7 @@ onready var errado = $puzzle/errado
 onready var tempo_certo = $Timer
 onready var tempo_errado = $Timer2
 onready var cool_down_text = $Timer3
+onready var close_timer = $CloseTimer
 signal missao_concluida()
 
 func _ready():
@@ -31,6 +32,7 @@ func _input(event):
 			emit_signal("missao_concluida")
 			cool_down_text.start()
 			tempo_certo.start()
+			close_timer.start()
 		
 		else:
 			line_edit.text = ""
@@ -67,3 +69,13 @@ func turn_off_the_player():
 
 func _on_Timer3_timeout():
 	line_edit.editable = true
+
+
+func _on_exit_pressed():
+	puzzle.visible = false
+	turn_on_the_player()
+
+
+func _on_CloseTimer_timeout():
+	puzzle.visible = false
+	turn_on_the_player()

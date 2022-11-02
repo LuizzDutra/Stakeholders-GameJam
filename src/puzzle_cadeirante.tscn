@@ -8,7 +8,6 @@
 script = ExtResource( 3 )
 
 [node name="puzzle_cadeir" type="NinePatchRect" parent="."]
-visible = false
 margin_left = 66.0
 margin_top = 19.0
 margin_right = 559.0
@@ -73,12 +72,23 @@ margin_right = 277.0
 margin_bottom = 182.0
 text = "C + C + C = ?"
 
+[node name="exit" type="Button" parent="puzzle_cadeir"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -31.0
+margin_bottom = 33.0
+
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Timer2" type="Timer" parent="."]
 
 [node name="Timer3" type="Timer" parent="."]
 
+[node name="CloseTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="pressed" from="puzzle_cadeir/exit" to="." method="_on_exit_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]
 [connection signal="timeout" from="Timer3" to="." method="_on_Timer3_timeout"]
+[connection signal="timeout" from="CloseTimer" to="." method="_on_CloseTimer_timeout"]
