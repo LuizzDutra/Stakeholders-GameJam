@@ -11,6 +11,10 @@ onready var sub_menu = $CanvasLayer
 onready var introDialogue = $dialogo
 var random_number = RandomNumberGenerator.new()
 onready var player = $YSort/Player
+onready var camera = $YSort/Player/Camera2D
+onready var arrows = $Arrows
+onready var target = $YSort/unity
+onready var quest = $Quest
 
 var dialogue_intro = []
 
@@ -23,6 +27,7 @@ func _ready():
 		random_number.randomize()
 		var new_npc = load("res://Scenes/NPC.tscn").instance()
 		new_npc.position = player.position
+		#print(dialog_file.dialog_text)
 		new_npc.dialogo_npc = dialog_file.dialog_text[random_number.randi_range(0, len(dialog_file.dialog_text)-1)]
 		if i % 2 == 0:
 			new_npc.class_cluster = my_cluster2
@@ -51,16 +56,37 @@ func _ready():
 ]
 
 func _process(_delta):
-	if not get_parent().get_node("CanvasLayer/Menu").config_menu.visible:
-		sub_menu.visible = false
-	if Input.is_action_just_pressed("Return") and player.ativo:
+	if get_parent().get_node_or_null("CanvasLayer/Menu"):
+		if not get_parent().get_node("CanvasLayer/Menu").config_menu.visible:
+			sub_menu.visible = false
+	
+	
+	#var target = get_node("YSort/unity")
+	if target != null:
+		arrows.get_node("pivot").global_position = player.global_position
+		var rot = target.global_position - arrows.get_node("pivot").global_position
+		arrows.get_node("pivot").rotation = rot.angle()
+		
+		if target.get_node("Area2D") in camera.get_node("Area2D").get_overlapping_areas():
+			arrows.get_node("pivot").visible = false
+			arrows.get_node("hoverarrow").visible = true
+			arrows.get_node("hoverarrow").global_position = target.global_position
+		else:
+			arrows.get_node("pivot").visible = true
+			arrows.get_node("hoverarrow").visible = false
+	else:
+		arrows.get_node("pivot").visible = false
+		arrows.get_node("hoverarrow").visible = false
+
+func _input(event):
+	if event.is_action_pressed("Return") and get_parent().get_node_or_null("CanvasLayer/Menu"):
 		if sub_menu.visible:
 			get_parent().get_node("CanvasLayer/Menu").config_menu.visible = false
 			sub_menu.visible = false
 		else:
 			sub_menu.visible = true
 			get_parent().get_node("CanvasLayer/Menu").show_in_game_menu()
-	
+		get_tree().set_input_as_handled()
 
 #desapega npc do cluster faz andar para qualquer posição
 func npc_set_path(npc, pos):

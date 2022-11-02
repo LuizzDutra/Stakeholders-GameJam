@@ -114,3 +114,5 @@ shape = SubResource( 2 )
 autoplay = "idle"
 anims/RESET = SubResource( 3 )
 anims/idle = SubResource( 4 )
+
+[connection signal="ended" from="Area2D/dialogo" to="." method="_on_dialogo_ended"]

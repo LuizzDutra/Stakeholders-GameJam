@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
+[ext_resource path="res://Themes/default_theme.tres" type="Theme" id=1]
 [ext_resource path="res://Sprites/Quadro.jpeg" type="Texture" id=2]
 [ext_resource path="res://puzzle_cadeirante.gd" type="Script" id=3]
 
@@ -7,10 +8,12 @@
 script = ExtResource( 3 )
 
 [node name="puzzle_cadeir" type="NinePatchRect" parent="."]
+visible = false
 margin_left = 66.0
 margin_top = 19.0
 margin_right = 559.0
 margin_bottom = 292.0
+theme = ExtResource( 1 )
 texture = ExtResource( 2 )
 
 [node name="certo" type="Label" parent="puzzle_cadeir"]

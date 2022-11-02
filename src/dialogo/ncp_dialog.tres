@@ -5,4 +5,28 @@
 [resource]
 script = ExtResource( 1 )
 player_name = "Gab"
-dialog_text = [  ]
+dialog_text = [ [ {
+"name": "",
+"text": "Eae."
+} ], [ {
+"name": "",
+"text": "Gab na escola ? Vai chover."
+} ], [ {
+"name": "",
+"text": "Dally Gab dboa ?"
+} ], [ {
+"name": "",
+"text": "Bom dia."
+} ], [ {
+"name": "",
+"text": "Que aula chata."
+} ], [ {
+"name": "",
+"text": "O dia tá lindo, clima ensolarado."
+} ], [ {
+"name": "",
+"text": "Opa."
+} ], [ {
+"name": "",
+"text": "Qual a boa ?"
+} ] ]

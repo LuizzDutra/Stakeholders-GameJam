@@ -8,12 +8,16 @@ var sprite_path = "res://spriteFrames/spriteframe"
 
 var dir = Vector2.ZERO
 var vel = Vector2.ZERO
-var speed = 300
+var speed = 175
 var frict = 2400
 var acel = 1200 + frict
 var facing = -1
 var stopped = false
-var ativo = true
+
+var r_input = 0
+var l_input = 0
+var u_input = 0
+var d_input = 0
 
 var nome = "Gab"
 
@@ -29,14 +33,6 @@ func load_modulate():
 
 
 func _process(delta):
-	#print(dir)
-	dir.x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
-	dir.y = Input.get_action_strength("Down") - Input.get_action_strength("Up")
-	
-	if stopped:
-		#print("yes")
-		dir = Vector2.ZERO
-	
 	if dir.x != 0:
 		facing = dir.x
 	
@@ -52,11 +48,40 @@ func _process(delta):
 	
 	#print(vel)
 	vel = move_and_slide(vel)
+
+func _unhandled_input(event):
+	if event.is_action("Right"):
+		if event.is_pressed():
+			r_input = 1
+		else:
+			r_input = 0
+	if event.is_action("Left"):
+		if event.is_pressed():
+			l_input = 1
+		else:
+			l_input = 0
 	
-func set_active(active):
-	if not active:
-		sprite.play("idle")
-	ativo = active
-	set_physics_process(active)
-	set_process(active)
-	set_process_input(active)
+	if event.is_action("Up"):
+		if event.is_pressed():
+			u_input = 1
+		else:
+			u_input = 0
+	if event.is_action("Down"):
+		if event.is_pressed():
+			d_input = 1
+		else:
+			d_input = 0
+	
+	dir.x = r_input - l_input
+	dir.y = d_input - u_input
+	
+
+
+func set_active(n):
+	dir = Vector2.ZERO
+	r_input = 0
+	l_input = 0 
+	u_input = 0
+	d_input = 0
+	set_process_unhandled_input(n)
+	
