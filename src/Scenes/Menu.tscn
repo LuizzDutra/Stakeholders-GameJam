@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://spriteFrames/spriteframe3.tres" type="SpriteFrames" id=2]
@@ -11,6 +11,9 @@
 [ext_resource path="res://Art/fundo-gamejan.png" type="Texture" id=9]
 [ext_resource path="res://Sounds/Musica4loopofficial.wav" type="AudioStream" id=10]
 [ext_resource path="res://Shaders/customization.tres" type="Material" id=11]
+[ext_resource path="res://Scripts/ControlsMenu.gd" type="Script" id=12]
+[ext_resource path="res://Scenes/InputADM.gd" type="Script" id=13]
+[ext_resource path="res://Scripts/fowardButton.gd" type="Script" id=14]
 
 [node name="Menu" type="Control"]
 margin_right = 640.0
@@ -60,6 +63,7 @@ position = Vector2( 245, 155 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 2 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="pickers" type="Control" parent="cust"]
@@ -168,18 +172,27 @@ grow_vertical = 2
 rect_min_size = Vector2( 100, 20 )
 text = "Start"
 
-[node name="Config" type="Button" parent="Buttons"]
+[node name="Controls" type="Button" parent="Buttons"]
 margin_top = 47.0
 margin_right = 113.0
 margin_bottom = 78.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Configurações"
+rect_min_size = Vector2( 100, 20 )
+text = "Controles"
 
-[node name="Exit" type="Button" parent="Buttons"]
+[node name="Config" type="Button" parent="Buttons"]
 margin_top = 94.0
 margin_right = 113.0
 margin_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Configurações"
+
+[node name="Exit" type="Button" parent="Buttons"]
+margin_top = 141.0
+margin_right = 113.0
+margin_bottom = 172.0
 text = "Sair"
 
 [node name="configMenu" type="Control" parent="."]
@@ -276,7 +289,6 @@ margin_right = 557.0
 margin_bottom = 310.0
 stream = ExtResource( 6 )
 buffering_msec = 100
-bus = "Music"
 
 [node name="Label" type="Label" parent="configMenu/VideoPlayer"]
 margin_left = 50.0
@@ -331,6 +343,108 @@ margin_bottom = 350.0
 rect_scale = Vector2( 0.3, 0.3 )
 toggle_mode = true
 
+[node name="ControlsMenu" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -243.0
+margin_top = -165.0
+margin_right = 243.0
+margin_bottom = 165.0
+script = ExtResource( 12 )
+
+[node name="Panel" type="Panel" parent="ControlsMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ExitButton" type="Button" parent="ControlsMenu"]
+margin_left = 424.0
+margin_top = 290.0
+margin_right = 477.0
+margin_bottom = 321.0
+text = "voltar"
+
+[node name="InputADM" type="ColorRect" parent="ControlsMenu"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -223.0
+margin_top = -94.0
+margin_right = 223.0
+margin_bottom = 94.0
+color = Color( 0.247059, 0.247059, 0.247059, 1 )
+script = ExtResource( 13 )
+
+[node name="Label" type="Label" parent="ControlsMenu/InputADM"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -172.5
+margin_right = 172.5
+margin_bottom = 25.0
+text = "Pressiona qualquer tecla para redefinir a ação"
+
+[node name="Label2" type="Label" parent="ControlsMenu/InputADM"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -108.0
+margin_top = -53.0
+margin_right = 106.0
+text = "Aperte \"Enter\" para confirmar
+Aperte \"TAB\" para cancelar"
+
+[node name="ColorRect" type="ColorRect" parent="ControlsMenu/InputADM"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -51.0
+margin_top = -35.0
+margin_right = 51.0
+margin_bottom = 35.0
+color = Color( 0.129412, 0.129412, 0.129412, 1 )
+
+[node name="InputLabel" type="Label" parent="ControlsMenu/InputADM/ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -23.0
+margin_top = -12.0
+margin_right = 23.0
+margin_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "D"
+align = 1
+
+[node name="Keys" type="Control" parent="ControlsMenu"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Up" type="Control" parent="ControlsMenu/Keys"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="UpButton" type="Button" parent="ControlsMenu/Keys/Up"]
+margin_left = 155.0
+margin_top = 32.0
+margin_right = 181.0
+margin_bottom = 63.0
+text = "W"
+script = ExtResource( 14 )
+
+[node name="Label" type="Label" parent="ControlsMenu/Keys/Up"]
+margin_left = 14.0
+margin_top = 32.0
+margin_right = 144.0
+margin_bottom = 66.0
+text = "Andar para cima"
+
 [node name="clickSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 bus = "Effects"
@@ -338,15 +452,14 @@ bus = "Effects"
 [node name="MusicaPadrao" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 autoplay = true
-bus = "Music"
+bus = "MENU"
 
 [node name="Musicabrega" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
-bus = "Music"
 
 [node name="MusicaLoop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
-bus = "Music"
+bus = "MENU"
 
 [connection signal="color_changed" from="cust/pickers/bodyPicker" to="." method="_on_bodyPicker_color_changed"]
 [connection signal="pressed" from="cust/pickers/bodyPicker" to="." method="_on_bodyPicker_pressed"]
@@ -360,6 +473,7 @@ bus = "Music"
 [connection signal="pressed" from="cust/bodyButton" to="." method="_on_bodyButton_pressed"]
 [connection signal="pressed" from="cust/bodyButton2" to="." method="_on_bodyButton2_pressed"]
 [connection signal="pressed" from="Buttons/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Buttons/Controls" to="." method="_on_Controls_pressed"]
 [connection signal="pressed" from="Buttons/Config" to="." method="_on_Config_pressed"]
 [connection signal="pressed" from="Buttons/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="configMenu/configBack" to="." method="_on_configBack_pressed"]
@@ -371,4 +485,7 @@ bus = "Music"
 [connection signal="value_changed" from="configMenu/VolSliders/efeitos" to="." method="_on_efeitos_value_changed"]
 [connection signal="value_changed" from="configMenu/VolSliders/musica" to="." method="_on_musica_value_changed"]
 [connection signal="toggled" from="configMenu/gotinhaButton" to="." method="_on_gotinhaButton_toggled"]
+[connection signal="pressed" from="ControlsMenu/ExitButton" to="." method="_on_ExitButton_pressed"]
+[connection signal="action_edited" from="ControlsMenu/InputADM" to="ControlsMenu" method="_on_InputADM_action_edited"]
+[connection signal="my_pressed" from="ControlsMenu/Keys/Up/UpButton" to="ControlsMenu" method="_on_UpButton_my_pressed"]
 [connection signal="finished" from="MusicaPadrao" to="." method="_on_MusicaPadrao_finished"]

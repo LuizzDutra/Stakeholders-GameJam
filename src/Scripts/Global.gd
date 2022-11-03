@@ -9,8 +9,33 @@ var sprite_color_parts = ["Body", "Hair", "Eyes"]
 var sprite_frame_parts = ["Body", "Hair", "Eyes", "Pants", "Shirt"]
 var cutscene_active = false
 
+
 func _ready():
 	menu.connect("info_saved", self, "_on_info_saved")
+	
+	"""
+	var test_key = InputEventKey.new()
+	test_key.physical_scancode = KEY_J
+	InputMap.action_add_event("Right", test_key)
+	
+	var a :Array = []
+	for i in InputMap.get_actions():
+		a = []
+		for j in InputMap.get_action_list(i):
+			a.append(j.as_text())
+		print(a)
+	"""
+
+"""
+func _input(event):
+	if event is InputEventKey:
+		if event.is_pressed():
+			print(event.as_text())
+			if get_input_state == true:
+				InputMap.action_add_event("Right", event)
+				get_input_state = false
+"""
+
 
 func start_cutscene():
 	var cutscene = cutscene_scene.instance()

@@ -12,6 +12,7 @@ onready var musica_brega = $Musicabrega
 onready var Musica_default = $MusicaPadrao
 onready var musica_loop = $MusicaLoop
 onready var slider_timer = $configMenu/VolSliders/Timer
+onready var controls = $ControlsMenu
 var player_data = load("res://resources/data_cust.tres")
 var font_default = load("res://Fonts/font_default.tres")
 var font_dyslexic = load("res://Fonts/font_dyslexic.tres")
@@ -185,3 +186,14 @@ func _on_efeitos_value_changed(value):
 
 func _on_Exit_pressed():
 	get_tree().quit()
+
+
+func _on_Controls_pressed():
+	clickSound.play()
+	buttons.visible = false
+	controls.visible = true
+
+func _on_ExitButton_pressed():
+	clickSound.play()
+	buttons.visible = true
+	controls.visible = false
