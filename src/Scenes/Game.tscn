@@ -372,7 +372,7 @@ texture = ExtResource( 15 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
-bus = "Music"
+bus = "STAGE1"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false

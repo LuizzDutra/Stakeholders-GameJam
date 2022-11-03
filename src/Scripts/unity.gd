@@ -3,7 +3,7 @@ extends KinematicBody2D
 var dialog_npc_spc_base = [
 	
 	{"name":"Luiza","text":"Olá, meu nome é Luiza"},
-	{"name":"Luiza", "text":"Você poderia achar meu óculos perdido por favor ?"}
+	{"name":"Luiza", "text":"Você poderia achar meu óculos perdido por favor?"}
 ]
 
 var dialog_npc_spc_missao_aceita = [
@@ -19,7 +19,7 @@ var dialog_npc_spc_missao_concluida = [
 
 var dialog_state = 1
 onready var quest = get_node("../../Quest")
-var quest_descricao = "Pegar o óculos da sua amiga"
+var quest_descricao = "Pegar o óculos da Luiza"
 
 
 func _ready():
