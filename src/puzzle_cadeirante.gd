@@ -7,6 +7,7 @@ onready var line_edit = $puzzle_cadeir/LineEdit
 onready var tempo_certo = $Timer
 onready var tempo_errado = $Timer2
 onready var cooldown_text = $Timer3
+onready var close_timer = $CloseTimer
 signal concluida
 
 func _ready():
@@ -30,6 +31,7 @@ func _input(event):
 			certo.visible = true
 			tempo_certo.start()
 			cooldown_text.start()
+			close_timer.start()
 			emit_signal("concluida")
 		
 		else:
@@ -66,3 +68,14 @@ func _on_Timer2_timeout():
 
 func _on_Timer3_timeout():
 	line_edit.editable = true
+
+
+func _on_CloseTimer_timeout():
+	puzzle.visible = false
+	turn_on_the_player()
+
+
+func _on_exit_pressed():
+	puzzle.visible = false
+	turn_on_the_player()
+
