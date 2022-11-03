@@ -6,7 +6,7 @@
 points = PoolVector2Array( 8, 0, 24, 0, 24, 32, 8, 32 )
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
-points = PoolVector2Array( 8, 0, 24, 0, 24, 32, 8, 32 )
+points = PoolVector2Array( 8, 0, 24, 0, 24, 36, 8, 36 )
 
 [resource]
 0/name = "New Piskel (29).png 0"
@@ -48,7 +48,7 @@ points = PoolVector2Array( 8, 0, 24, 0, 24, 32, 8, 32 )
 2/texture = ExtResource( 1 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
-2/region = Rect2( 0, 0, 32, 32 )
+2/region = Rect2( 0, 0, 32, 40 )
 2/tile_mode = 0
 2/occluder_offset = Vector2( 0, 0 )
 2/navigation_offset = Vector2( 0, 0 )

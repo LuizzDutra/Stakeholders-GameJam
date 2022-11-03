@@ -23,8 +23,9 @@ var dialog_npc_missao_concluida = [
 
 func _input(event):
 	if event.is_action_pressed("space") and len(hitbox_npc.get_overlapping_areas()) > 0:
-		if hitbox_npc.get_overlapping_areas()[0].get_parent().ativo:
+		if hitbox_npc.get_overlapping_areas()[0].get_parent().is_processing_unhandled_input():
 			find_and_use_dialogue()
+			get_tree().set_input_as_handled()
 		
 func find_and_use_dialogue():
 	var dialogue_player = get_node_or_null("Area2D/dialogo")
@@ -33,9 +34,6 @@ func find_and_use_dialogue():
 		
 		1:
 			dialogue_player.play_dialog(dialog_npc_base)
-			if dialogue_player.current_index >= len(dialog_npc_base):
-				quest.add_quest(quest_descricao)
-				dialog_state = 2
 			return
 		2:
 			dialogue_player.play_dialog(dialog_npc_missao_start)
@@ -47,3 +45,10 @@ func find_and_use_dialogue():
 
 func _on_missao_concluida():
 	dialog_state = 3
+
+
+func _on_dialogo_ended():
+	if dialog_state == 1:
+		quest.add_quest(quest_descricao)
+		dialog_state = 2
+	

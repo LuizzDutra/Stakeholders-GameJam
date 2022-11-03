@@ -6,7 +6,7 @@ onready var slot_quests = $quest/slot_quests
 
 func _ready():
 	quest.visible = false
-func _input(event):
+func _unhandled_input(event):
 	
 	if event.is_action_pressed("quest"):
 		

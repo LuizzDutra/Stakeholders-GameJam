@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
+[ext_resource path="res://Themes/default_theme.tres" type="Theme" id=1]
 [ext_resource path="res://Sprites/Quadro.jpeg" type="Texture" id=2]
 [ext_resource path="res://puzzle_cadeirante.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/ExitButton.tscn" type="PackedScene" id=4]
 
 [node name="puzzle_cadeirante" type="CanvasLayer"]
 script = ExtResource( 3 )
@@ -11,6 +13,7 @@ margin_left = 66.0
 margin_top = 19.0
 margin_right = 559.0
 margin_bottom = 292.0
+theme = ExtResource( 1 )
 texture = ExtResource( 2 )
 
 [node name="certo" type="Label" parent="puzzle_cadeir"]
@@ -70,12 +73,19 @@ margin_right = 277.0
 margin_bottom = 182.0
 text = "C + C + C = ?"
 
+[node name="exit" parent="puzzle_cadeir" instance=ExtResource( 4 )]
+
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Timer2" type="Timer" parent="."]
 
 [node name="Timer3" type="Timer" parent="."]
 
+[node name="CloseTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="pressed" from="puzzle_cadeir/exit" to="." method="_on_exit_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]
 [connection signal="timeout" from="Timer3" to="." method="_on_Timer3_timeout"]
+[connection signal="timeout" from="CloseTimer" to="." method="_on_CloseTimer_timeout"]
