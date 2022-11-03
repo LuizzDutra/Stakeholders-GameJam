@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/menu1.wav-f66995a551fea463ede0c31154975376.sample"
+path="res://.import/BREGAFUNK.wav-cfacc2c8191c9690e093bf7d2bb2366b.sample"
 
 [deps]
 
-source_file="res://Sounds/menu1.wav"
-dest_files=[ "res://.import/menu1.wav-f66995a551fea463ede0c31154975376.sample" ]
+source_file="res://Scenes/BREGAFUNK.wav"
+dest_files=[ "res://.import/BREGAFUNK.wav-cfacc2c8191c9690e093bf7d2bb2366b.sample" ]
 
 [params]
 

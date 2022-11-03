@@ -11,14 +11,14 @@ func _ready():
 
 func updateDialog():
 	dialog_text = [
-	[{"name":"","text":"Eae."}],
-	[{"name":"","text":str(player_name) + " na escola ? Vai chover."}],
-	[{"name":"","text":"Dally " + str(player_name) + " dboa ?"}],
+	[{"name":"","text":"E aí?."}],
+	[{"name":"","text":str(player_name) + " na escola? Vai chover."}],
+	[{"name":"","text":"Dally, " + str(player_name) + " de boa?"}],
 	[{"name":"","text":"Bom dia."}],
 	[{"name":"", "text":"Que aula chata."}],
-	[{"name":"", "text":"O dia tá lindo, clima ensolarado."}],
+	[{"name":"", "text":"O dia tá lindo, clima ensolarado..."}],
 	[{"name":"", "text":"Opa."}],
-	[{"name":"", "text":"Qual a boa ?"}]
+	[{"name":"", "text":"Qual a boa?"}]
 ]
 
 func changePlayerName(nome):
