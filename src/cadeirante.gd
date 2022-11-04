@@ -50,4 +50,3 @@ func _on_dialogo_ended():
 	if dialog_state == 1:
 		quest.add_quest(quest_descricao)
 		dialog_state = 2
-	

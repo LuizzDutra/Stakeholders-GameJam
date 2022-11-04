@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://task_zelador.gd" type="Script" id=1]
+
+[node name="task_zelador" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="grupo_lixo" type="Node2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+margin_left = 298.0
+margin_top = 87.0
+margin_right = 338.0
+margin_bottom = 101.0
+text = "null"
