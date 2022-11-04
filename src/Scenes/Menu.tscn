@@ -435,6 +435,8 @@ margin_left = 155.0
 margin_top = 32.0
 margin_right = 181.0
 margin_bottom = 63.0
+focus_mode = 0
+enabled_focus_mode = 0
 text = "W"
 script = ExtResource( 14 )
 
@@ -486,6 +488,5 @@ bus = "MENU"
 [connection signal="value_changed" from="configMenu/VolSliders/musica" to="." method="_on_musica_value_changed"]
 [connection signal="toggled" from="configMenu/gotinhaButton" to="." method="_on_gotinhaButton_toggled"]
 [connection signal="pressed" from="ControlsMenu/ExitButton" to="." method="_on_ExitButton_pressed"]
-[connection signal="action_edited" from="ControlsMenu/InputADM" to="ControlsMenu" method="_on_InputADM_action_edited"]
 [connection signal="my_pressed" from="ControlsMenu/Keys/Up/UpButton" to="ControlsMenu" method="_on_UpButton_my_pressed"]
 [connection signal="finished" from="MusicaPadrao" to="." method="_on_MusicaPadrao_finished"]

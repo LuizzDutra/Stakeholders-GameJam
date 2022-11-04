@@ -1,15 +1,13 @@
 extends Control
 
 onready var inputADM = $InputADM
+onready var but = $Keys/Up/UpButton
 
 func _ready():
+	#but.add_color_override()
 	pass
 
 
-func _on_UpButton_my_pressed(my_action):
-	inputADM.activate(my_action)
+func _on_UpButton_my_pressed(my_action, buttonRef):
+	inputADM.activate(my_action, buttonRef)
 
-
-func _on_InputADM_action_edited(my_action, key_name):
-	if my_action == "Up":
-		get_node("Keys/Up/UpButton").text = key_name
