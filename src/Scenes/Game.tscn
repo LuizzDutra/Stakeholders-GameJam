@@ -437,7 +437,7 @@ position = Vector2( 191, 137 )
 position = Vector2( 119, -465 )
 
 [node name="zelador" parent="." instance=ExtResource( 22 )]
-position = Vector2( 164, -241 )
+position = Vector2( 152, -241 )
 
 [connection signal="timeout" from="introTimer" to="." method="_on_introTimer_timeout"]
 [connection signal="class_signal" from="clock" to="." method="_on_clock_class_signal"]
