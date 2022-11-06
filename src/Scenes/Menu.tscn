@@ -382,4 +382,5 @@ bus = "MENU"
 [connection signal="value_changed" from="configMenu/VolSliders/efeitos" to="." method="_on_efeitos_value_changed"]
 [connection signal="value_changed" from="configMenu/VolSliders/musica" to="." method="_on_musica_value_changed"]
 [connection signal="toggled" from="configMenu/gotinhaButton" to="." method="_on_gotinhaButton_toggled"]
+[connection signal="ExitButton_pressed" from="ControlsMenu" to="." method="_on_ControlsMenu_ExitButton_pressed"]
 [connection signal="finished" from="MusicaPadrao" to="." method="_on_MusicaPadrao_finished"]

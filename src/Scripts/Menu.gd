@@ -193,8 +193,7 @@ func _on_Controls_pressed():
 	buttons.visible = false
 	controls.visible = true
 
-func _on_ExitButton_pressed():
+func _on_ControlsMenu_ExitButton_pressed():
 	clickSound.play()
 	buttons.visible = true
 	controls.visible = false
-

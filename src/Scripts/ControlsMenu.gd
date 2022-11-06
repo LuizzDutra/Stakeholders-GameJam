@@ -3,6 +3,7 @@ extends Control
 onready var inputADM = $InputADM
 #onready var button_list = [$Keys/Up/UpButton, $Keys/Down/DownButton, $Keys/Left/LeftButton, $Keys/Right/RightButton]
 onready var button_list = []
+signal ExitButton_pressed
 
 func _ready():
 	button_list = []
@@ -69,3 +70,10 @@ func check_comp(key):
 func _on_DefaultButton_pressed():
 	InputMap.load_from_globals()
 	_on_InputADM_action_edited()
+
+
+	
+
+
+func _on_ExitButton_child_pressed():
+	emit_signal("ExitButton_pressed")

@@ -25,7 +25,7 @@ script = ExtResource( 4 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="ExitButton" type="Button" parent="."]
+[node name="ExitButton_child" type="Button" parent="."]
 margin_left = 424.0
 margin_top = 290.0
 margin_right = 477.0
@@ -241,6 +241,7 @@ grow_vertical = 2
 text = "D"
 align = 1
 
+[connection signal="pressed" from="ExitButton_child" to="." method="_on_ExitButton_child_pressed"]
 [connection signal="pressed" from="DefaultButton" to="." method="_on_DefaultButton_pressed"]
 [connection signal="my_pressed" from="Keys/Up/UpButton" to="." method="_on_Button_my_pressed"]
 [connection signal="my_pressed" from="Keys/space/spaceButton" to="." method="_on_Button_my_pressed"]
