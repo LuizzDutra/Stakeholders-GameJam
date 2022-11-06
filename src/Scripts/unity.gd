@@ -3,7 +3,7 @@ extends KinematicBody2D
 var dialog_npc_spc_base = [
 	
 	{"name":"Luiza","text":"Olá, meu nome é Luiza"},
-	{"name":"Luiza", "text":"Você poderia achar meu óculos perdido por favor ?"}
+	{"name":"Luiza", "text":"Você poderia achar meu óculos perdido por favor?"}
 ]
 
 var dialog_npc_spc_missao_aceita = [
@@ -19,7 +19,7 @@ var dialog_npc_spc_missao_concluida = [
 
 var dialog_state = 1
 onready var quest = get_node("../../Quest")
-var quest_descricao = "Pegar o óculos da sua amiga"
+var quest_descricao = "Pegar o óculos da Luiza"
 
 
 func _ready():
@@ -30,8 +30,9 @@ onready var hitbox_npc_spc = $Area2D
 
 func _input(event):
 	if event.is_action_pressed("space") and len(hitbox_npc_spc.get_overlapping_areas()) > 0:
-		find_and_use_dialogue()
-		get_tree().set_input_as_handled()
+		if hitbox_npc_spc.get_overlapping_areas()[0].get_parent().is_processing_unhandled_input():
+			find_and_use_dialogue()
+			get_tree().set_input_as_handled()
 		
 func find_and_use_dialogue():
 	var dialogue_player = get_node_or_null("Area2D/dialogo")

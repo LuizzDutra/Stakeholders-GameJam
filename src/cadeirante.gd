@@ -3,16 +3,16 @@ extends KinematicBody2D
 onready var hitbox_npc = $Area2D
 onready var quest = get_node("../../Quest")
 onready var dialog_state = 1
-var quest_descricao = "Pegar o livro de matématica de marcos"
+var quest_descricao = "Pegar o livro de matématica de marcos no armário."
 
 var dialog_npc_base = [
-	{"name":"Marcos","text":"Olá tudo bem ?"},
+	{"name":"Marcos","text":"Olá, tudo bem?"},
 	{"name":"Marcos","text":"Eu estou precisando de ajuda"},
-	{"name":"Marcos","text":"Vc poderia pegar meu livro de matématica no armário pfv"}
+	{"name":"Marcos","text":"Você poderia pegar meu livro de matématica no armário pfv"}
 ]
 
 var dialog_npc_missao_start = [
-	{"name":"Marcos","text":"Vc sabia que eu gosto de matématica ?"},
+	{"name":"Marcos","text":"Você sabia que eu gosto de matématica?"},
 	{"name":"Marcos","text":"É uma ciência exata incrivel!!!"}
 ]
 
@@ -23,8 +23,9 @@ var dialog_npc_missao_concluida = [
 
 func _input(event):
 	if event.is_action_pressed("space") and len(hitbox_npc.get_overlapping_areas()) > 0:
-		find_and_use_dialogue()
-		get_tree().set_input_as_handled()
+		if hitbox_npc.get_overlapping_areas()[0].get_parent().is_processing_unhandled_input():
+			find_and_use_dialogue()
+			get_tree().set_input_as_handled()
 		
 func find_and_use_dialogue():
 	var dialogue_player = get_node_or_null("Area2D/dialogo")
