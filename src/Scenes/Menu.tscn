@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://spriteFrames/spriteframe3.tres" type="SpriteFrames" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Art/fundo-gamejan.png" type="Texture" id=9]
 [ext_resource path="res://Sounds/Musica4loopofficial.wav" type="AudioStream" id=10]
 [ext_resource path="res://Shaders/customization.tres" type="Material" id=11]
+[ext_resource path="res://Scenes/ControlsMenu.tscn" type="PackedScene" id=12]
 
 [node name="Menu" type="Control"]
 margin_right = 640.0
@@ -168,18 +169,27 @@ grow_vertical = 2
 rect_min_size = Vector2( 100, 20 )
 text = "Start"
 
-[node name="Config" type="Button" parent="Buttons"]
+[node name="Controls" type="Button" parent="Buttons"]
 margin_top = 47.0
 margin_right = 113.0
 margin_bottom = 78.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Configurações"
+rect_min_size = Vector2( 100, 20 )
+text = "Controles"
 
-[node name="Exit" type="Button" parent="Buttons"]
+[node name="Config" type="Button" parent="Buttons"]
 margin_top = 94.0
 margin_right = 113.0
 margin_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Configurações"
+
+[node name="Exit" type="Button" parent="Buttons"]
+margin_top = 141.0
+margin_right = 113.0
+margin_bottom = 172.0
 text = "Sair"
 
 [node name="configMenu" type="Control" parent="."]
@@ -276,7 +286,6 @@ margin_right = 557.0
 margin_bottom = 310.0
 stream = ExtResource( 6 )
 buffering_msec = 100
-bus = "Music"
 
 [node name="Label" type="Label" parent="configMenu/VideoPlayer"]
 margin_left = 50.0
@@ -331,6 +340,8 @@ margin_bottom = 350.0
 rect_scale = Vector2( 0.3, 0.3 )
 toggle_mode = true
 
+[node name="ControlsMenu" parent="." instance=ExtResource( 12 )]
+
 [node name="clickSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 bus = "Effects"
@@ -338,15 +349,14 @@ bus = "Effects"
 [node name="MusicaPadrao" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 autoplay = true
-bus = "Music"
+bus = "MENU"
 
 [node name="Musicabrega" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
-bus = "Music"
 
 [node name="MusicaLoop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
-bus = "Music"
+bus = "MENU"
 
 [connection signal="color_changed" from="cust/pickers/bodyPicker" to="." method="_on_bodyPicker_color_changed"]
 [connection signal="pressed" from="cust/pickers/bodyPicker" to="." method="_on_bodyPicker_pressed"]
@@ -360,6 +370,7 @@ bus = "Music"
 [connection signal="pressed" from="cust/bodyButton" to="." method="_on_bodyButton_pressed"]
 [connection signal="pressed" from="cust/bodyButton2" to="." method="_on_bodyButton2_pressed"]
 [connection signal="pressed" from="Buttons/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Buttons/Controls" to="." method="_on_Controls_pressed"]
 [connection signal="pressed" from="Buttons/Config" to="." method="_on_Config_pressed"]
 [connection signal="pressed" from="Buttons/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="configMenu/configBack" to="." method="_on_configBack_pressed"]
@@ -371,4 +382,5 @@ bus = "Music"
 [connection signal="value_changed" from="configMenu/VolSliders/efeitos" to="." method="_on_efeitos_value_changed"]
 [connection signal="value_changed" from="configMenu/VolSliders/musica" to="." method="_on_musica_value_changed"]
 [connection signal="toggled" from="configMenu/gotinhaButton" to="." method="_on_gotinhaButton_toggled"]
+[connection signal="ExitButton_pressed" from="ControlsMenu" to="." method="_on_ControlsMenu_ExitButton_pressed"]
 [connection signal="finished" from="MusicaPadrao" to="." method="_on_MusicaPadrao_finished"]
