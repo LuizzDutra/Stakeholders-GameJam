@@ -10,6 +10,9 @@ var key_count = 0
 
 signal action_edited()
 
+func _ready():
+	deactivate()
+
 func _process(delta):
 	pass
 
