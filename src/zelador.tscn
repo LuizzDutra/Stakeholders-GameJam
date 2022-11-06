@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://zelador calvo.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/dialogo.tscn" type="PackedScene" id=2]
 [ext_resource path="res://zelador.gd" type="Script" id=3]
+[ext_resource path="res://task_zelador.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 12.5, 16 )
@@ -98,6 +99,7 @@ position = Vector2( 2.5, 0 )
 shape = SubResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 2, -0.5 )
@@ -114,3 +116,7 @@ flip_h = true
 hframes = 2
 
 [node name="dialogo" parent="." instance=ExtResource( 2 )]
+
+[node name="task_zelador" parent="." instance=ExtResource( 4 )]
+
+[connection signal="ended" from="dialogo" to="." method="_on_dialogo_ended"]

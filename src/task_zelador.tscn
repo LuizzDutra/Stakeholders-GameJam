@@ -8,13 +8,16 @@ script = ExtResource( 1 )
 [node name="grupo_lixo" type="Node2D" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 15.0
+wait_time = 45.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Label" type="Label" parent="CanvasLayer"]
+visible = false
 margin_left = 298.0
 margin_top = 87.0
 margin_right = 338.0
 margin_bottom = 101.0
 text = "null"
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
