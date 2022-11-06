@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://spriteFrames/spriteframe3.tres" type="SpriteFrames" id=2]
@@ -14,6 +14,9 @@
 [ext_resource path="res://Scripts/ControlsMenu.gd" type="Script" id=12]
 [ext_resource path="res://Scenes/InputADM.gd" type="Script" id=13]
 [ext_resource path="res://Scripts/fowardButton.gd" type="Script" id=14]
+[ext_resource path="res://Scripts/DownButton.gd" type="Script" id=15]
+[ext_resource path="res://Scripts/LeftButton.gd" type="Script" id=16]
+[ext_resource path="res://Scripts/RightButton.gd" type="Script" id=17]
 
 [node name="Menu" type="Control"]
 margin_right = 640.0
@@ -343,7 +346,6 @@ rect_scale = Vector2( 0.3, 0.3 )
 toggle_mode = true
 
 [node name="ControlsMenu" type="Control" parent="."]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -364,6 +366,102 @@ margin_top = 290.0
 margin_right = 477.0
 margin_bottom = 321.0
 text = "voltar"
+
+[node name="Keys" type="Control" parent="ControlsMenu"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Up" type="Control" parent="ControlsMenu/Keys"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="UpButton" type="Button" parent="ControlsMenu/Keys/Up"]
+margin_left = 155.0
+margin_top = 32.0
+margin_right = 181.0
+margin_bottom = 63.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "W"
+script = ExtResource( 14 )
+
+[node name="Label" type="Label" parent="ControlsMenu/Keys/Up"]
+margin_left = 14.0
+margin_top = 32.0
+margin_right = 144.0
+margin_bottom = 66.0
+text = "Andar para cima"
+
+[node name="Down" type="Control" parent="ControlsMenu/Keys"]
+margin_top = 51.0
+margin_right = 40.0
+margin_bottom = 91.0
+
+[node name="DownButton" type="Button" parent="ControlsMenu/Keys/Down"]
+margin_left = 155.0
+margin_top = 32.0
+margin_right = 181.0
+margin_bottom = 63.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "S"
+script = ExtResource( 15 )
+
+[node name="Label" type="Label" parent="ControlsMenu/Keys/Down"]
+margin_left = 14.0
+margin_top = 32.0
+margin_right = 144.0
+margin_bottom = 66.0
+text = "Andar para baixo"
+
+[node name="Left" type="Control" parent="ControlsMenu/Keys"]
+margin_top = 102.0
+margin_right = 40.0
+margin_bottom = 142.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="LeftButton" type="Button" parent="ControlsMenu/Keys/Left"]
+margin_left = 155.0
+margin_top = 32.0
+margin_right = 181.0
+margin_bottom = 63.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "A"
+script = ExtResource( 16 )
+action = "Left"
+
+[node name="Label" type="Label" parent="ControlsMenu/Keys/Left"]
+margin_left = 14.0
+margin_top = 32.0
+margin_right = 144.0
+margin_bottom = 66.0
+text = "Andar para esquerda"
+
+[node name="Right" type="Control" parent="ControlsMenu/Keys"]
+margin_top = 153.0
+margin_right = 40.0
+margin_bottom = 193.0
+
+[node name="RightButton" type="Button" parent="ControlsMenu/Keys/Right"]
+margin_left = 155.0
+margin_top = 32.0
+margin_right = 181.0
+margin_bottom = 63.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "D"
+script = ExtResource( 17 )
+action = "Right"
+
+[node name="Label" type="Label" parent="ControlsMenu/Keys/Right"]
+margin_left = 14.0
+margin_top = 32.0
+margin_right = 144.0
+margin_bottom = 66.0
+text = "Andar para direita"
 
 [node name="InputADM" type="ColorRect" parent="ControlsMenu"]
 visible = false
@@ -422,31 +520,6 @@ grow_vertical = 2
 text = "D"
 align = 1
 
-[node name="Keys" type="Control" parent="ControlsMenu"]
-margin_right = 40.0
-margin_bottom = 40.0
-
-[node name="Up" type="Control" parent="ControlsMenu/Keys"]
-margin_right = 40.0
-margin_bottom = 40.0
-
-[node name="UpButton" type="Button" parent="ControlsMenu/Keys/Up"]
-margin_left = 155.0
-margin_top = 32.0
-margin_right = 181.0
-margin_bottom = 63.0
-focus_mode = 0
-enabled_focus_mode = 0
-text = "W"
-script = ExtResource( 14 )
-
-[node name="Label" type="Label" parent="ControlsMenu/Keys/Up"]
-margin_left = 14.0
-margin_top = 32.0
-margin_right = 144.0
-margin_bottom = 66.0
-text = "Andar para cima"
-
 [node name="clickSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 bus = "Effects"
@@ -489,4 +562,8 @@ bus = "MENU"
 [connection signal="toggled" from="configMenu/gotinhaButton" to="." method="_on_gotinhaButton_toggled"]
 [connection signal="pressed" from="ControlsMenu/ExitButton" to="." method="_on_ExitButton_pressed"]
 [connection signal="my_pressed" from="ControlsMenu/Keys/Up/UpButton" to="ControlsMenu" method="_on_UpButton_my_pressed"]
+[connection signal="my_pressed" from="ControlsMenu/Keys/Down/DownButton" to="ControlsMenu" method="_on_DownButton_my_pressed"]
+[connection signal="my_pressed" from="ControlsMenu/Keys/Left/LeftButton" to="ControlsMenu" method="_on_LeftButton_my_pressed"]
+[connection signal="my_pressed" from="ControlsMenu/Keys/Right/RightButton" to="ControlsMenu" method="_on_RightButton_my_pressed"]
+[connection signal="action_edited" from="ControlsMenu/InputADM" to="ControlsMenu" method="_on_InputADM_action_edited"]
 [connection signal="finished" from="MusicaPadrao" to="." method="_on_MusicaPadrao_finished"]

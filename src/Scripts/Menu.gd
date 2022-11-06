@@ -197,3 +197,4 @@ func _on_ExitButton_pressed():
 	clickSound.play()
 	buttons.visible = true
 	controls.visible = false
+
