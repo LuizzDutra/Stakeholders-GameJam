@@ -21,7 +21,7 @@ var d_input = 0
 
 var nome = "Gab"
 
-var oculos: bool = false
+var cont_lixo = 0
 
 func _ready():
 	nome = data_player.get_data()["nome"]
@@ -84,4 +84,5 @@ func set_active(n):
 	u_input = 0
 	d_input = 0
 	set_process_unhandled_input(n)
+	
 	
