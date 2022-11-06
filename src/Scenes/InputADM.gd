@@ -44,7 +44,7 @@ func _input(event):
 			if cur_event != null:
 				InputMap.action_erase_events(cur_action)
 				InputMap.action_add_event(cur_action, cur_event)
-				cur_button.text = cur_event.as_text()
+				#cur_button.text = cur_event.as_text()
 				emit_signal("action_edited")
 					
 			deactivate()
