@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://spriteFrames/spriteframe1.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://Shaders/customization.tres" type="Material" id=3]
-[ext_resource path="res://Scripts/PlayerArea2D.gd" type="Script" id=4]
 [ext_resource path="res://resources/data_cust.tres" type="Resource" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -25,6 +24,7 @@ material = ExtResource( 3 )
 position = Vector2( 0, -2 )
 frames = ExtResource( 1 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -46,15 +46,8 @@ shape = SubResource( 3 )
 [node name="Area2D" type="Area2D" parent="."]
 visible = false
 collision_layer = 8
-collision_mask = 0
-script = ExtResource( 4 )
-
-[node name="Timer" type="Timer" parent="Area2D"]
-wait_time = 0.2
-one_shot = true
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 0, -1 )
 shape = SubResource( 2 )
-
-[connection signal="timeout" from="Area2D/Timer" to="Area2D" method="_on_Timer_timeout"]

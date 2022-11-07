@@ -3,6 +3,7 @@ extends KinematicBody2D
 export(Resource) var data_player
 
 onready var sprite = $AnimatedSprite
+onready var area = $Area2D
 
 var sprite_path = "res://spriteFrames/spriteframe"
 
@@ -48,6 +49,22 @@ func _process(delta):
 	
 	#print(vel)
 	vel = move_and_slide(vel)
+
+func _input(event):
+	if event.is_action("space"):
+		if event.is_pressed():
+			search_interact()
+			print("yeah")
+
+func search_interact():
+	var bodies = area.get_overlapping_areas()
+	if len(bodies) > 0:
+		var parent = bodies[0].get_parent()
+		if parent != null:
+			if parent.get("interact_id") and parent.has_method("interact"):
+				parent.interact()
+			
+
 
 func _unhandled_input(event):
 	if event.is_action("Right"):

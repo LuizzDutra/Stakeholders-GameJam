@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+var interact_id = "quest_npc"
+
 var dialog_npc_spc_base = [
 	
 	{"name":"Luiza","text":"Olá, meu nome é Luiza"},
@@ -28,11 +30,8 @@ func _ready():
 
 onready var hitbox_npc_spc = $Area2D
 
-func _input(event):
-	if event.is_action_pressed("space") and len(hitbox_npc_spc.get_overlapping_areas()) > 0:
-		if hitbox_npc_spc.get_overlapping_areas()[0].get_parent().is_processing_unhandled_input():
-			find_and_use_dialogue()
-			get_tree().set_input_as_handled()
+func interact():
+	find_and_use_dialogue()
 		
 func find_and_use_dialogue():
 	var dialogue_player = get_node_or_null("Area2D/dialogo")

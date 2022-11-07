@@ -4,16 +4,14 @@ onready var hitbox_lixeiro = $Area2D
 onready var player = get_node("../YSort/Player")
 onready var task_zelador = get_node("../zelador/task_zelador")
 var cont_lixeiro
+var interact_id = "quest"
 
 func _ready():
 	pass
 
-func _input(event):
+func interact():
 	
-	if event.is_action_pressed("enter") and len(hitbox_lixeiro.get_overlapping_areas()) > 0 and task_zelador.zelado.dialog_state == 1:
-		
-		print("aaaaa")
+	if task_zelador.zelado.dialog_state == 1:
 		cont_lixeiro = player.cont_lixo
-		
 		if cont_lixeiro >= 5:
 			task_zelador.zelado.dialog_state = 2

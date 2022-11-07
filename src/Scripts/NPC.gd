@@ -20,6 +20,8 @@ var wander_delay = 8
 var wander_range = 300
 var delay_rand = 3
 
+var interact_id = "npc"
+
 var dialogo_npc
 
 var skin_color_array = [Color(0.32549, 0.239216, 0.172549), Color(0.785156, 0.622526, 0.496857), \
@@ -90,14 +92,12 @@ func wander_start_timer():
 func wander_set_timer(state):
 	if state:
 		wander_start_timer()
-	wander_state = state
+	wander_state = state	
 
-func _input(event):
-	if event.is_action_pressed("space") and len(hitbox_npc.get_overlapping_areas()) > 0:
-		if hitbox_npc.get_overlapping_areas()[0].get_parent().is_processing_unhandled_input():
-			find_and_use_dialogue()
-			get_tree().set_input_as_handled()
-		
+
+func interact():
+	find_and_use_dialogue()
+
 func find_and_use_dialogue():
 	var dialogue_player = get_node_or_null("Area2D/dialogo")
 	if dialogue_player:

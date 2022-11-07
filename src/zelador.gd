@@ -2,7 +2,7 @@ extends StaticBody2D
 
 onready var hitbox_zelador = $Area2D
 onready var zelador_task = $task_zelador
-
+var interact_id = "quest_npc"
 var dialog_state
 
 var zelador_dialogo_base = [
@@ -24,10 +24,8 @@ var zelado_dialogo_missao_concluida = [
 func _ready():
 	dialog_state = 0
 
-func _input(event):
-	if event.is_action_pressed("space") and len(hitbox_zelador.get_overlapping_areas()) > 0:
-		find_and_use_dialogue()
-		get_tree().set_input_as_handled()
+func interact():
+	find_and_use_dialogue()
 
 func find_and_use_dialogue():
 	
