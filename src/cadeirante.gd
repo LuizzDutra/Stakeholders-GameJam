@@ -4,6 +4,7 @@ onready var hitbox_npc = $Area2D
 onready var quest = get_node("../../Quest")
 onready var dialog_state = 1
 var quest_descricao = "Pegar o livro de matématica de marcos no armário."
+var interact_id = "quest_npc"
 
 var dialog_npc_base = [
 	{"name":"Marcos","text":"Olá, tudo bem?"},
@@ -21,11 +22,8 @@ var dialog_npc_missao_concluida = [
 	{"name":"Marcos","text":"agora eu vou me divertir resolvendo equações kkkk"}
 ]
 
-func _input(event):
-	if event.is_action_pressed("space") and len(hitbox_npc.get_overlapping_areas()) > 0:
-		if hitbox_npc.get_overlapping_areas()[0].get_parent().is_processing_unhandled_input():
-			find_and_use_dialogue()
-			get_tree().set_input_as_handled()
+func interact():
+	find_and_use_dialogue()
 		
 func find_and_use_dialogue():
 	var dialogue_player = get_node_or_null("Area2D/dialogo")

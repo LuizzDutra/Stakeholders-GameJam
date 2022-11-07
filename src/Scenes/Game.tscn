@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=2]
@@ -242,8 +242,6 @@ shader_param/color = Color( 1, 0.901961, 0.65098, 0.8 )
 shader_param/hdr = false
 shader_param/seed = 2.0
 
-[sub_resource type="RectangleShape2D" id=17]
-
 [node name="Game" type="Node2D"]
 script = ExtResource( 2 )
 dialog_file = ExtResource( 7 )
@@ -412,17 +410,6 @@ margin_bottom = 322.0
 text = " Menu Principal"
 
 [node name="Quest" parent="." instance=ExtResource( 16 )]
-
-[node name="dummy" type="Node2D" parent="."]
-position = Vector2( 350, -81 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Area2D" type="Area2D" parent="dummy"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="dummy/Area2D"]
-shape = SubResource( 17 )
 
 [node name="lixeiro" parent="." instance=ExtResource( 21 )]
 position = Vector2( 204, -241 )

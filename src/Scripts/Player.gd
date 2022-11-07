@@ -3,6 +3,7 @@ extends KinematicBody2D
 export(Resource) var data_player
 
 onready var sprite = $AnimatedSprite
+onready var area = $Area2D
 
 var sprite_path = "res://spriteFrames/spriteframe"
 
@@ -22,6 +23,10 @@ var d_input = 0
 var nome = "Gab"
 
 var cont_lixo = 0
+
+var quests = []
+var quest_npcs = []
+var npcs = []
 
 func _ready():
 	nome = data_player.get_data()["nome"]
@@ -48,6 +53,41 @@ func _process(delta):
 	
 	#print(vel)
 	vel = move_and_slide(vel)
+
+func _input(event):
+	if event.is_action("space"):
+		if event.is_pressed():
+			search_interact()
+
+func search_interact():
+	var areas = area.get_overlapping_areas()
+	
+	if len(areas) > 0:
+		for i in areas:
+			var parent = i.get_parent()
+			if parent != null:
+				if parent.get("interact_id") and parent.has_method("interact"):
+					var int_id = parent.interact_id
+					if int_id == "npc":
+						npcs.append(parent)
+					if int_id == "quest_npc":
+						quest_npcs.append(parent)
+					if int_id == "quest":
+						quests.append(parent)
+					
+					if len(quests) > 0:
+						quests[0].interact()
+					elif len(quest_npcs) > 0:
+						quest_npcs[0].interact()
+					elif len(npcs) > 0:
+						npcs[0].interact()
+					else:
+						pass
+	npcs = []
+	quests = []
+	quest_npcs = []
+			
+
 
 func _unhandled_input(event):
 	if event.is_action("Right"):
