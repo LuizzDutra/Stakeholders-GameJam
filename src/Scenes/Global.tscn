@@ -7,7 +7,134 @@
 [node name="Global" type="Node2D"]
 script = ExtResource( 2 )
 
+[node name="JogoDaVelha" type="Control" parent="."]
+margin_left = 129.0
+margin_top = 27.0
+margin_right = 511.0
+margin_bottom = 333.0
+
+[node name="Panel" type="Panel" parent="JogoDaVelha"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -160.0
+margin_right = 200.0
+margin_bottom = 160.0
+
+[node name="Bars" type="Control" parent="JogoDaVelha"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -203.0
+margin_top = -160.0
+margin_right = 203.0
+margin_bottom = 160.0
+
+[node name="ColorRect" type="ColorRect" parent="JogoDaVelha/Bars"]
+margin_left = 160.0
+margin_top = 40.0
+margin_right = 165.0
+margin_bottom = 280.0
+
+[node name="ColorRect2" type="ColorRect" parent="JogoDaVelha/Bars"]
+margin_left = 240.0
+margin_top = 40.0
+margin_right = 245.0
+margin_bottom = 280.0
+
+[node name="ColorRect3" type="ColorRect" parent="JogoDaVelha/Bars"]
+margin_left = 80.0
+margin_top = 120.0
+margin_right = 320.0
+margin_bottom = 125.0
+
+[node name="ColorRect4" type="ColorRect" parent="JogoDaVelha/Bars"]
+margin_left = 80.0
+margin_top = 200.0
+margin_right = 320.0
+margin_bottom = 205.0
+
+[node name="Positions" type="Control" parent="JogoDaVelha"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -103.0
+margin_top = -107.0
+margin_right = 98.0
+margin_bottom = 107.0
+
+[node name="0" type="Button" parent="JogoDaVelha/Positions"]
+margin_right = 45.0
+margin_bottom = 47.0
+
+[node name="1" type="Button" parent="JogoDaVelha/Positions"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -19.5
+margin_right = 26.5
+margin_bottom = 48.0
+
+[node name="2" type="Button" parent="JogoDaVelha/Positions"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -46.0
+margin_bottom = 48.0
+
+[node name="3" type="Button" parent="JogoDaVelha/Positions"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -24.0
+margin_right = 46.0
+margin_bottom = 24.0
+
+[node name="4" type="Button" parent="JogoDaVelha/Positions"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -23.0
+margin_top = -24.0
+margin_right = 23.0
+margin_bottom = 24.0
+
+[node name="5" type="Button" parent="JogoDaVelha/Positions"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -46.0
+margin_top = -24.0
+margin_bottom = 24.0
+
+[node name="6" type="Button" parent="JogoDaVelha/Positions"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -48.0
+margin_right = 46.0
+
+[node name="7" type="Button" parent="JogoDaVelha/Positions"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -23.0
+margin_top = -48.0
+margin_right = 23.0
+
+[node name="8" type="Button" parent="JogoDaVelha/Positions"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -46.0
+margin_top = -48.0
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Menu" parent="CanvasLayer" instance=ExtResource( 1 )]
 
