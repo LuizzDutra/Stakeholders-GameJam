@@ -58,7 +58,6 @@ func _input(event):
 	if event.is_action("space"):
 		if event.is_pressed():
 			search_interact()
-			print("yeah")
 
 func search_interact():
 	var areas = area.get_overlapping_areas()
