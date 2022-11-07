@@ -24,6 +24,10 @@ var nome = "Gab"
 
 var cont_lixo = 0
 
+var quests = []
+var quest_npcs = []
+var npcs = []
+
 func _ready():
 	nome = data_player.get_data()["nome"]
 	load_modulate()
@@ -57,12 +61,32 @@ func _input(event):
 			print("yeah")
 
 func search_interact():
-	var bodies = area.get_overlapping_areas()
-	if len(bodies) > 0:
-		var parent = bodies[0].get_parent()
-		if parent != null:
-			if parent.get("interact_id") and parent.has_method("interact"):
-				parent.interact()
+	var areas = area.get_overlapping_areas()
+	
+	if len(areas) > 0:
+		for i in areas:
+			var parent = i.get_parent()
+			if parent != null:
+				if parent.get("interact_id") and parent.has_method("interact"):
+					var int_id = parent.interact_id
+					if int_id == "npc":
+						npcs.append(parent)
+					if int_id == "quest_npc":
+						quest_npcs.append(parent)
+					if int_id == "quest":
+						quests.append(parent)
+					
+					if len(quests) > 0:
+						quests[0].interact()
+					elif len(quest_npcs) > 0:
+						quest_npcs[0].interact()
+					elif len(npcs) > 0:
+						npcs[0].interact()
+					else:
+						pass
+	npcs = []
+	quests = []
+	quest_npcs = []
 			
 
 
