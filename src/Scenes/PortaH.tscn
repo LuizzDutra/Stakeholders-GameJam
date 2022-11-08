@@ -46,5 +46,7 @@ shape = SubResource( 20 )
 
 [node name="somPorta" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
-volume_db = -6.0
+volume_db = -9.0
+max_distance = 1000.0
+attenuation = 2.92817
 bus = "Effects"
