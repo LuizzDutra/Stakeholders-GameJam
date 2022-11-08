@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/PortaV.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/scenery/porta vertical.png" type="Texture" id=2]
+[ext_resource path="res://Sounds/effects/DOOR.wav" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=17]
 extents = Vector2( 5, 13 )
@@ -48,5 +49,7 @@ position = Vector2( -2, 32 )
 shape = SubResource( 20 )
 
 [node name="somPorta" type="AudioStreamPlayer2D" parent="."]
-position = Vector2( 1, 25 )
+position = Vector2( -1, 44 )
+stream = ExtResource( 3 )
+volume_db = -6.0
 bus = "Effects"

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/PortaH.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/scenery/Portas.png" type="Texture" id=2]
+[ext_resource path="res://Sounds/effects/DOOR.wav" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=17]
 extents = Vector2( 3, 12 )
@@ -44,4 +45,6 @@ collision_mask = 9
 shape = SubResource( 20 )
 
 [node name="somPorta" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = -6.0
 bus = "Effects"
