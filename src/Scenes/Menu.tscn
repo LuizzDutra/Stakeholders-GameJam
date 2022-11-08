@@ -61,6 +61,7 @@ position = Vector2( 245, 155 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 2 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="pickers" type="Control" parent="cust"]
