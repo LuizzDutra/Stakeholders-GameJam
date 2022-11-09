@@ -1,5 +1,6 @@
 extends Node2D
 
+# "leonardo da vinci"
 var interact_id = "quest"
 onready var quadro = $CanvasLayer/NinePatchRect
 onready var input_res = $CanvasLayer/NinePatchRect/LineEdit
@@ -22,7 +23,7 @@ func _input(event):
 	
 	if event.is_action_pressed("enter") and professora.dialog_state == 0:
 		
-		if input_res.text.to_lower().strip_edges() == "leornado da vinci":
+		if input_res.text.to_lower().strip_edges() == "20":
 			input_res.clear()
 			professora.dialog_state = 1
 			quadro.visible = false

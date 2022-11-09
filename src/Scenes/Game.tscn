@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=2]
@@ -27,6 +27,7 @@
 [ext_resource path="res://Sprites/giga/Giga chadd easter egg.png" type="Texture" id=25]
 [ext_resource path="res://Professora.tscn" type="PackedScene" id=26]
 [ext_resource path="res://Task_professora.tscn" type="PackedScene" id=27]
+[ext_resource path="res://pedro.tscn" type="PackedScene" id=28]
 
 [sub_resource type="GDScript" id=9]
 script/source = "extends \"res://Scripts/positionCluster.gd\"
@@ -434,6 +435,9 @@ texture = ExtResource( 25 )
 
 [node name="Professora" parent="." instance=ExtResource( 26 )]
 position = Vector2( 159, -314 )
+
+[node name="pedro" parent="." instance=ExtResource( 28 )]
+position = Vector2( -32, 472 )
 
 [connection signal="timeout" from="introTimer" to="." method="_on_introTimer_timeout"]
 [connection signal="class_signal" from="clock" to="." method="_on_clock_class_signal"]
