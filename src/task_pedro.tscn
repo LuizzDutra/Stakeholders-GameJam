@@ -7,6 +7,7 @@
 script = ExtResource( 2 )
 
 [node name="painel_task" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="amigo" type="NinePatchRect" parent="painel_task"]
 margin_left = 174.0

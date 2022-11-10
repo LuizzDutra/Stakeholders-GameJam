@@ -4,6 +4,7 @@ onready var hitbox_zelador = $Area2D
 onready var zelador_task = $task_zelador
 var interact_id = "quest_npc"
 var dialog_state
+var descr_quest = "Ajudar o zelador a recolhe o lixo"
 
 var zelador_dialogo_base = [
 	{"name":"Zelador","text":"eae meu filho como ocê tá ?"},

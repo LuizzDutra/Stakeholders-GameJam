@@ -3,6 +3,10 @@ extends StaticBody2D
 var interact_id = "quest_npc"
 onready var hitbox_barreira = $barreira/CollisionShape2D
 var dialog_state
+onready var quest = get_node("../Quest")
+onready var self_diretor = get_node("../YSort/diretor")
+
+
 
 func _ready():
 	dialog_state = 0
@@ -38,3 +42,4 @@ func _on_dialogo_ended():
 	
 	if dialog_state == 1:
 		hitbox_barreira.disabled = true
+		quest.add_quest("None",self_diretor)

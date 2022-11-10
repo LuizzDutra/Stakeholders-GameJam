@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=2]
@@ -28,6 +28,7 @@
 [ext_resource path="res://Professora.tscn" type="PackedScene" id=26]
 [ext_resource path="res://Task_professora.tscn" type="PackedScene" id=27]
 [ext_resource path="res://pedro.tscn" type="PackedScene" id=28]
+[ext_resource path="res://Scenes/diretor.gd" type="Script" id=29]
 
 [sub_resource type="GDScript" id=9]
 script/source = "extends \"res://Scripts/positionCluster.gd\"
@@ -66,6 +67,9 @@ outlines = [ PoolVector2Array( -493, -252, 112, -251, 113, -60, -493, -59 ) ]
 vertices = PoolVector2Array( -558, 7, -692, 7, -688, -126, -559, -125, -688, -152, -689, -251, -561, -251, -559, -153, -493, -153, -493, -125, -748, -126, -748, -152 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 6, 7, 3 ), PoolIntArray( 7, 8, 9, 3 ), PoolIntArray( 4, 3, 2 ), PoolIntArray( 4, 2, 10, 11 ) ]
 outlines = [ PoolVector2Array( -689, -251, -561, -251, -559, -153, -493, -153, -493, -125, -559, -125, -558, 7, -692, 7, -688, -126, -748, -126, -748, -152, -688, -152 ) ]
+
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 56.5, 34 )
 
 [sub_resource type="Shader" id=12]
 resource_local_to_scene = true
@@ -315,10 +319,11 @@ tile_set = ExtResource( 23 )
 cell_size = Vector2( 32, 32 )
 cell_y_sort = true
 format = 1
-tile_data = PoolIntArray( 196620, 2, 0, 196621, 536870914, 0, 196622, 2, 0, 196623, 536870914, 0, 196624, 2, 0, 196625, 536870914, 0, 196626, 2, 0, 196627, 536870914, 0, 196628, 2, 0, 196629, 536870914, 0, 393231, 0, 0, 393232, 536870912, 0, 393233, 536870912, 0, 720912, 1, 0 )
+tile_data = PoolIntArray( 196620, 2, 0, 196621, 536870914, 0, 196622, 2, 0, 196623, 536870914, 0, 196624, 2, 0, 196625, 536870914, 0, 196626, 2, 0, 196627, 536870914, 0, 196628, 2, 0, 196629, 536870914, 0, 393231, 0, 0, 393232, 536870912, 0, 393233, 536870912, 0 )
 
 [node name="diretor" type="Node2D" parent="YSort"]
 position = Vector2( 528, 191 )
+script = ExtResource( 29 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -326,6 +331,15 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="YSort/diretor"]
 texture = ExtResource( 24 )
 hframes = 5
+
+[node name="Area2D" type="Area2D" parent="YSort/diretor"]
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/diretor/Area2D"]
+position = Vector2( 1.5, 17 )
+shape = SubResource( 17 )
+
+[node name="dialogo" parent="YSort/diretor" instance=ExtResource( 5 )]
 
 [node name="Npcs" type="YSort" parent="YSort"]
 
@@ -443,4 +457,5 @@ position = Vector2( -32, 472 )
 [connection signal="class_signal" from="clock" to="." method="_on_clock_class_signal"]
 [connection signal="interval_signal" from="clock" to="." method="_on_clock_interval_signal"]
 [connection signal="lunch_signal" from="clock" to="." method="_on_clock_lunch_signal"]
+[connection signal="ended" from="YSort/diretor/dialogo" to="YSort/diretor" method="_on_dialogo_ended"]
 [connection signal="pressed" from="CanvasLayer/SubMenu/Button" to="." method="_on_Button_pressed"]

@@ -2,6 +2,7 @@ extends CanvasLayer
 
 onready var quest = $quest
 onready var slot_quests = $quest/slot_quests
+onready var jogo = get_node("../")
 
 
 func _ready():
@@ -23,8 +24,13 @@ func check_quest(descr_quest):
 			return true
 	return false
 
-func add_quest(descr_quest: String):
-
+func add_quest(descr_quest: String,npc_quest):
+	
+	jogo.target = npc_quest
+	
+	if descr_quest == "None":
+		return
+		
 	for r in slot_quests.get_children():
 		
 		if check_quest(descr_quest):
@@ -33,7 +39,7 @@ func add_quest(descr_quest: String):
 		if r.bbcode_text == "":
 			r.bbcode_text = descr_quest
 			
-func kill_quest(descr_quest:String):
+func kill_quest(descr_quest:String,npc_quest):
 	
 	for r in slot_quests.get_children():
 		

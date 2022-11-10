@@ -46,6 +46,10 @@ config/icon="res://icon.png"
 
 output_latency=5
 
+[autoload]
+
+QuestDescr="*res://quest_descr.tscn"
+
 [display]
 
 window/size/width=640
