@@ -1,6 +1,9 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
-[sub_resource type="Shader" id=1]
+[ext_resource path="res://Sprites/scenery/Arbustos e chão de grama.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Arbusto.gd" type="Script" id=2]
+
+[sub_resource type="Shader" id=18]
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
 //
@@ -45,15 +48,33 @@ void vertex() {
     VERTEX.x += getWind(VERTEX.xy, UV, time);
 }"
 
-[resource]
+[sub_resource type="ShaderMaterial" id=19]
 resource_local_to_scene = true
-shader = SubResource( 1 )
+shader = SubResource( 18 )
 shader_param/speed = 1.0
 shader_param/minStrength = 0.05
 shader_param/maxStrength = 0.01
-shader_param/strengthScale = 100.0
+shader_param/strengthScale = 50.0
 shader_param/interval = 3.5
 shader_param/detail = 1.0
-shader_param/distortion = null
-shader_param/heightOffset = null
+shader_param/distortion = 0.0
+shader_param/heightOffset = 0.0
 shader_param/offset = 0.0
+
+[sub_resource type="CapsuleShape2D" id=20]
+radius = 8.0
+height = 8.0
+
+[node name="Arbusto" type="Sprite"]
+material = SubResource( 19 )
+position = Vector2( -1, 0 )
+texture = ExtResource( 1 )
+hframes = 4
+frame = 1
+script = ExtResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+rotation = -1.5708
+shape = SubResource( 20 )

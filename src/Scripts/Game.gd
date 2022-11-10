@@ -5,8 +5,7 @@ signal return_to_menu
 export(Resource) var dialog_file
 
 onready var npcs = $YSort/Npcs
-onready var my_cluster = $positionCluster
-onready var my_cluster2 = $positionCluster2
+onready var clusters = $clusters
 onready var sub_menu = $CanvasLayer
 onready var introDialogue = $dialogo
 var random_number = RandomNumberGenerator.new()
@@ -23,16 +22,16 @@ var score = 0 setget set_score, get_score
 
 func _ready():
 	sub_menu.visible = false
-	for i in range(15):
+	var clus_q = clusters.get_child_count()
+	for i in range(63):
 		random_number.randomize()
 		var new_npc = load("res://Scenes/NPC.tscn").instance()
 		new_npc.position = player.position
 		#print(dialog_file.dialog_text)
 		new_npc.dialogo_npc = dialog_file.dialog_text[random_number.randi_range(0, len(dialog_file.dialog_text)-1)]
-		if i % 2 == 0:
-			new_npc.class_cluster = my_cluster2
-		else:
-			new_npc.class_cluster = my_cluster
+		
+		new_npc.class_cluster = clusters.get_child(i%clus_q)
+		
 		npcs.add_child(new_npc)
 	get_node("AudioStreamPlayer").play()
 	for i in range(npcs.get_child_count()):
@@ -152,7 +151,7 @@ func _on_clock_interval_signal():
 func _on_clock_lunch_signal():
 	for i in range(npcs.get_child_count()):
 		npcs.get_child(i).wander_state = false
-		npc_set_path_cluster(my_cluster, npcs.get_child(i))
+		npc_set_path_cluster(npcs.get_child(i).class_cluster, npcs.get_child(i))
 
 
 func _on_Button_pressed():

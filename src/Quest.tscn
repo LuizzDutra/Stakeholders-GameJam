@@ -8,6 +8,7 @@
 script = ExtResource( 2 )
 
 [node name="quest" type="NinePatchRect" parent="."]
+visible = false
 margin_left = 126.0
 margin_top = 88.0
 margin_right = 448.0

@@ -35,7 +35,7 @@ margin_bottom = 10.0
 [node name="barreira" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="barreira"]
-position = Vector2( -27, -54 )
+position = Vector2( -24, 59 )
 shape = SubResource( 3 )
 
 [connection signal="ended" from="dialogo" to="." method="_on_dialogo_ended"]
