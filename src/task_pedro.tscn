@@ -1,0 +1,152 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Sprites/tesk pedra,papel,tesoura.png" type="Texture" id=1]
+[ext_resource path="res://task_pedro.gd" type="Script" id=2]
+
+[node name="task_pedro" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="painel_task" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="amigo" type="NinePatchRect" parent="painel_task"]
+margin_left = 174.0
+margin_top = 152.0
+margin_right = 271.0
+margin_bottom = 232.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="painel_task/amigo"]
+margin_right = 97.0
+margin_bottom = 80.0
+color = Color( 0.0901961, 0.0784314, 0.0784314, 1 )
+
+[node name="Sprite" type="Sprite" parent="painel_task/amigo"]
+position = Vector2( 49, 36 )
+rotation = 1.5708
+scale = Vector2( 1.74479, 1.75 )
+texture = ExtResource( 1 )
+hframes = 3
+
+[node name="inimigo" type="NinePatchRect" parent="painel_task"]
+margin_left = 329.0
+margin_top = 152.0
+margin_right = 426.0
+margin_bottom = 232.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="painel_task/inimigo"]
+margin_right = 97.0
+margin_bottom = 80.0
+color = Color( 0.0901961, 0.0784314, 0.0784314, 1 )
+
+[node name="Sprite" type="Sprite" parent="painel_task/inimigo"]
+position = Vector2( 49, 36 )
+rotation = 1.5708
+scale = Vector2( 1.74479, 1.75 )
+texture = ExtResource( 1 )
+hframes = 3
+
+[node name="button_options" type="Control" parent="painel_task"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="papel" type="Button" parent="painel_task/button_options"]
+margin_left = 469.0
+margin_top = 107.0
+margin_right = 512.0
+margin_bottom = 148.0
+
+[node name="Sprite" type="Sprite" parent="painel_task/button_options/papel"]
+position = Vector2( 22, 19 )
+texture = ExtResource( 1 )
+hframes = 3
+frame = 2
+
+[node name="pedra" type="Button" parent="painel_task/button_options"]
+margin_left = 470.0
+margin_top = 176.0
+margin_right = 513.0
+margin_bottom = 218.0
+
+[node name="Sprite" type="Sprite" parent="painel_task/button_options/pedra"]
+position = Vector2( 23, 18 )
+scale = Vector2( 1.34375, 1.15625 )
+texture = ExtResource( 1 )
+hframes = 3
+frame = 1
+
+[node name="tesoura" type="Button" parent="painel_task/button_options"]
+margin_left = 472.0
+margin_top = 248.0
+margin_right = 515.0
+margin_bottom = 290.0
+
+[node name="Sprite" type="Sprite" parent="painel_task/button_options/tesoura"]
+position = Vector2( 21, 18 )
+rotation = 1.5708
+scale = Vector2( 1.34375, 1.15625 )
+texture = ExtResource( 1 )
+hframes = 3
+
+[node name="Label" type="Label" parent="painel_task"]
+margin_left = 248.0
+margin_top = 105.0
+margin_right = 353.0
+margin_bottom = 123.0
+text = "aaaaaa"
+align = 1
+
+[node name="nome_amigo" type="Label" parent="painel_task"]
+margin_left = 198.0
+margin_top = 126.0
+margin_right = 244.0
+margin_bottom = 140.0
+text = "Jogador"
+
+[node name="nome_inimigo" type="Label" parent="painel_task"]
+margin_left = 355.0
+margin_top = 126.0
+margin_right = 395.0
+margin_bottom = 140.0
+text = "Pedro"
+
+[node name="input_text" type="Control" parent="painel_task"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="key_tesoura" type="Label" parent="painel_task/input_text"]
+margin_left = 526.0
+margin_top = 264.0
+margin_right = 566.0
+margin_bottom = 278.0
+text = "None"
+
+[node name="key_pedra" type="Label" parent="painel_task/input_text"]
+margin_left = 523.0
+margin_top = 192.0
+margin_right = 563.0
+margin_bottom = 206.0
+text = "None"
+
+[node name="key_papel" type="Label" parent="painel_task/input_text"]
+margin_left = 521.0
+margin_top = 117.0
+margin_right = 565.0
+margin_bottom = 139.0
+text = "None"
+align = 1
+autowrap = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
+
+[connection signal="pressed" from="painel_task/button_options/papel" to="." method="_on_papel_pressed"]
+[connection signal="pressed" from="painel_task/button_options/pedra" to="." method="_on_pedra_pressed"]
+[connection signal="pressed" from="painel_task/button_options/tesoura" to="." method="_on_tesoura_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

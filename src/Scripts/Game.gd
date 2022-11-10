@@ -13,7 +13,7 @@ var random_number = RandomNumberGenerator.new()
 onready var player = $YSort/Player
 onready var camera = $YSort/Player/Camera2D
 onready var arrows = $Arrows
-onready var target = $YSort/unity
+onready var target = null
 onready var quest = $Quest
 
 var dialogue_intro = []
@@ -61,7 +61,7 @@ func _process(_delta):
 			sub_menu.visible = false
 	
 	
-	#var target = get_node("YSort/unity")
+	#var target = null
 	if target != null:
 		arrows.get_node("pivot").global_position = player.global_position
 		var rot = target.global_position - arrows.get_node("pivot").global_position
