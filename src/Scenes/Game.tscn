@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=2]
@@ -33,6 +33,7 @@
 [ext_resource path="res://Scenes/PortaH.tscn" type="PackedScene" id=31]
 [ext_resource path="res://Tilesets/gramas.tres" type="TileSet" id=32]
 [ext_resource path="res://Scenes/Arbusto.tscn" type="PackedScene" id=33]
+[ext_resource path="res://Scripts/Oclussion.gd" type="Script" id=34]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 154, 269, 150, 890, -74, 883, -69, 268, -654, 270, -656, -4, 739, -4, 738, 266 )
@@ -338,6 +339,21 @@ shader_param/ray2_intensity = 0.3
 shader_param/color = Color( 1, 0.901961, 0.65098, 0.8 )
 shader_param/hdr = false
 shader_param/seed = 2.0
+
+[sub_resource type="RectangleShape2D" id=33]
+extents = Vector2( 321, 108 )
+
+[sub_resource type="RectangleShape2D" id=31]
+extents = Vector2( 320.5, 108.5 )
+
+[sub_resource type="RectangleShape2D" id=28]
+extents = Vector2( 288.75, 108 )
+
+[sub_resource type="RectangleShape2D" id=29]
+extents = Vector2( 288.75, 108.5 )
+
+[sub_resource type="RectangleShape2D" id=32]
+extents = Vector2( 282.75, 140 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 2 )
@@ -676,6 +692,99 @@ position = Vector2( 170, -405 )
 
 [node name="pedro" parent="." instance=ExtResource( 28 )]
 position = Vector2( -32, 472 )
+
+[node name="Oclussion" type="Node2D" parent="."]
+script = ExtResource( 34 )
+
+[node name="Area2D" type="Area2D" parent="Oclussion"]
+position = Vector2( 469, -394 )
+collision_mask = 8
+monitorable = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Oclussion/Area2D"]
+position = Vector2( 1, -1 )
+shape = SubResource( 33 )
+
+[node name="ColorRect" type="ColorRect" parent="Oclussion/Area2D"]
+margin_right = 40.0
+margin_bottom = 40.0
+grow_horizontal = 0
+color = Color( 0.223529, 0.294118, 0.4, 1 )
+
+[node name="Area2D2" type="Area2D" parent="Oclussion"]
+position = Vector2( 469, -619 )
+collision_mask = 8
+monitorable = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Oclussion/Area2D2"]
+position = Vector2( 0, -0.5 )
+shape = SubResource( 31 )
+
+[node name="ColorRect" type="ColorRect" parent="Oclussion/Area2D2"]
+margin_right = 40.0
+margin_bottom = 40.0
+grow_horizontal = 0
+color = Color( 0.223529, 0.294118, 0.4, 1 )
+
+[node name="Area2D4" type="Area2D" parent="Oclussion"]
+position = Vector2( -310, -394 )
+collision_mask = 8
+monitorable = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Oclussion/Area2D4"]
+position = Vector2( -31.75, -1 )
+shape = SubResource( 28 )
+
+[node name="ColorRect" type="ColorRect" parent="Oclussion/Area2D4"]
+margin_right = 40.0
+margin_bottom = 40.0
+grow_horizontal = 0
+color = Color( 0.223529, 0.294118, 0.4, 1 )
+
+[node name="Area2D5" type="Area2D" parent="Oclussion"]
+position = Vector2( -310, -619 )
+collision_mask = 8
+monitorable = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Oclussion/Area2D5"]
+position = Vector2( -31.75, -0.5 )
+shape = SubResource( 29 )
+
+[node name="ColorRect" type="ColorRect" parent="Oclussion/Area2D5"]
+margin_right = 40.0
+margin_bottom = 40.0
+grow_horizontal = 0
+color = Color( 0.223529, 0.294118, 0.4, 1 )
+
+[node name="Area2D3" type="Area2D" parent="Oclussion"]
+position = Vector2( 545, 202 )
+collision_mask = 8
+monitorable = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Oclussion/Area2D3"]
+position = Vector2( -37.75, 11 )
+shape = SubResource( 32 )
+
+[node name="ColorRect" type="ColorRect" parent="Oclussion/Area2D3"]
+margin_right = 40.0
+margin_bottom = 40.0
+grow_horizontal = 0
+color = Color( 0.223529, 0.294118, 0.4, 1 )
 
 [connection signal="timeout" from="introTimer" to="." method="_on_introTimer_timeout"]
 [connection signal="class_signal" from="clock" to="." method="_on_clock_class_signal"]
