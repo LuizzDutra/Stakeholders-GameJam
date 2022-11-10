@@ -66,9 +66,9 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 6, 2 ), PoolIntArra
 outlines = [ PoolVector2Array( -689, -251, -561, -251, -558, -130, -493, -129, -493, -98, -559, -96, -558, 7, -692, 7, -690, -97, -748, -96, -748, -131, -691, -130 ) ]
 
 [sub_resource type="NavigationPolygon" id=25]
-vertices = PoolVector2Array( -690, -60, -753, -58, -753, -93, -690, -93, -558, 7, -692, 7, -557, -59, -692, -217, -561, -216, -558, -95, -497, -92, -497, -61 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 0, 6 ), PoolIntArray( 3, 7, 8, 9 ), PoolIntArray( 6, 0, 3, 9, 10, 11 ) ]
-outlines = [ PoolVector2Array( -692, -217, -561, -216, -558, -95, -497, -92, -497, -61, -557, -59, -558, 7, -692, 7, -690, -60, -753, -58, -753, -93, -690, -93 ) ]
+vertices = PoolVector2Array( -690, -60, -753, -58, -753, -93, -690, -93, -692, -217, -561, -216, -558, -95, -558, 8, -691, 8, -557, -59, -497, -92, -497, -61 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 3, 4, 5, 6 ), PoolIntArray( 7, 8, 0, 9 ), PoolIntArray( 9, 0, 3, 6, 10, 11 ) ]
+outlines = [ PoolVector2Array( -692, -217, -561, -216, -558, -95, -497, -92, -497, -61, -557, -59, -558, 8, -691, 8, -690, -60, -753, -58, -753, -93, -690, -93 ) ]
 
 [sub_resource type="Shader" id=18]
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
@@ -472,14 +472,20 @@ position = Vector2( 146, -611 )
 [node name="PortaV" parent="YSort/Portas" instance=ExtResource( 30 )]
 position = Vector2( 146, -387 )
 
+[node name="PortaV4" parent="YSort/Portas" instance=ExtResource( 30 )]
+position = Vector2( -46, -611 )
+
+[node name="Sprite" parent="YSort/Portas/PortaV4" index="0"]
+rotation = -1.5708
+
 [node name="PortaV2" parent="YSort/Portas" instance=ExtResource( 30 )]
 position = Vector2( -46, -387 )
 
+[node name="Sprite" parent="YSort/Portas/PortaV2" index="0"]
+rotation = -1.5708
+
 [node name="PortaH" parent="YSort/Portas" instance=ExtResource( 31 )]
 position = Vector2( 528, 368 )
-
-[node name="PortaV4" parent="YSort/Portas" instance=ExtResource( 30 )]
-position = Vector2( -46, -611 )
 
 [node name="Arbustos" type="YSort" parent="YSort"]
 
@@ -792,3 +798,6 @@ color = Color( 0.223529, 0.294118, 0.4, 1 )
 [connection signal="lunch_signal" from="clock" to="." method="_on_clock_lunch_signal"]
 [connection signal="ended" from="YSort/diretor/dialogo" to="YSort/diretor" method="_on_dialogo_ended"]
 [connection signal="pressed" from="CanvasLayer/SubMenu/Button" to="." method="_on_Button_pressed"]
+
+[editable path="YSort/Portas/PortaV4"]
+[editable path="YSort/Portas/PortaV2"]
