@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scripts/PortaV.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/scenery/porta vertical.png" type="Texture" id=2]
+[ext_resource path="res://Sounds/effects/DOOR.wav" type="AudioStream" id=3]
+
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 5, 13 )
+
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 5, 3 )
+
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 5, 16.25 )
+
+[sub_resource type="RectangleShape2D" id=20]
+extents = Vector2( 19, 17.625 )
+
+[node name="PortaV" type="StaticBody2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -2, 35 )
+rotation = 1.5708
+texture = ExtResource( 2 )
+hframes = 2
+
+[node name="ColLeft" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( -2, 16 )
+shape = SubResource( 17 )
+
+[node name="ColRight" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( -2, 64 )
+shape = SubResource( 18 )
+
+[node name="ColDoor" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( -2, 45 )
+shape = SubResource( 19 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 0, 13 )
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -2, 32 )
+shape = SubResource( 20 )
+
+[node name="somPorta" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( -1, 44 )
+stream = ExtResource( 3 )
+volume_db = -9.0
+max_distance = 1000.0
+attenuation = 2.92817
+bus = "Effects"
