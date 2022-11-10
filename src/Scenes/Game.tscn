@@ -530,7 +530,7 @@ tile_set = ExtResource( 23 )
 cell_size = Vector2( 32, 32 )
 cell_y_sort = true
 format = 1
-tile_data = PoolIntArray( 196620, 2, 0, 196621, 536870914, 0, 196622, 2, 0, 196623, 536870914, 0, 196624, 2, 0, 196625, 536870914, 0, 196626, 2, 0, 196627, 536870914, 0, 196628, 2, 0, 196629, 536870914, 0, 393231, 0, 0, 393232, 536870912, 0, 393233, 536870912, 0 )
+tile_data = PoolIntArray( 196622, 4, 0, 196623, 3, 0, 196624, 3, 0, 196625, 3, 0, 196626, 5, 0, 196628, 6, 0, 393231, 0, 0, 393232, 536870912, 0, 393233, 536870912, 0 )
 
 [node name="diretor" type="Node2D" parent="YSort"]
 position = Vector2( 528, 191 )
@@ -703,6 +703,7 @@ position = Vector2( -32, 472 )
 script = ExtResource( 34 )
 
 [node name="Area2D" type="Area2D" parent="Oclussion"]
+visible = false
 position = Vector2( 469, -394 )
 collision_mask = 8
 monitorable = false
@@ -721,6 +722,7 @@ grow_horizontal = 0
 color = Color( 0.223529, 0.294118, 0.4, 1 )
 
 [node name="Area2D2" type="Area2D" parent="Oclussion"]
+visible = false
 position = Vector2( 469, -619 )
 collision_mask = 8
 monitorable = false
@@ -739,6 +741,7 @@ grow_horizontal = 0
 color = Color( 0.223529, 0.294118, 0.4, 1 )
 
 [node name="Area2D4" type="Area2D" parent="Oclussion"]
+visible = false
 position = Vector2( -310, -394 )
 collision_mask = 8
 monitorable = false
@@ -757,6 +760,7 @@ grow_horizontal = 0
 color = Color( 0.223529, 0.294118, 0.4, 1 )
 
 [node name="Area2D5" type="Area2D" parent="Oclussion"]
+visible = false
 position = Vector2( -310, -619 )
 collision_mask = 8
 monitorable = false
@@ -775,6 +779,7 @@ grow_horizontal = 0
 color = Color( 0.223529, 0.294118, 0.4, 1 )
 
 [node name="Area2D3" type="Area2D" parent="Oclussion"]
+visible = false
 position = Vector2( 545, 202 )
 collision_mask = 8
 monitorable = false
