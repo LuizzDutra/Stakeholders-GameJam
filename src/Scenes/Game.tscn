@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=2]
@@ -25,8 +25,12 @@
 [ext_resource path="res://Tilesets/misc.tres" type="TileSet" id=23]
 [ext_resource path="res://Sprites/New Piskel (8) (4) (6) (3).png" type="Texture" id=24]
 [ext_resource path="res://Sprites/giga/Giga chadd easter egg.png" type="Texture" id=25]
-[ext_resource path="res://Scenes/PortaV.tscn" type="PackedScene" id=26]
-[ext_resource path="res://Scenes/PortaH.tscn" type="PackedScene" id=27]
+[ext_resource path="res://Professora.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Task_professora.tscn" type="PackedScene" id=27]
+[ext_resource path="res://pedro.tscn" type="PackedScene" id=28]
+[ext_resource path="res://Scenes/diretor.gd" type="Script" id=29]
+[ext_resource path="res://Scenes/PortaV.tscn" type="PackedScene" id=30]
+[ext_resource path="res://Scenes/PortaH.tscn" type="PackedScene" id=31]
 
 [sub_resource type="GDScript" id=9]
 script/source = "extends \"res://Scripts/positionCluster.gd\"
@@ -65,6 +69,9 @@ outlines = [ PoolVector2Array( -493, -252, 112, -251, 113, -60, -493, -59 ) ]
 vertices = PoolVector2Array( -558, 7, -692, 7, -690, -97, -559, -96, -748, -96, -748, -131, -691, -130, -558, -130, -493, -129, -493, -98, -689, -251, -561, -251 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 6, 2 ), PoolIntArray( 7, 8, 9, 3, 2, 6 ), PoolIntArray( 6, 10, 11, 7 ) ]
 outlines = [ PoolVector2Array( -689, -251, -561, -251, -558, -130, -493, -129, -493, -98, -559, -96, -558, 7, -692, 7, -690, -97, -748, -96, -748, -131, -691, -130 ) ]
+
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 56.5, 34 )
 
 [sub_resource type="Shader" id=12]
 resource_local_to_scene = true
@@ -329,6 +336,7 @@ tile_data = PoolIntArray( 196620, 2, 0, 196621, 536870914, 0, 196622, 2, 0, 1966
 
 [node name="diretor" type="Node2D" parent="YSort"]
 position = Vector2( 528, 191 )
+script = ExtResource( 29 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -336,6 +344,15 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="YSort/diretor"]
 texture = ExtResource( 24 )
 hframes = 5
+
+[node name="Area2D" type="Area2D" parent="YSort/diretor"]
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/diretor/Area2D"]
+position = Vector2( 1.5, 17 )
+shape = SubResource( 17 )
+
+[node name="dialogo" parent="YSort/diretor" instance=ExtResource( 5 )]
 
 [node name="Npcs" type="YSort" parent="YSort"]
 
@@ -371,6 +388,9 @@ cell_size = Vector2( 32, 32 )
 cell_y_sort = true
 format = 1
 tile_data = PoolIntArray( -917505, 2, 0, -983032, 0, 0, -983028, 0, 0, -983020, 0, 0, -851982, 536870912, 0, -851978, 536870912, 0, -851974, 536870912, 0, -655376, 536870912, 0, -655370, 536870912, 0, -720886, 0, 0, -720884, 0, 0, -720878, 0, 0, -458756, 2, 0, -458755, 2, 0, -262120, 2, 0, -131092, 2, 0, -196584, 2, 0, -65556, 2, 0, 131066, 2, 0, 1179604, 0, 0 )
+
+[node name="task_professora" parent="YSort" instance=ExtResource( 27 )]
+position = Vector2( 201, -492 )
 
 [node name="godrays" type="Node2D" parent="."]
 
@@ -440,8 +460,15 @@ position = Vector2( 152, -241 )
 position = Vector2( 364, 82 )
 texture = ExtResource( 25 )
 
+[node name="Professora" parent="." instance=ExtResource( 26 )]
+position = Vector2( 159, -314 )
+
+[node name="pedro" parent="." instance=ExtResource( 28 )]
+position = Vector2( -32, 472 )
+
 [connection signal="timeout" from="introTimer" to="." method="_on_introTimer_timeout"]
 [connection signal="class_signal" from="clock" to="." method="_on_clock_class_signal"]
 [connection signal="interval_signal" from="clock" to="." method="_on_clock_interval_signal"]
 [connection signal="lunch_signal" from="clock" to="." method="_on_clock_lunch_signal"]
+[connection signal="ended" from="YSort/diretor/dialogo" to="YSort/diretor" method="_on_dialogo_ended"]
 [connection signal="pressed" from="CanvasLayer/SubMenu/Button" to="." method="_on_Button_pressed"]
