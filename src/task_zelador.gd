@@ -55,7 +55,7 @@ func _physics_process(delta):
 	monitorar_bola()
 	update_clock()
 	
-	if not tempo.is_stopped() and zelado.dialog_state == 2:
+	if not tempo.is_stopped() and zelado.dialog_state == 4:
 		tempo.stop()
 		texto.visible = false
 		print("Parabens")

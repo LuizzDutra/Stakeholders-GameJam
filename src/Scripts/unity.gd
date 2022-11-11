@@ -1,17 +1,30 @@
 extends KinematicBody2D
 
 var interact_id = "quest_npc"
+onready var jogo = get_node("../..")
+onready var self_armario = get_node("../armario")
+onready var pergunta = $pergunta
 
-var dialog_npc_spc_base = [
+
+var dialog_off_luiza = [
+	{"name":"Luiza","text":"Olá, meu nome é Luiza"},
+	{"name":"Luiza","text":"`Prazer em conhecer você"}
+]
+var dialog_npc_spc_pergunta = [
 	
 	{"name":"Luiza","text":"Olá, meu nome é Luiza"},
 	{"name":"Luiza", "text":"Você poderia achar meu óculos perdido por favor?"}
 ]
 
-var dialog_npc_spc_missao_aceita = [
-	{"name":"Luiza","text":"Eu não sei o que eu vou fazer da minha vida se eu não achar esse óculos"},
+var dialog_npc_spc_missao_sim = [
+	{"name":"Luiza","text":"Você vai me ajudar a achar os meus ôculos ?"},
 	{"name":"Luiza","text":"Esse óculos é muito importante para mim"},
-	{"name":"Luiza","text":"..."}
+	{"name":"Luiza","text":"Muito obrigado"}
+]
+
+var dialoo_npc_spc_nao = [
+	{"name":"Luiza","text":"Tudo bem amigo"},
+	{"name":"Luiza","text":"vlw..."}
 ]
 var dialog_npc_spc_missao_concluida = [
 	{"name":"Luiza","text":"Muito obrigada."},
@@ -19,7 +32,12 @@ var dialog_npc_spc_missao_concluida = [
 	{"name":"Luiza","text":"Tenha uma boa aula."}
 ]
 
-var dialog_state = 1
+var dialog_npc_spc_missao_start = [
+	{"name":"Luiza","text":"Esse ôculos é muito valioso para mim"},
+	{"name":"Luiza","text":"Eu não sei oq fazer sem eles..."}
+]
+
+var dialog_state = 0
 onready var quest = get_node("../../Quest")
 var quest_descricao = "Pegar o óculos da Luiza"
 
@@ -38,26 +56,44 @@ func find_and_use_dialogue():
 	
 	match dialog_state:
 		
-		1:
-			dialogue_player.play_dialog(dialog_npc_spc_base)
+		-1:
+			dialogue_player.play_dialog(dialog_off_luiza)
 			return
-		
+		0:
+			dialogue_player.play_dialog(dialog_npc_spc_pergunta)
+			return
+		1:
+			dialogue_player.play_dialog(dialog_npc_spc_missao_sim)
+			return
 		2:
-			dialogue_player.play_dialog(dialog_npc_spc_missao_aceita)
+			dialogue_player.play_dialog(dialoo_npc_spc_nao)
 			return
 		3:
+			dialogue_player.play_dialog(dialog_npc_spc_missao_start)
+			return
+		4:
 			dialogue_player.play_dialog(dialog_npc_spc_missao_concluida)
 			return
 
 func _on_missao_concluida():
-	dialog_state = 3
-	
-	
-
+	dialog_state = 4
 
 func _on_dialogo_ended():
+	if dialog_state == 0:
+		pergunta.show_pergunta("Vc quer ajudar a luiza a achar os seus óculos")
+	
 	if dialog_state == 1:
+		jogo.target = self_armario
 		quest.add_quest(quest_descricao)
-		dialog_state = 2
-	if dialog_state == 3:
+		dialog_state = 3
+	if dialog_state == 4:
 		quest.kill_quest(quest_descricao)
+
+
+func _on_pergunta_sim():
+	dialog_state = 1
+
+
+func _on_pergunta_nao():
+	dialog_state = 2
+	quest.quest_failed(quest_descricao)

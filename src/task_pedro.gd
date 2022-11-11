@@ -9,8 +9,8 @@ onready var tempo = $Timer
 onready var pedro = get_node("../")
 var is_pressed = false
 onready var input_tesoura = $painel_task/input_text/key_tesoura
-onready var input_papel = $painel_task/input_text/key_papel
 onready var input_pedra = $painel_task/input_text/key_pedra
+onready var input_papel = $painel_task/input_text/key_papel
 
 
 var res_npc
@@ -163,18 +163,18 @@ func _input(event):
 				is_pressed = false
 			
 			elif event.is_action_pressed("Down"):
-				res_player = 1
-				painel_amigo.set_rotation_degrees(0)
-				painel_amigo.frame = 1
+				res_player = 0
+				painel_amigo.set_rotation_degrees(90)
+				painel_amigo.frame = 0
 				buttons_off()
 				random_res_npc()
 				process_resul()
 				is_pressed = false
 			
 			elif event.is_action_pressed("Right"):
-				res_player = 0
-				painel_amigo.set_rotation_degrees(90)
-				painel_amigo.frame = 0
+				res_player = 1
+				painel_amigo.set_rotation_degrees(0)
+				painel_amigo.frame = 1
 				buttons_off()
 				random_res_npc()
 				process_resul()

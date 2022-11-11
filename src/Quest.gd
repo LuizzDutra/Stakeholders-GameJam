@@ -24,9 +24,7 @@ func check_quest(descr_quest):
 			return true
 	return false
 
-func add_quest(descr_quest: String,npc_quest):
-	
-	jogo.target = npc_quest
+func add_quest(descr_quest: String):
 	
 	if descr_quest == "None":
 		return
@@ -39,9 +37,17 @@ func add_quest(descr_quest: String,npc_quest):
 		if r.bbcode_text == "":
 			r.bbcode_text = descr_quest
 			
-func kill_quest(descr_quest:String,npc_quest):
+func kill_quest(descr_quest:String):
 	
 	for r in slot_quests.get_children():
 		
 		if r.bbcode_text == descr_quest:
 			r.bbcode_text = "[color=#006400]"+descr_quest+"[/color]"
+
+func quest_failed(descr_quest:String):
+
+	for r in slot_quests.get_children():
+		
+		if r.bbcode_text == descr_quest:
+			print("aaaa")
+			r.bbcode_text = "[color=#ff0000]"+descr_quest+"[/color]"

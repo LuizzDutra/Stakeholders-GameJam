@@ -8,12 +8,14 @@ onready var tempo_certo = $Timer
 onready var tempo_errado = $Timer2
 onready var cool_down_text = $Timer3
 onready var close_timer = $CloseTimer
+onready var self_armario = get_node("../..")
 signal missao_concluida()
 
 func _ready():
 	certo.visible = false
 	errado.visible = false
 	puzzle.visible = false
+	print(self_armario.get_children())
 	
 func show_puzzle():
 	puzzle.visible = true
@@ -25,7 +27,7 @@ func _input(event):
 	
 	if event.is_action_pressed("enter"):
 		
-		if line_edit.text == "amor e paz":
+		if line_edit.text.to_lower().strip_edges() == "amor e paz":
 			line_edit.text = ""
 			#line_edit.editable = false
 			certo.visible = true
@@ -33,6 +35,8 @@ func _input(event):
 			cool_down_text.start()
 			tempo_certo.start()
 			close_timer.start()
+			self_armario.jogo.target = self_armario.player
+			
 		
 		else:
 			line_edit.text = ""

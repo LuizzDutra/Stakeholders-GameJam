@@ -8,6 +8,7 @@ onready var tempo_certo = $Timer
 onready var tempo_errado = $Timer2
 onready var cooldown_text = $Timer3
 onready var close_timer = $CloseTimer
+onready var armario_azul = get_node("../..")
 signal concluida
 
 func _ready():
@@ -24,15 +25,16 @@ func show_puzzle():
 func _input(event):
 	
 	if event.is_action_pressed("enter"):
-		
-		if line_edit.text.to_lower() == "60":
+		if line_edit.text.to_lower().strip_edges() == "60":
 			line_edit.text = ""
 			#line_edit.editable = false
 			certo.visible = true
 			tempo_certo.start()
 			cooldown_text.start()
 			close_timer.start()
+			armario_azul.jogo.target = armario_azul.player
 			emit_signal("concluida")
+			
 		
 		else:
 			
