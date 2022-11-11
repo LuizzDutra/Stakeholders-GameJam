@@ -14,6 +14,7 @@ onready var camera = $YSort/Player/Camera2D
 onready var arrows = $Arrows
 onready var target = null
 onready var quest = $Quest
+onready var fila = $refeitorioFila
 
 var dialogue_intro = []
 
@@ -146,6 +147,14 @@ func _on_clock_interval_signal():
 	for i in range(npcs.get_child_count()):
 		npcs.get_child(i).wander_state = true
 		#npc_set_path(npcs.get_child(i), Vector2(rand_range(-100, 100), rand_range(-100, 100)))
+	
+	var all_npcs = npcs.get_children()
+	for i in range(fila.quantity):
+		var rand_select = randi() % len(all_npcs)
+		var npc = all_npcs[rand_select]
+		all_npcs.remove(rand_select)
+		npc.wander_state = false
+		npc_set_path_cluster(fila, npc, true, true)
 
 
 func _on_clock_lunch_signal():

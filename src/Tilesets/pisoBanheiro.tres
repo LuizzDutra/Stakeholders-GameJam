@@ -1,13 +1,13 @@
 [gd_resource type="TileSet" load_steps=2 format=2]
 
-[ext_resource path="res://Sprites/scenery/Arbustos e chão de grama.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/scenery/Kit do banheiro e chão.png" type="Texture" id=1]
 
 [resource]
-0/name = "Arbustos e chão de grama.png 0"
+0/name = "Kit do banheiro e chão.png 0"
 0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 96, 0, 32, 32 )
+0/region = Rect2( 160, 0, 32, 32 )
 0/tile_mode = 0
 0/occluder_offset = Vector2( 0, 0 )
 0/navigation_offset = Vector2( 0, 0 )
