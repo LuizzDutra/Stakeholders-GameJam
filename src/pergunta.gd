@@ -16,6 +16,7 @@ func show_pergunta(p:String):
 	painel_pergunta.visible = true
 	pergunta.text = p
 	button_on()
+	turn_off_the_player()
 
 func _physics_process(delta):
 	
@@ -34,7 +35,18 @@ func process_input():
 		i.disabled = true
 	
 	painel_pergunta.visible = false
+	turn_on_the_player()
 
 func button_on():
 	for i in input.get_children():
 		i.disabled = false
+
+func turn_on_the_player():
+	var player = get_tree().get_root().find_node("Player", true, false)
+	if player:
+		player.set_active(true)
+
+func turn_off_the_player():
+	var player = get_tree().get_root().find_node("Player", true, false)
+	if player:
+		player.set_active(false)
