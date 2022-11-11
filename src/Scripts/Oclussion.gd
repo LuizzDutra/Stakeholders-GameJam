@@ -13,10 +13,13 @@ func _process(delta):
 	
 
 func _ready():
+	#teto_dim()
+	pass
+		
+		
+func teto_dim():
 	for i in panels:
 		var rect = i.get_node("ColorRect")
 		var area = i.get_node("CollisionShape2D")
 		rect.rect_size = area.shape.extents*2
 		rect.rect_global_position = area.global_position - area.shape.extents
-		
-		
