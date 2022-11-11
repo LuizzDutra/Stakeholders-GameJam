@@ -28,6 +28,8 @@ var quests = []
 var quest_npcs = []
 var npcs = []
 
+var pushing = false
+
 func _ready():
 	nome = data_player.get_data()["nome"]
 	load_modulate()
@@ -46,9 +48,15 @@ func _process(delta):
 	vel = vel.limit_length(speed)
 	
 	if dir != Vector2.ZERO:
-		sprite.play("walk")
+		if pushing:
+			sprite.play("push_walk")
+		else:
+			sprite.play("walk")
 	else:
-		sprite.play("idle")
+		if pushing:
+			sprite.play("push_idle")
+		else:
+			sprite.play("idle")
 	sprite.scale.x = facing
 	
 	#print(vel)

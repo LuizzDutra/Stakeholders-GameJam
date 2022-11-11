@@ -76,6 +76,7 @@ func _on_configBack_pressed():
 
 func _on_Create_pressed():
 	clickSound.play()
+	selected_sprite = 0
 	emit_signal("start_game")
 
 func _on_dislexieCheck_toggled(button_pressed):
@@ -152,7 +153,7 @@ func _on_MusicaPadrao_finished():
 
 func _on_bodyButton_pressed():
 	if selected_sprite <= 0:
-		selected_sprite = 3
+		selected_sprite = 5
 	else:
 		selected_sprite -= 1
 	sprites.frames = load(sprite_path + str(selected_sprite+1) + ".tres")
@@ -160,7 +161,7 @@ func _on_bodyButton_pressed():
 
 
 func _on_bodyButton2_pressed():
-	selected_sprite = (selected_sprite + 1) % 4
+	selected_sprite = (selected_sprite + 1) % 6
 	sprites.frames = load(sprite_path + str(selected_sprite+1) + ".tres")
 	emit_signal("info_saved", "sprite_frame", selected_sprite)
 
