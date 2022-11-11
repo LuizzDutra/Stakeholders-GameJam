@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=2]
@@ -36,6 +36,8 @@
 [ext_resource path="res://Scripts/Oclussion.gd" type="Script" id=34]
 [ext_resource path="res://Sprites/scenery/porta vertical 2.png" type="Texture" id=35]
 [ext_resource path="res://Tilesets/grades.tres" type="TileSet" id=36]
+[ext_resource path="res://Scenes/mesaEmpurr.tscn" type="PackedScene" id=37]
+[ext_resource path="res://Scenes/mesa.tscn" type="PackedScene" id=38]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 154, 269, 150, 890, -74, 883, -69, 268, -654, 270, -656, -4, 739, -4, 738, 266 )
@@ -470,8 +472,76 @@ navpoly = SubResource( 25 )
 
 [node name="YSort" type="YSort" parent="."]
 
+[node name="mesaEmpurr" parent="YSort" instance=ExtResource( 37 )]
+
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 94, 694 )
+position = Vector2( 725, -467 )
+
+[node name="mesas" type="YSort" parent="YSort"]
+
+[node name="mesa" parent="YSort/mesas" instance=ExtResource( 38 )]
+position = Vector2( 273, -464 )
+scale = Vector2( -1, 1 )
+
+[node name="mesa2" parent="YSort/mesas" instance=ExtResource( 38 )]
+position = Vector2( 336, -464 )
+scale = Vector2( -1, 1 )
+
+[node name="mesa3" parent="YSort/mesas" instance=ExtResource( 38 )]
+position = Vector2( 401, -464 )
+scale = Vector2( -1, 1 )
+
+[node name="mesa4" parent="YSort/mesas" instance=ExtResource( 38 )]
+position = Vector2( 465, -465 )
+scale = Vector2( -1, 1 )
+
+[node name="mesa5" parent="YSort/mesas" instance=ExtResource( 38 )]
+position = Vector2( 529, -465 )
+scale = Vector2( -1, 1 )
+
+[node name="mesa6" parent="YSort/mesas" instance=ExtResource( 38 )]
+position = Vector2( 592, -465 )
+scale = Vector2( -1, 1 )
+
+[node name="mesa7" parent="YSort/mesas" instance=ExtResource( 38 )]
+position = Vector2( 657, -465 )
+scale = Vector2( -1, 1 )
+
+[node name="mesa8" parent="YSort/mesas" instance=ExtResource( 38 )]
+position = Vector2( 721, -466 )
+scale = Vector2( -1, 1 )
+
+[node name="mesa9" parent="YSort/mesas" instance=ExtResource( 38 )]
+position = Vector2( 274, -339 )
+scale = Vector2( -1, 1 )
+
+[node name="mesa10" parent="YSort/mesas" instance=ExtResource( 38 )]
+position = Vector2( 337, -339 )
+scale = Vector2( -1, 1 )
+
+[node name="mesa11" parent="YSort/mesas" instance=ExtResource( 38 )]
+position = Vector2( 402, -339 )
+scale = Vector2( -1, 1 )
+
+[node name="mesa12" parent="YSort/mesas" instance=ExtResource( 38 )]
+position = Vector2( 466, -340 )
+scale = Vector2( -1, 1 )
+
+[node name="mesa13" parent="YSort/mesas" instance=ExtResource( 38 )]
+position = Vector2( 530, -340 )
+scale = Vector2( -1, 1 )
+
+[node name="mesa14" parent="YSort/mesas" instance=ExtResource( 38 )]
+position = Vector2( 593, -340 )
+scale = Vector2( -1, 1 )
+
+[node name="mesa15" parent="YSort/mesas" instance=ExtResource( 38 )]
+position = Vector2( 658, -340 )
+scale = Vector2( -1, 1 )
+
+[node name="mesa16" parent="YSort/mesas" instance=ExtResource( 38 )]
+position = Vector2( 722, -341 )
+scale = Vector2( -1, 1 )
 
 [node name="Portas" type="YSort" parent="YSort"]
 
@@ -588,7 +658,7 @@ tile_set = ExtResource( 3 )
 cell_size = Vector2( 32, 32 )
 cell_y_sort = true
 format = 1
-tile_data = PoolIntArray( -1376274, 3, 0, -1376272, 3, 0, -1376270, 3, 0, -1376268, 3, 0, -1376266, 3, 0, -1376264, 3, 0, -1376262, 3, 0, -1441784, 536870915, 0, -1441782, 536870915, 0, -1441780, 536870915, 0, -1441778, 536870915, 0, -1441776, 536870915, 0, -1441774, 536870915, 0, -1441772, 536870915, 0, -1441770, 536870915, 0, -1179666, 3, 0, -1179664, 3, 0, -1179662, 3, 0, -1179660, 3, 0, -1179658, 3, 0, -1179656, 3, 0, -1179654, 3, 0, -1179640, 536870915, 0, -1179638, 536870915, 0, -1179636, 536870915, 0, -1179634, 536870915, 0, -1179632, 536870915, 0, -1179630, 536870915, 0, -1179628, 536870915, 0, -1179626, 536870915, 0, -983032, 536870915, 0, -983030, 536870915, 0, -983028, 536870915, 0, -983026, 536870915, 0, -983024, 536870915, 0, -983022, 536870915, 0, -983020, 536870915, 0, -983018, 536870915, 0, -851986, 3, 0, -851984, 3, 0, -851982, 3, 0, -851980, 3, 0, -851978, 3, 0, -851976, 3, 0, -851974, 3, 0, -655378, 3, 0, -655376, 3, 0, -655374, 3, 0, -655372, 3, 0, -655370, 3, 0, -655368, 3, 0, -655366, 3, 0, -720888, 536870915, 0, -720886, 536870915, 0, -720884, 536870915, 0, -720882, 536870915, 0, -720880, 536870915, 0, -720878, 536870915, 0, -720876, 536870915, 0, -720874, 536870915, 0, -458768, 0, 0, -458767, 0, 0, -458766, 0, 0, -458765, 0, 0, -458764, 0, 0, -458763, 0, 0, -458762, 0, 0, -458761, 0, 0, -458760, 0, 0, -458759, 0, 0, -458758, 0, 0, -524280, 1, 0, -524279, 1, 0, -524278, 1, 0, -524277, 1, 0, -524276, 1, 0, -524275, 1, 0, -524274, 1, 0, -524273, 1, 0, -524272, 1, 0, -524271, 1, 0, -524270, 1, 0, -524269, 1, 0, -524268, 1, 0 )
+tile_data = PoolIntArray( -1376274, 3, 0, -1376272, 3, 0, -1376270, 3, 0, -1376268, 3, 0, -1376266, 3, 0, -1376264, 3, 0, -1376262, 3, 0, -1441784, 536870915, 0, -1441782, 536870915, 0, -1441780, 536870915, 0, -1441778, 536870915, 0, -1441776, 536870915, 0, -1441774, 536870915, 0, -1441772, 536870915, 0, -1441770, 536870915, 0, -1179666, 3, 0, -1179664, 3, 0, -1179662, 3, 0, -1179660, 3, 0, -1179658, 3, 0, -1179656, 3, 0, -1179654, 3, 0, -1179640, 536870915, 0, -1179638, 536870915, 0, -1179636, 536870915, 0, -1179634, 536870915, 0, -1179632, 536870915, 0, -1179630, 536870915, 0, -1179628, 536870915, 0, -1179626, 536870915, 0, -851986, 3, 0, -851984, 3, 0, -851982, 3, 0, -851980, 3, 0, -851978, 3, 0, -851976, 3, 0, -851974, 3, 0, -655378, 3, 0, -655376, 3, 0, -655374, 3, 0, -655372, 3, 0, -655370, 3, 0, -655368, 3, 0, -655366, 3, 0, -458768, 0, 0, -458767, 0, 0, -458766, 0, 0, -458765, 0, 0, -458764, 0, 0, -458763, 0, 0, -458762, 0, 0, -458761, 0, 0, -458760, 0, 0, -458759, 0, 0, -458758, 0, 0, -524280, 1, 0, -524279, 1, 0, -524278, 1, 0, -524277, 1, 0, -524276, 1, 0, -524275, 1, 0, -524274, 1, 0, -524273, 1, 0, -524272, 1, 0, -524271, 1, 0, -524270, 1, 0, -524269, 1, 0, -524268, 1, 0 )
 
 [node name="cadeirante" parent="YSort" instance=ExtResource( 17 )]
 position = Vector2( -585, -113 )
@@ -604,7 +674,7 @@ tile_set = ExtResource( 19 )
 cell_size = Vector2( 32, 32 )
 cell_y_sort = true
 format = 1
-tile_data = PoolIntArray( -1376272, 536870912, 0, -1376268, 536870912, 0, -1376264, 536870912, 0, -1441782, 0, 0, -1441778, 0, 0, -1441770, 0, 0, -1179666, 536870912, 0, -1179660, 536870912, 0, -1179636, 0, 0, -1179634, 0, 0, -1179628, 0, 0, -917505, 2, 0, -983032, 0, 0, -983028, 0, 0, -983020, 0, 0, -851982, 536870912, 0, -851978, 536870912, 0, -851974, 536870912, 0, -655376, 536870912, 0, -655370, 536870912, 0, -720886, 0, 0, -720884, 0, 0, -720878, 0, 0, -458756, 2, 0, -458755, 2, 0, -262120, 2, 0, -131092, 2, 0, -196584, 2, 0, -65556, 2, 0, 131066, 2, 0, 1179604, 0, 0 )
+tile_data = PoolIntArray( -1376272, 536870912, 0, -1376268, 536870912, 0, -1376264, 536870912, 0, -1441782, 0, 0, -1441778, 0, 0, -1441770, 0, 0, -1179666, 536870912, 0, -1179660, 536870912, 0, -1179636, 0, 0, -1179634, 0, 0, -1179628, 0, 0, -917505, 2, 0, -851982, 536870912, 0, -851978, 536870912, 0, -851974, 536870912, 0, -655376, 536870912, 0, -655370, 536870912, 0, -458756, 2, 0, -458755, 2, 0, -262120, 2, 0, -131092, 2, 0, -196584, 2, 0, -65556, 2, 0, 131066, 2, 0, 1179604, 0, 0 )
 
 [node name="task_professora" parent="YSort" instance=ExtResource( 27 )]
 position = Vector2( 201, -492 )
