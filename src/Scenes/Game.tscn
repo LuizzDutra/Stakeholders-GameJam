@@ -713,6 +713,7 @@ position = Vector2( -32, 472 )
 script = ExtResource( 34 )
 
 [node name="Area2D" type="Area2D" parent="Oclussion"]
+visible = false
 position = Vector2( 469, -394 )
 collision_mask = 8
 monitorable = false
@@ -721,12 +722,10 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Oclussion/Area2D"]
-visible = false
 position = Vector2( 1, 10.5 )
 shape = SubResource( 33 )
 
 [node name="ColorRect" type="ColorRect" parent="Oclussion/Area2D"]
-visible = false
 margin_left = -320.0
 margin_top = -109.0
 margin_right = 321.0
