@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/dialogo.tscn" type="PackedScene" id=1]
 [ext_resource path="res://cadeirante.gd" type="Script" id=2]
 [ext_resource path="res://Sprites/New Piskel (8) (2) (2) (1) (2).png" type="Texture" id=3]
+[ext_resource path="res://pergunta.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 13.5 )
@@ -115,4 +116,8 @@ autoplay = "idle"
 anims/RESET = SubResource( 3 )
 anims/idle = SubResource( 4 )
 
+[node name="pergunta" parent="." instance=ExtResource( 4 )]
+
 [connection signal="ended" from="Area2D/dialogo" to="." method="_on_dialogo_ended"]
+[connection signal="nao" from="pergunta" to="." method="_on_pergunta_nao"]
+[connection signal="sim" from="pergunta" to="." method="_on_pergunta_sim"]

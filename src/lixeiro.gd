@@ -11,7 +11,7 @@ func _ready():
 
 func interact():
 	
-	if task_zelador.zelado.dialog_state == 1:
+	if task_zelador.zelado.dialog_state == 3:
 		cont_lixeiro = player.cont_lixo
 		if cont_lixeiro >= 5:
-			task_zelador.zelado.dialog_state = 2
+			task_zelador.zelado.dialog_state = 4

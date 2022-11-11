@@ -5,8 +5,7 @@ onready var hitbox_barreira = $barreira/CollisionShape2D
 var dialog_state
 onready var quest = get_node("../Quest")
 onready var self_diretor = get_node("../YSort/diretor")
-
-
+onready var jogo = get_node("../")
 
 func _ready():
 	dialog_state = 0
@@ -42,4 +41,4 @@ func _on_dialogo_ended():
 	
 	if dialog_state == 1:
 		hitbox_barreira.disabled = true
-		quest.add_quest("None",self_diretor)
+		jogo.target = self_diretor
