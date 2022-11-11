@@ -38,7 +38,7 @@ var eyes_color_array = [Color(0.141176, 0.047059, 0), Color(0, 0.371094, 0.59375
 var class_cluster
 
 func _ready():
-	sprite.frames = load(sprite_path + str((randi() % 4)+1) + ".tres")
+	sprite.frames = load(sprite_path + str((randi() % 6)+1) + ".tres")
 	#sprite.frames = load(sprite_path + "3.tres")
 	sprite.play("idle")
 	var color = skin_color_array[randi() % len(skin_color_array)]

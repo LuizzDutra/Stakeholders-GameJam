@@ -23,7 +23,7 @@ var score = 0 setget set_score, get_score
 func _ready():
 	sub_menu.visible = false
 	var clus_q = clusters.get_child_count()
-	for i in range(63):
+	for i in range(55):
 		random_number.randomize()
 		var new_npc = load("res://Scenes/NPC.tscn").instance()
 		new_npc.position = player.position

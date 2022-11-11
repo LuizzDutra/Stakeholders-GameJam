@@ -15,6 +15,7 @@ var acel = 1200 + frict
 var facing = -1
 var stopped = false
 
+
 var r_input = 0
 var l_input = 0
 var u_input = 0
@@ -28,6 +29,12 @@ var quests = []
 var quest_npcs = []
 var npcs = []
 
+var push_factor = 0.6
+var pushing = false
+var push_body = null
+var push_offset = Vector2.ZERO
+var push_distance = 40
+
 func _ready():
 	nome = data_player.get_data()["nome"]
 	load_modulate()
@@ -38,26 +45,47 @@ func load_modulate():
 
 
 func _process(delta):
+	#print(pushing, push_body)
 	if dir.x != 0:
 		facing = dir.x
 	
 	vel += dir * acel * delta
 	vel = vel.move_toward(Vector2.ZERO, frict * delta)
-	vel = vel.limit_length(speed)
+	if pushing:
+		vel = vel.limit_length(speed*push_factor)
+	else:
+		vel = vel.limit_length(speed)
 	
 	if dir != Vector2.ZERO:
-		sprite.play("walk")
+		if pushing:
+			sprite.play("walk")#push_walk quando for feito
+		else:
+			sprite.play("walk")
 	else:
-		sprite.play("idle")
+		if pushing:
+			sprite.play("idle")
+		else:
+			sprite.play("idle")
 	sprite.scale.x = facing
 	
 	#print(vel)
+	if pushing:
+		push_body.move_and_slide(vel)
+		if global_position.distance_to(push_body.global_position) > push_distance:
+			pushing = false
+			push_body.attach()
+			push_body = null
+		
 	vel = move_and_slide(vel)
 
 func _input(event):
 	if event.is_action("space"):
 		if event.is_pressed():
-			search_interact()
+			if pushing:
+				pushing = false
+				push_body = null
+			else:
+				search_interact()
 
 func search_interact():
 	var areas = area.get_overlapping_areas()
@@ -77,6 +105,16 @@ func search_interact():
 					
 					if len(quests) > 0:
 						quests[0].interact()
+						if quests[0].has_method("attach"):
+							if quests[0].attached:
+								pushing = false
+								quests[0].attach()
+								push_body = null
+							else:
+								pushing = true
+								quests[0].attach()
+								push_body = quests[0]
+								push_offset = push_body.global_position - global_position
 					elif len(quest_npcs) > 0:
 						quest_npcs[0].interact()
 					elif len(npcs) > 0:

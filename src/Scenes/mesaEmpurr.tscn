@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/mesaEmpurr.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/scenery/mesa_armario.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=34]
+extents = Vector2( 13.5, 11 )
+
+[sub_resource type="RectangleShape2D" id=35]
+extents = Vector2( 15.5, 14 )
+
+[node name="mesaEmpurr" type="KinematicBody2D"]
+collision_layer = 0
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -2 )
+texture = ExtResource( 2 )
+hframes = 4
+frame = 3
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
+position = Vector2( 1.5, 0 )
+shape = SubResource( 34 )
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 1.5, 2 )
+shape = SubResource( 35 )

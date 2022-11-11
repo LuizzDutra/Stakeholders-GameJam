@@ -37,6 +37,7 @@ current = true
 smoothing_enabled = true
 
 [node name="Area2D" type="Area2D" parent="Camera2D"]
+visible = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Area2D"]
