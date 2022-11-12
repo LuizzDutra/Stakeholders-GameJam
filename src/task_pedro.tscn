@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Sprites/tesk pedra,papel,tesoura.png" type="Texture" id=1]
 [ext_resource path="res://task_pedro.gd" type="Script" id=2]
+[ext_resource path="res://Themes/default_theme.tres" type="Theme" id=3]
 
 [node name="task_pedro" type="Node2D"]
 script = ExtResource( 2 )
@@ -14,6 +15,7 @@ margin_left = 174.0
 margin_top = 152.0
 margin_right = 271.0
 margin_bottom = 232.0
+theme = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -35,6 +37,7 @@ margin_left = 329.0
 margin_top = 152.0
 margin_right = 426.0
 margin_bottom = 232.0
+theme = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -54,6 +57,7 @@ hframes = 3
 [node name="button_options" type="Control" parent="painel_task"]
 margin_right = 40.0
 margin_bottom = 40.0
+theme = ExtResource( 3 )
 
 [node name="papel" type="Button" parent="painel_task/button_options"]
 margin_left = 469.0
@@ -98,6 +102,7 @@ margin_left = 248.0
 margin_top = 105.0
 margin_right = 353.0
 margin_bottom = 123.0
+theme = ExtResource( 3 )
 text = "aaaaaa"
 align = 1
 
@@ -106,6 +111,7 @@ margin_left = 198.0
 margin_top = 126.0
 margin_right = 244.0
 margin_bottom = 140.0
+theme = ExtResource( 3 )
 text = "Jogador"
 
 [node name="nome_inimigo" type="Label" parent="painel_task"]
@@ -113,11 +119,13 @@ margin_left = 355.0
 margin_top = 126.0
 margin_right = 395.0
 margin_bottom = 140.0
+theme = ExtResource( 3 )
 text = "Pedro"
 
 [node name="input_text" type="Control" parent="painel_task"]
 margin_right = 40.0
 margin_bottom = 40.0
+theme = ExtResource( 3 )
 
 [node name="key_tesoura" type="Label" parent="painel_task/input_text"]
 margin_left = 526.0

@@ -95,6 +95,8 @@ func find_and_use_dialogue():
 		
 		6:
 			dialogue_play.play_dialog(dialog_prof_missao_concluida_2)
+		7:
+			dialogue_play.play_dialog(dialog_prof_missao_concluida_2)
 			
 
 
@@ -117,10 +119,11 @@ func _on_dialogo_ended():
 	
 	if dialog_state == 6:
 		quest.kill_quest(descricao_quest)
+
 		jogo.target = self_luiza
 		quest.add_quest(self_luiza.quest_descricao)
 		self_luiza.dialog_state = 0
-
+    
 func _on_pergunta_sim():
 	dialog_state = 4
 

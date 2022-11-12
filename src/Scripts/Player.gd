@@ -59,12 +59,12 @@ func _process(delta):
 	
 	if dir != Vector2.ZERO:
 		if pushing:
-			sprite.play("walk")#push_walk quando for feito
+			sprite.play("push_walk")#push_walk quando for feito
 		else:
 			sprite.play("walk")
 	else:
 		if pushing:
-			sprite.play("idle")
+			sprite.play("push_idle")
 		else:
 			sprite.play("idle")
 	sprite.scale.x = facing
@@ -72,6 +72,11 @@ func _process(delta):
 	#print(vel)
 	if pushing:
 		push_body.move_and_slide(vel)
+		var push_dir = (push_body.global_position - global_position)
+		if push_dir.x >= 0:
+			sprite.scale.x = 1
+		else:
+			sprite.scale.x = -1
 		if global_position.distance_to(push_body.global_position) > push_distance:
 			pushing = false
 			push_body.attach()

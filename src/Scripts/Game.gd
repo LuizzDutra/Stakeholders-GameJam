@@ -23,7 +23,7 @@ var musica_pause = 0
 var dialogue_intro = []
 
 
-var score = 0 setget set_score, get_score
+var score = 0 
 
 func _ready():
 	sub_menu.visible = false
@@ -134,14 +134,6 @@ func npc_set_path_cluster(cluster, npc, overwite = true, best_pos = false):
 		cluster.occup_point(point[1])
 		#print(npc.cluster_pos, npc.cluster_index)
 
-func set_score(value, soma = true):
-	if soma:
-		score += value
-	else:
-		score = value
-
-func get_score():
-	return score
 
 func _on_clock_class_signal():
 	for i in range(npcs.get_child_count()):
