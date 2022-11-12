@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=2]
+[gd_scene load_steps=87 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=2]
@@ -48,6 +48,7 @@
 [ext_resource path="res://Shaders/grayscale.tres" type="Material" id=46]
 [ext_resource path="res://Scripts/GigaChad.gd" type="Script" id=47]
 [ext_resource path="res://Sounds/easter/JIGAXADI OFICIAL.wav" type="AudioStream" id=48]
+[ext_resource path="res://Scripts/interacaoBanheiro.gd" type="Script" id=49]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 722, 615, 724, 658, 151.476, 660.896, 151.81, 608.968, -656, -4, 739, -4, 738, 266, 154, 269, 105, 818, 105, 895, -18, 895, -18, 820, -449, 303, -656, 301, -411, 289, -434, 303, -69, 303, 150.471, 816.849, -74, 816, -338, 303, -355, 303, -381, 290 )
@@ -80,14 +81,14 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 outlines = [ PoolVector2Array( -493, -252, 112, -251, 114, -65, -494, -63 ) ]
 
 [sub_resource type="NavigationPolygon" id=5]
-vertices = PoolVector2Array( -558, 7, -692, 7, -690, -97, -559, -96, -748, -96, -748, -131, -721.561, -130.536, -691, -130, -558, -130, -493, -129, -493, -98, -689, -251, -561, -251 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 6, 2 ), PoolIntArray( 2, 6, 7 ), PoolIntArray( 8, 9, 10, 3, 2, 7 ), PoolIntArray( 7, 11, 12, 8 ) ]
-outlines = [ PoolVector2Array( -689, -251, -561, -251, -558, -130, -493, -129, -493, -98, -559, -96, -558, 7, -692, 7, -690, -97, -748, -96, -748, -131, -721.561, -130.536, -691, -130 ) ]
+vertices = PoolVector2Array( -558, -133, -492, -132, -492, -112, -559, -114, -691, -130, -748, -110, -748, -131, -721.561, -130.536, -690, -110, -558, 7, -692, 7, -689, -251, -561, -251 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 5, 6, 7, 8 ), PoolIntArray( 8, 7, 4, 3 ), PoolIntArray( 9, 10, 8, 3 ), PoolIntArray( 4, 11, 12, 0 ) ]
+outlines = [ PoolVector2Array( -689, -251, -561, -251, -558, -133, -492, -132, -492, -112, -559, -114, -558, 7, -692, 7, -690, -110, -748, -110, -748, -131, -721.561, -130.536, -691, -130 ) ]
 
 [sub_resource type="NavigationPolygon" id=25]
-vertices = PoolVector2Array( -690, -60, -753, -58, -753, -93, -690, -93, -692, -217, -561, -216, -558, -95, -558, 8, -691, 8, -557, -59, -497, -92, -497, -61 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 3, 4, 5, 6 ), PoolIntArray( 7, 8, 0, 9 ), PoolIntArray( 9, 0, 3, 6, 10, 11 ) ]
-outlines = [ PoolVector2Array( -692, -217, -561, -216, -558, -95, -497, -92, -497, -61, -557, -59, -558, 8, -691, 8, -690, -60, -753, -58, -753, -93, -690, -93 ) ]
+vertices = PoolVector2Array( -752, -78, -753, -97, -690, -95, -689, -78, -692, -217, -561, -216, -558, -98, -558, 8, -691, 8, -556, -76, -498, -99, -498, -76 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 3, 2, 4, 5, 6, 7 ), PoolIntArray( 7, 8, 3 ), PoolIntArray( 9, 7, 6 ), PoolIntArray( 9, 6, 10, 11 ) ]
+outlines = [ PoolVector2Array( -692, -217, -561, -216, -558, -98, -498, -99, -498, -76, -556, -76, -558, 8, -691, 8, -689, -78, -752, -78, -753, -97, -690, -95 ) ]
 
 [sub_resource type="NavigationPolygon" id=38]
 vertices = PoolVector2Array( 632, 734, 632, 709, 652, 710, 761, 728, 657, 634, 658, 606, 787, 613, 786, 690 )
@@ -310,6 +311,12 @@ extents = Vector2( 84, 23.5 )
 [sub_resource type="RectangleShape2D" id=45]
 extents = Vector2( 12, 10.5 )
 
+[sub_resource type="RectangleShape2D" id=46]
+extents = Vector2( 97, 27 )
+
+[sub_resource type="RectangleShape2D" id=47]
+extents = Vector2( 94.5, 26 )
+
 [sub_resource type="Shader" id=12]
 resource_local_to_scene = true
 code = "/*
@@ -482,6 +489,12 @@ __meta__ = {
 }
 dialog_file = ExtResource( 7 )
 
+[node name="musicas" type="Node" parent="."]
+
+[node name="padrao" type="AudioStreamPlayer" parent="musicas"]
+stream = ExtResource( 11 )
+bus = "STAGE1"
+
 [node name="refeitorioFila" parent="." instance=ExtResource( 14 )]
 position = Vector2( -39, 77 )
 quantity = 25
@@ -569,6 +582,7 @@ format = 1
 tile_data = PoolIntArray( 262124, 0, 0, 262125, 0, 0, 262126, 0, 0, 262127, 0, 0, 262128, 0, 0, 262129, 0, 0, 262130, 0, 0, 262131, 0, 0, 262132, 0, 0, 262133, 0, 0, 262134, 0, 0, 262135, 0, 0, 262136, 0, 0, 262137, 0, 0, 262138, 0, 0, 262139, 0, 0, 262140, 0, 0, 262141, 0, 0, 327660, 0, 0, 327661, 0, 0, 327662, 0, 0, 327663, 0, 0, 327664, 0, 0, 327665, 0, 0, 327666, 0, 0, 327667, 0, 0, 327668, 0, 0, 327669, 0, 0, 327670, 0, 0, 327671, 0, 0, 327672, 0, 0, 327673, 0, 0, 327674, 0, 0, 327675, 0, 0, 327676, 0, 0, 327677, 0, 0, 393196, 0, 0, 393197, 0, 0, 393198, 0, 0, 393199, 0, 0, 393200, 0, 0, 393201, 0, 0, 393202, 0, 0, 393203, 0, 0, 393204, 0, 0, 393205, 0, 0, 393206, 0, 0, 393207, 0, 0, 393208, 0, 0, 393209, 0, 0, 393210, 0, 0, 393211, 0, 0, 393212, 0, 0, 393213, 0, 0, 458732, 0, 0, 458733, 0, 0, 458734, 0, 0, 458735, 0, 0, 458736, 0, 0, 458737, 0, 0, 458738, 0, 0, 458739, 0, 0, 458740, 0, 0, 458741, 0, 0, 458742, 0, 0, 458743, 0, 0, 458744, 0, 0, 458745, 0, 0, 458746, 0, 0, 458747, 0, 0, 458748, 0, 0, 458749, 0, 0, 524268, 0, 0, 524269, 0, 0, 524270, 0, 0, 524271, 0, 0, 524272, 0, 0, 524273, 0, 0, 524274, 0, 0, 524275, 0, 0, 524276, 0, 0, 524277, 0, 0, 524278, 0, 0, 524279, 0, 0, 524280, 0, 0, 524281, 0, 0, 524282, 0, 0, 524283, 0, 0, 524284, 0, 0, 524285, 0, 0, 589804, 0, 0, 589805, 0, 0, 589806, 0, 0, 589807, 0, 0, 589808, 0, 0, 589809, 0, 0, 589810, 0, 0, 589811, 0, 0, 589812, 0, 0, 589813, 0, 0, 589814, 0, 0, 589815, 0, 0, 589816, 0, 0, 589817, 0, 0, 589818, 0, 0, 589819, 0, 0, 589820, 0, 0, 589821, 0, 0, 655340, 0, 0, 655341, 0, 0, 655342, 0, 0, 655343, 0, 0, 655344, 0, 0, 655345, 0, 0, 655346, 0, 0, 655347, 0, 0, 655348, 0, 0, 655349, 0, 0, 655350, 0, 0, 655351, 0, 0, 655352, 0, 0, 655353, 0, 0, 655354, 0, 0, 655355, 0, 0, 655356, 536870912, 0, 655357, 0, 0, 720876, 0, 0, 720877, 0, 0, 720878, 0, 0, 720879, 0, 0, 720880, 0, 0, 720881, 0, 0, 720882, 0, 0, 720883, 0, 0, 720884, 0, 0, 720885, 0, 0, 720886, 0, 0, 720887, 0, 0, 720888, 0, 0, 720889, 0, 0, 720890, 0, 0, 720891, 0, 0, 720892, 536870912, 0, 720893, 0, 0, 786412, 0, 0, 786413, 0, 0, 786414, 0, 0, 786415, 0, 0, 786416, 0, 0, 786417, 0, 0, 786418, 0, 0, 786419, 0, 0, 786420, 0, 0, 786421, 0, 0, 786422, 0, 0, 786423, 0, 0, 786424, 0, 0, 786425, 0, 0, 786426, 0, 0, 786427, 0, 0, 786428, 0, 0, 786429, 0, 0 )
 
 [node name="navigation" type="Node2D" parent="."]
+visible = false
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="navigation"]
 position = Vector2( 41, -218 )
@@ -1175,6 +1189,24 @@ collision_mask = 8
 position = Vector2( 0, 20.5 )
 shape = SubResource( 45 )
 
+[node name="interacaoBanheiro" type="Node2D" parent="."]
+visible = false
+position = Vector2( -589, 138 )
+script = ExtResource( 49 )
+
+[node name="Area2D" type="Area2D" parent="interacaoBanheiro"]
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interacaoBanheiro/Area2D"]
+position = Vector2( 77, 148 )
+shape = SubResource( 46 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="interacaoBanheiro/Area2D"]
+position = Vector2( 428.5, 146 )
+shape = SubResource( 47 )
+
+[node name="dialogo" parent="interacaoBanheiro" instance=ExtResource( 5 )]
+
 [node name="godrays" type="Node2D" parent="."]
 
 [node name="godray4" type="Sprite" parent="godrays"]
@@ -1240,10 +1272,6 @@ material = SubResource( 15 )
 position = Vector2( 654, -689 )
 scale = Vector2( 1, 1.23438 )
 texture = ExtResource( 15 )
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 11 )
-bus = "STAGE1"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false

@@ -15,6 +15,8 @@ onready var arrows = $Arrows
 onready var target = null
 onready var quest = $Quest
 onready var fila = $refeitorioFila
+onready var cur_music = $musicas/padrao
+onready var musics = $musicas
 
 var musica_pause = 0
 
@@ -36,7 +38,7 @@ func _ready():
 		new_npc.class_cluster = clusters.get_child(i%clus_q)
 		
 		npcs.add_child(new_npc)
-	get_node("AudioStreamPlayer").play()
+	cur_music.play()
 	for i in range(npcs.get_child_count()):
 		if npcs.get_child(i).class_cluster != null:
 			npcs.get_child(i).wander_state = false
@@ -174,9 +176,8 @@ func _on_introTimer_timeout():
 
 
 func _on_GigaChad_easter_start():
-	musica_pause = get_node("AudioStreamPlayer").get_playback_position()
-	get_node("AudioStreamPlayer").stop()
-
+	musica_pause = cur_music.get_playback_position()
+	cur_music.stop()
 
 func _on_GigaChad_easter_end():
-	get_node("AudioStreamPlayer").play(musica_pause)
+	cur_music.play(musica_pause)
