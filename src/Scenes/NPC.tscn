@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://spriteFrames/spriteframe1.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://spriteFrames/spriteframe6.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Scripts/NPC.gd" type="Script" id=2]
 [ext_resource path="res://Shaders/npc_cust.tres" type="Material" id=3]
 [ext_resource path="res://Scenes/dialogo.tscn" type="PackedScene" id=4]
