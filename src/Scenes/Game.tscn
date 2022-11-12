@@ -451,6 +451,7 @@ scale = Vector2( 1, 1.23438 )
 texture = ExtResource( 15 )
 
 [node name="godray6" type="Sprite" parent="godrays"]
+visible = false
 material = SubResource( 16 )
 position = Vector2( 752, -449 )
 rotation = 1.5708
