@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=2]
+[gd_scene load_steps=84 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=2]
@@ -43,11 +43,16 @@
 [ext_resource path="res://Tilesets/cabinesBanheiro.tres" type="TileSet" id=41]
 [ext_resource path="res://Sprites/scenery/Kit do banheiro e chão.png" type="Texture" id=42]
 [ext_resource path="res://Scenes/banco.tscn" type="PackedScene" id=43]
+[ext_resource path="res://Sprites/scenery/estantes novas.png" type="Texture" id=44]
+[ext_resource path="res://Scripts/Estante.gd" type="Script" id=45]
+[ext_resource path="res://Shaders/grayscale.tres" type="Material" id=46]
+[ext_resource path="res://Scripts/GigaChad.gd" type="Script" id=47]
+[ext_resource path="res://Sounds/easter/JIGAXADI OFICIAL.wav" type="AudioStream" id=48]
 
 [sub_resource type="NavigationPolygon" id=1]
-vertices = PoolVector2Array( -656, -4, 739, -4, 738, 266, 154, 269, 105, 818, 105, 895, -18, 895, -18, 820, -449, 303, -656, 301, -411, 289, -434, 303, -69, 303, 150.471, 816.849, -74, 816, -338, 303, -355, 303, -381, 290 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 6, 7 ), PoolIntArray( 8, 9, 0, 10, 11 ), PoolIntArray( 12, 3, 13, 4, 7, 14 ), PoolIntArray( 0, 3, 12, 15 ), PoolIntArray( 0, 15, 16, 17 ), PoolIntArray( 0, 17, 10 ) ]
-outlines = [ PoolVector2Array( -656, -4, 739, -4, 738, 266, 154, 269, 150.471, 816.849, 105, 818, 105, 895, -18, 895, -18, 820, -74, 816, -69, 303, -338, 303, -355, 303, -381, 290, -411, 289, -434, 303, -449, 303, -656, 301 ) ]
+vertices = PoolVector2Array( 722, 615, 724, 658, 151.476, 660.896, 151.81, 608.968, -656, -4, 739, -4, 738, 266, 154, 269, 105, 818, 105, 895, -18, 895, -18, 820, -449, 303, -656, 301, -411, 289, -434, 303, -69, 303, 150.471, 816.849, -74, 816, -338, 303, -355, 303, -381, 290 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 6, 7 ), PoolIntArray( 8, 9, 10, 11 ), PoolIntArray( 12, 13, 4, 14, 15 ), PoolIntArray( 16, 3, 2, 17, 8, 11, 18 ), PoolIntArray( 7, 3, 16 ), PoolIntArray( 4, 7, 16, 19 ), PoolIntArray( 4, 19, 20, 21 ), PoolIntArray( 4, 21, 14 ) ]
+outlines = [ PoolVector2Array( -656, -4, 739, -4, 738, 266, 154, 269, 151.81, 608.968, 722, 615, 724, 658, 151.476, 660.896, 150.471, 816.849, 105, 818, 105, 895, -18, 895, -18, 820, -74, 816, -69, 303, -338, 303, -355, 303, -381, 290, -411, 289, -434, 303, -449, 303, -656, 301 ) ]
 
 [sub_resource type="NavigationPolygon" id=37]
 vertices = PoolVector2Array( 383, 154, 614, 147, 613, 175, 526, 173, 414, 259, 383, 237, 522, 252, 588, 250, 585, 362, 560, 398, 415, 343, -397, 393, -502, 435, -863, 434, -858, 311, -493, 312, -396, 355, 85, 393, 85, 440, -9, 441, -8, 395, -4, 347, 76, 349, -4, 217, 74, 218 )
@@ -90,14 +95,14 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 6, 7 ), PoolIntArra
 outlines = [ PoolVector2Array( 658, 606, 657, 634, 652, 710, 632, 709, 632, 734, 761, 728, 786, 690, 787, 613 ) ]
 
 [sub_resource type="NavigationPolygon" id=39]
-vertices = PoolVector2Array( -80, 300, -78, 345, -335, 344, -297, 301, -298, 218, -335, 137, -312.75, 137.09, -296.998, 137.154, -88, 138, -90, 219, -298, 85, -312, 85 )
+vertices = PoolVector2Array( -80, 300, -78, 345, -326, 343, -297, 301, -298, 218, -327, 138, -312.75, 137.09, -296.998, 137.154, -88, 138, -90, 219, -298, 85, -312, 85 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 3, 2, 5, 6 ), PoolIntArray( 7, 8, 9, 4, 6 ), PoolIntArray( 10, 7, 6, 11 ) ]
-outlines = [ PoolVector2Array( -335, 137, -312.75, 137.09, -312, 85, -298, 85, -296.998, 137.154, -88, 138, -90, 219, -298, 218, -297, 301, -80, 300, -78, 345, -335, 344 ) ]
+outlines = [ PoolVector2Array( -327, 138, -312.75, 137.09, -312, 85, -298, 85, -296.998, 137.154, -88, 138, -90, 219, -298, 218, -297, 301, -80, 300, -78, 345, -326, 343 ) ]
 
 [sub_resource type="NavigationPolygon" id=40]
-vertices = PoolVector2Array( -395, 137, -373, 136, -372, 345, -407, 302, -406, 214, -407.025, 136, -408, 85, -395, 85, -611, 345, -611, 300, -608, 214, -608, 136 )
-polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 5, 6, 7, 0 ), PoolIntArray( 8, 9, 3, 2 ), PoolIntArray( 5, 0, 4, 10, 11 ) ]
-outlines = [ PoolVector2Array( -608, 136, -407.025, 136, -408, 85, -395, 85, -395, 137, -373, 136, -372, 345, -611, 345, -611, 300, -407, 302, -406, 214, -608, 214 ) ]
+vertices = PoolVector2Array( -407.025, 136, -408, 85, -395, 85, -395, 137, -611, 345, -611, 300, -407, 302, -378, 345, -377, 137, -406, 214, -608, 214, -608, 136 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 6, 7 ), PoolIntArray( 8, 7, 6, 9, 3 ), PoolIntArray( 0, 3, 9, 10, 11 ) ]
+outlines = [ PoolVector2Array( -608, 136, -407.025, 136, -408, 85, -395, 85, -395, 137, -377, 137, -378, 345, -611, 345, -611, 300, -407, 302, -406, 214, -608, 214 ) ]
 
 [sub_resource type="Shader" id=18]
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
@@ -295,6 +300,15 @@ shader_param/offset = 0.0
 
 [sub_resource type="RectangleShape2D" id=17]
 extents = Vector2( 56.5, 34 )
+
+[sub_resource type="RectangleShape2D" id=43]
+extents = Vector2( 80, 16.25 )
+
+[sub_resource type="RectangleShape2D" id=44]
+extents = Vector2( 84, 23.5 )
+
+[sub_resource type="RectangleShape2D" id=45]
+extents = Vector2( 12, 10.5 )
 
 [sub_resource type="Shader" id=12]
 resource_local_to_scene = true
@@ -604,7 +618,7 @@ navigation_layers = 4
 [node name="mesaEmpurr" parent="YSort" instance=ExtResource( 37 )]
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 725, -467 )
+position = Vector2( 314, 169 )
 
 [node name="bancos" type="YSort" parent="YSort"]
 
@@ -898,7 +912,7 @@ tile_set = ExtResource( 23 )
 cell_size = Vector2( 32, 32 )
 cell_y_sort = true
 format = 1
-tile_data = PoolIntArray( 196622, 4, 0, 196623, 3, 0, 196624, 3, 0, 196625, 3, 0, 196626, 5, 0, 196628, 6, 0, 393231, 0, 0, 393232, 536870912, 0, 393233, 536870912, 0 )
+tile_data = PoolIntArray( 196628, 6, 0, 393231, 0, 0, 393232, 536870912, 0, 393233, 536870912, 0 )
 
 [node name="TileParedeBanheiro" type="TileMap" parent="YSort"]
 tile_set = ExtResource( 39 )
@@ -971,6 +985,7 @@ position = Vector2( -145, -240 )
 position = Vector2( 244, -240 )
 
 [node name="TileMap2" type="TileMap" parent="YSort"]
+visible = false
 tile_set = ExtResource( 19 )
 cell_size = Vector2( 32, 32 )
 cell_y_sort = true
@@ -1090,6 +1105,76 @@ texture = ExtResource( 42 )
 hframes = 6
 frame = 2
 
+[node name="propsDiretoria" type="YSort" parent="YSort"]
+
+[node name="Estante" type="StaticBody2D" parent="YSort/propsDiretoria"]
+position = Vector2( 541, 115 )
+script = ExtResource( 45 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="YSort/propsDiretoria/Estante"]
+position = Vector2( -77, -3 )
+texture = ExtResource( 44 )
+hframes = 4
+frame = 1
+
+[node name="Sprite2" type="Sprite" parent="YSort/propsDiretoria/Estante"]
+position = Vector2( -45, -3 )
+texture = ExtResource( 44 )
+hframes = 4
+
+[node name="Sprite3" type="Sprite" parent="YSort/propsDiretoria/Estante"]
+position = Vector2( -13, -3 )
+texture = ExtResource( 44 )
+hframes = 4
+
+[node name="Sprite4" type="Sprite" parent="YSort/propsDiretoria/Estante"]
+position = Vector2( 19, -3 )
+texture = ExtResource( 44 )
+hframes = 4
+
+[node name="Sprite5" type="Sprite" parent="YSort/propsDiretoria/Estante"]
+position = Vector2( 51, -3 )
+texture = ExtResource( 44 )
+hframes = 4
+frame = 2
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="YSort/propsDiretoria/Estante"]
+visible = false
+position = Vector2( -13, -2.75 )
+shape = SubResource( 43 )
+
+[node name="Area2D" type="Area2D" parent="YSort/propsDiretoria/Estante"]
+visible = false
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/propsDiretoria/Estante/Area2D"]
+position = Vector2( -13, 13.5 )
+shape = SubResource( 44 )
+
+[node name="dialogo" parent="YSort/propsDiretoria/Estante" instance=ExtResource( 5 )]
+
+[node name="GigaChad" type="Node2D" parent="YSort/propsDiretoria"]
+position = Vector2( 385, 80 )
+script = ExtResource( 47 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="YSort/propsDiretoria/GigaChad"]
+stream = ExtResource( 48 )
+bus = "Music"
+
+[node name="GigaChaddEasterEgg" type="Sprite" parent="YSort/propsDiretoria/GigaChad"]
+material = ExtResource( 46 )
+texture = ExtResource( 25 )
+
+[node name="Area2D" type="Area2D" parent="YSort/propsDiretoria/GigaChad"]
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/propsDiretoria/GigaChad/Area2D"]
+position = Vector2( 0, 20.5 )
+shape = SubResource( 45 )
+
 [node name="godrays" type="Node2D" parent="."]
 
 [node name="godray4" type="Sprite" parent="godrays"]
@@ -1188,10 +1273,6 @@ position = Vector2( 119, -465 )
 
 [node name="zelador" parent="." instance=ExtResource( 22 )]
 position = Vector2( 152, -241 )
-
-[node name="GigaChaddEasterEgg" type="Sprite" parent="."]
-position = Vector2( 364, 82 )
-texture = ExtResource( 25 )
 
 [node name="Professora" parent="." instance=ExtResource( 26 )]
 position = Vector2( 170, -405 )
@@ -1354,6 +1435,9 @@ color = Color( 0.623529, 0.619608, 0.670588, 1 )
 [connection signal="interval_signal" from="clock" to="." method="_on_clock_interval_signal"]
 [connection signal="lunch_signal" from="clock" to="." method="_on_clock_lunch_signal"]
 [connection signal="ended" from="YSort/diretor/dialogo" to="YSort/diretor" method="_on_dialogo_ended"]
+[connection signal="easter_end" from="YSort/propsDiretoria/GigaChad" to="." method="_on_GigaChad_easter_end"]
+[connection signal="easter_start" from="YSort/propsDiretoria/GigaChad" to="." method="_on_GigaChad_easter_start"]
+[connection signal="finished" from="YSort/propsDiretoria/GigaChad/AudioStreamPlayer2D" to="YSort/propsDiretoria/GigaChad" method="_on_AudioStreamPlayer2D_finished"]
 [connection signal="pressed" from="CanvasLayer/SubMenu/Button" to="." method="_on_Button_pressed"]
 
 [editable path="YSort/Portas/PortaV4"]

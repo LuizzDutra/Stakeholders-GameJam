@@ -16,6 +16,8 @@ onready var target = null
 onready var quest = $Quest
 onready var fila = $refeitorioFila
 
+var musica_pause = 0
+
 var dialogue_intro = []
 
 
@@ -169,3 +171,12 @@ func _on_Button_pressed():
 
 func _on_introTimer_timeout():
 	introDialogue.play_dialog(dialogue_intro)
+
+
+func _on_GigaChad_easter_start():
+	musica_pause = get_node("AudioStreamPlayer").get_playback_position()
+	get_node("AudioStreamPlayer").stop()
+
+
+func _on_GigaChad_easter_end():
+	get_node("AudioStreamPlayer").play(musica_pause)
