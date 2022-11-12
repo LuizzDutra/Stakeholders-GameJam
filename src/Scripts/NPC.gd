@@ -20,6 +20,9 @@ var wander_delay = 8
 var wander_range = 300
 var delay_rand = 3
 
+var last_dir = null
+var dir_change_count = 0
+
 var interact_id = "npc"
 
 var dialogo_npc
@@ -68,7 +71,17 @@ func _physics_process(delta):
 			sprite.scale.x = cur_cluster.facing
 	
 	if moving:
+		last_dir = dir
 		dir = position.direction_to(nav_agent.get_next_location())
+		
+		if last_dir != null:
+			var res_angle = rad2deg(dir.angle()) - rad2deg(last_dir.angle())
+			if res_angle > 150 and res_angle < 210:
+				dir_change_count += 1
+				if dir_change_count >= 2:
+					moving = false
+					dir_change_count = 0
+		
 		if dir.x != 0:
 			if dir.x < 0:
 				sprite.scale.x = -1
@@ -90,6 +103,8 @@ func set_path_location(location):
 
 func _on_NavigationAgent2D_navigation_finished():
 	moving = false
+	dir_change_count = 0
+	last_dir = null
 
 func wander_start_timer():
 	wander_timer.wait_time = rand_range(wander_delay-delay_rand, wander_delay+delay_rand)

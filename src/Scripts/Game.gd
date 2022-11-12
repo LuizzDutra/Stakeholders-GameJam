@@ -65,7 +65,7 @@ func _process(_delta):
 			sub_menu.visible = false
 	
 	
-	#var target = null
+	target = get_node("Professora")
 	if target != null:
 		arrows.get_node("pivot").global_position = player.global_position
 		var rot = target.global_position - arrows.get_node("pivot").global_position

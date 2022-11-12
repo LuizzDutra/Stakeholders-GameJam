@@ -69,6 +69,7 @@ shape = SubResource( 2 )
 [node name="dialogo" parent="Area2D" instance=ExtResource( 4 )]
 
 [node name="WanderTimer" type="Timer" parent="."]
+wait_time = 10.0
 one_shot = true
 
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_NavigationAgent2D_navigation_finished"]
