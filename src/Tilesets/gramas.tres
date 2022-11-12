@@ -3,7 +3,6 @@
 [ext_resource path="res://Sprites/scenery/Arbustos e chão de grama.png" type="Texture" id=1]
 
 [sub_resource type="StreamTexture" id=1]
-load_path = "res://.import/chão do patio.png-de686889a07c3b6b484f4d68c9adb87b.stex"
 
 [resource]
 0/name = "Arbustos e chão de grama.png 0"

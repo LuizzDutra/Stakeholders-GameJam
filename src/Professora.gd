@@ -4,11 +4,12 @@ var interact_id = "quest_npc"
 onready var hitbox_barreira = $barreira/CollisionShape2D
 var dialog_state
 var porta_interacao = true
-onready var quest = get_node("../Quest")
-onready var self_diretor = get_node("../YSort/diretor")
-onready var jogo = get_node("../")
-onready var task_professora_2 = get_node("../YSort/task_professora_2")
+onready var quest = get_node("../../Quest")
+onready var self_diretor = get_node("../diretor")
+onready var jogo = get_node("../../")
+onready var task_professora_2 = get_node("../task_professora_2")
 onready var pergunta = $pergunta
+onready var self_luiza = get_node("../unity")
 var descricao_quest = "ajudar a organizar as mesas da sala"
 
 
@@ -16,38 +17,44 @@ func _ready():
 	dialog_state = 0
 	hitbox_barreira.disabled = false
 var dialog_base_professora = [
-	{"name":"Professora","text":"Espera um pouco ai garoto"},
-	{"name":"Professora","text":"Resolva o exercicío que esta no quadro"}
+	{"name":"Professora","text":"Já que você não prestou atenção na aula, pois estava dormindo"},
+	{"name":"Professora","text":"resolva esta questão: “Quem pintou o quadro Mona Lisa?”."}
 ]
 
 var dialog_missao_concluida = [
-	{"name":"Professora","text":"Muito bem meu anjo"},
-	{"name":"Professora","text":"Agora vai para sala do diretor"}
+	{"name":"Professora","text":"Você sempre foi  muito desatento."},
+	{"name":"Professora","text":"Busque melhorar sua conduta, o diretor pode lhe ajudar com isso."}
 ]
 
 var dialog_prof_sim = [
-	{"name":"Professora","text":"Muito obrigado fofo"},
-	{"name":"Professora","text":"Organizar ai pfv"}
+	{"name":"Você","text":"Com certeza, pode contar com minha ajuda!!!"},
+	{"name":"Professora","text":"Muito bem."},
+	{"name":"Professora","text":"Coloque cada cadeira dentro do circulos azul"},
+	{"name":"Professora","text":"vamos começar ?"}
 ]
 
 var dialog_prof_nao = [
-	{"name":"Professora","text":"ok"}
+	{"name":"Você","text":"Oxe! vou não, preciso jogar bola"},
+	{"name":"Professora","text":"Não sei o que faço com você"},
+	{"name":"Professora","text":"Francamente..."}
 ]
 
 var dialog_prof_start = [
-	{"name":"Professora","text":"......"}
+	{"name":"Professora","text":"As mesas não estão organizadas!!!"}
 ]
 
 var dialog_prof_missao_concluida_2 = [
-	{"name":"Professora","text":"obrigado"}
+	{"name":"Professora","text":"obrigado."},
+	{"name":"Professora","text":"Você está melhorando sua conduta de forma extraordinária !!!"}
 ]
 
 var dialog_prof_pergunta = [
-	{"name":"Professora","text":"Me ajudar pfv"}
+	{"name":"Professora","text":"Você poderia me ajudar colocando as cadeiras no lugar? "}
 ]
 
 var dialog_prof_off = [
-	{"name":"Professora","text":"Me ajudar pfv"}
+	{"name":"Professora","text":"Você sabia que menos de 5% do dos oceanos foi explorado ?"},
+	{"name":"Professora","text":"Interessante não é ?"}
 ]
 
 func interact():
@@ -111,15 +118,19 @@ func _on_dialogo_ended():
 		jogo.target = null
 	
 	if dialog_state == 6:
-		task_professora_2.queue_free()
 		quest.kill_quest(descricao_quest)
-		get_tree().get_root().get_node("Game").score += 250
-		dialog_state = 7
 
+		jogo.target = self_luiza
+		quest.add_quest(self_luiza.quest_descricao)
+		self_luiza.dialog_state = 0
+    
 func _on_pergunta_sim():
 	dialog_state = 4
 
 
 func _on_pergunta_nao():
 	dialog_state = 3
-	quest.failed_quest(descricao_quest)
+	quest.quest_failed(descricao_quest)
+	jogo.target = self_luiza
+	self_luiza.dialog_state = 0
+	quest.add_quest(self_luiza.quest_descricao)

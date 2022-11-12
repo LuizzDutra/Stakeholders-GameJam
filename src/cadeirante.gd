@@ -2,12 +2,13 @@ extends KinematicBody2D
 
 onready var hitbox_npc = $Area2D
 onready var quest = get_node("../../Quest")
-onready var dialog_state = 0
-var quest_descricao = "Pegar o livro de matématica de marcos no armário."
+onready var dialog_state = -1
+var quest_descricao = "Pegar o livro de matématica do marcos"
 var interact_id = "quest_npc"
 onready var jogo = get_node("../..")
 onready var self_armario = get_node("../armario_azul")
 onready var pergunta = $pergunta
+onready var self_pedro = get_node("../pedro")
 
 var cadeirante_off_dialog = [
 	{"name":"Marcos","text":"zzzzzzzz"}
@@ -72,11 +73,11 @@ func _on_dialogo_ended():
 	
 	if dialog_state == 1:
 		dialog_state = 3
-		quest.add_quest(quest_descricao)
 		jogo.target = self_armario
 	if dialog_state == 4:
 		quest.kill_quest(quest_descricao)
-
+		jogo.target = self_pedro
+		quest.add_quest(self_pedro.descr_quest)
 
 func _on_pergunta_sim():
 	dialog_state = 1
@@ -85,3 +86,6 @@ func _on_pergunta_sim():
 func _on_pergunta_nao():
 	dialog_state = 2
 	quest.quest_failed(quest_descricao)
+	jogo.target = self_pedro
+	self_pedro.dialog_state = 0
+	quest.add_quest(self_pedro.descr_quest)

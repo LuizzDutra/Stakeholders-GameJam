@@ -4,7 +4,7 @@ var interact_id = "quest_npc"
 onready var jogo = get_node("../..")
 onready var self_armario = get_node("../armario")
 onready var pergunta = $pergunta
-
+onready var self_cadeirante = get_node("../cadeirante")
 
 var dialog_off_luiza = [
 	{"name":"Luiza","text":"Olá, meu nome é Luiza"},
@@ -37,7 +37,7 @@ var dialog_npc_spc_missao_start = [
 	{"name":"Luiza","text":"Eu não sei oq fazer sem eles..."}
 ]
 
-var dialog_state = 0
+var dialog_state = -1
 onready var quest = get_node("../../Quest")
 var quest_descricao = "Pegar o óculos da Luiza"
 
@@ -84,11 +84,12 @@ func _on_dialogo_ended():
 	
 	if dialog_state == 1:
 		jogo.target = self_armario
-		quest.add_quest(quest_descricao)
 		dialog_state = 3
 	if dialog_state == 4:
 		quest.kill_quest(quest_descricao)
-
+		jogo.target = self_cadeirante
+		self_cadeirante.dialog_state = 0
+		quest.add_quest(self_cadeirante.quest_descricao)
 
 func _on_pergunta_sim():
 	dialog_state = 1
@@ -97,3 +98,6 @@ func _on_pergunta_sim():
 func _on_pergunta_nao():
 	dialog_state = 2
 	quest.quest_failed(quest_descricao)
+	jogo.target = self_cadeirante
+	self_cadeirante.dialog_state = 0
+	quest.add_quest(self_cadeirante.quest_descricao)

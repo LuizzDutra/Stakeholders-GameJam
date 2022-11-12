@@ -2,10 +2,10 @@ extends StaticBody2D
 
 onready var hitbox_zelador = $Area2D
 onready var zelador_task = $task_zelador
-onready var quest = get_node("../Quest")
+onready var quest = get_node("../../Quest")
 onready var pergunta = $pergunta
 onready var self_professora = get_node("../Professora")
-onready var jogo = get_node("../")
+onready var jogo = get_node("../..")
 var interact_id = "quest_npc"
 var dialog_state
 var descr_quest = "Ajudar o zelador a recolhe o lixo"
@@ -15,25 +15,27 @@ var zelador_task_off = [
 	{"name":"Zelador","text":"O dia está muito bonito não é verdade ?"}
 ]
 var zelador_dialogo_pergunta = [
-	{"name":"Zelador","text":"eae meu filho como ocê tá ?"},
-	{"name":"Zelador","text":"poderia fazer um favor para o seu velho ?"},
-	{"name":"Zelador","text":"eu deixei 5 lixos pela escola."},
-	{"name":"Zelador","text":"recolhe pra min minha criança"}
+	{"name":"Zelador","text":"Hoje estou com uma dor nas costas…"},
+	{"name":"Zelador","text":"Você poderia me ajudar coletando os lixos das salas? "},
 ]
 
 var zelador_dialogo_sim = [
-	{"name":"Zelador","text":"Muito obrigado meu jovem"},
-	{"name":"Zelador","text":"Tudo oq vc tem que fazer é o joga o lixo no lixeiro"}
+	{"name":"Você","text":"Posso sim, meu brother."},
+	{"name":"Zelador","text":"Muito obrigado!!!"},
+	{"name":"Zelador","text":"Preste bastante atenção"},
+	{"name":"Zelador","text":"Tudo oq vc tem que fazer é o joga o lixo no lixeiro"},
+	{"name":"Zelador","text":"Você tem que fazer isso antes que o tempo limite acabe"},
+	{"name":"Zelador","text":"Você está preparado ?"}
 ]
 
 var zelado_dialogo_missao_concluida = [
-	{"name":"Zelador","text":"Parábens ocê é muito rapido!!!"},
-	{"name":"zelador","text":"Parábens ocê é o filho do flash kkkk"}
+	{"name":"Zelador","text":"Muito obrigado!!!"},
+	{"name":"zelador","text":"Estou te devendo uma."}
 ]
 
 var zelador_dialogo_nao = [
-	{"name":"Zelador","text":"Vc não quer me ajudar ?"},
-	{"name":"Zelador","text":"Ok tudo bem..."}
+	{"name":"Você","text":"Estou afim não velho"},
+	{"name":"Zelador","text":"Ok.tudo bem..."}
 ]
 
 var dialog_start_zelador = [
@@ -86,6 +88,7 @@ func _on_dialogo_ended():
 	if dialog_state == 1:
 		zelador_task.iniciar_task()
 		dialog_state = 3
+		jogo.target = null
 
 func _on_pergunta_sim():
 	dialog_state = 1

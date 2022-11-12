@@ -1,7 +1,7 @@
 extends Node2D
 
 onready var grupo_lixo = $grupo_lixo
-onready var player = get_node("../../YSort/Player")
+onready var player = get_node("../../Player")
 onready var zelado = get_node("../")
 onready var tempo = $Timer
 onready var texto = $CanvasLayer/Label

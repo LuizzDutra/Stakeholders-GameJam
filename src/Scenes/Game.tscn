@@ -434,6 +434,26 @@ position = Vector2( 201, -492 )
 
 [node name="task_professora_2" parent="YSort" instance=ExtResource( 39 )]
 
+[node name="lixeiro" type="YSort" parent="YSort"]
+
+[node name="lixeiro" parent="YSort/lixeiro" instance=ExtResource( 21 )]
+position = Vector2( 204, -241 )
+
+[node name="lixeiro2" parent="YSort/lixeiro" instance=ExtResource( 21 )]
+position = Vector2( 191, 137 )
+
+[node name="lixeiro3" parent="YSort/lixeiro" instance=ExtResource( 21 )]
+position = Vector2( 119, -465 )
+
+[node name="zelador" parent="YSort" instance=ExtResource( 22 )]
+position = Vector2( 152, -241 )
+
+[node name="Professora" parent="YSort" instance=ExtResource( 26 )]
+position = Vector2( 170, -405 )
+
+[node name="pedro" parent="YSort" instance=ExtResource( 28 )]
+position = Vector2( 201, 508 )
+
 [node name="godrays" type="Node2D" parent="."]
 
 [node name="godray4" type="Sprite" parent="godrays"]
@@ -510,24 +530,6 @@ margin_bottom = 322.0
 text = " Menu Principal"
 
 [node name="Quest" parent="." instance=ExtResource( 16 )]
-
-[node name="lixeiro" parent="." instance=ExtResource( 21 )]
-position = Vector2( 204, -241 )
-
-[node name="lixeiro2" parent="." instance=ExtResource( 21 )]
-position = Vector2( 191, 137 )
-
-[node name="lixeiro3" parent="." instance=ExtResource( 21 )]
-position = Vector2( 119, -465 )
-
-[node name="zelador" parent="." instance=ExtResource( 22 )]
-position = Vector2( 152, -241 )
-
-[node name="Professora" parent="." instance=ExtResource( 26 )]
-position = Vector2( 170, -405 )
-
-[node name="pedro" parent="." instance=ExtResource( 28 )]
-position = Vector2( -32, 472 )
 
 [node name="Oclussion" type="Node2D" parent="."]
 script = ExtResource( 34 )
