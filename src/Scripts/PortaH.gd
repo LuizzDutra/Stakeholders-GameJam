@@ -7,6 +7,7 @@ onready var door = $ColDoor
 onready var area = $Area2D
 onready var sprite =$Sprite
 onready var som = $somPorta
+onready var som_fechar = $somPortaFechar
 
 func _process(delta):
 	if len(area.get_overlapping_areas()) > 0:
@@ -17,7 +18,7 @@ func _process(delta):
 		door.set_deferred("disabled", true)
 	else:
 		if open:
-			som.play()
+			som_fechar.play()
 		open = false
 		sprite.frame = 0
 		door.set_deferred("disabled", false)

@@ -5,6 +5,7 @@ onready var player = get_node("../../Player")
 onready var zelado = get_node("../")
 onready var tempo = $Timer
 onready var texto = $CanvasLayer/Label
+onready var audio = $AudioStreamPlayer
 var random = RandomNumberGenerator.new()
 signal task_concluida
 var pos_padrao_1 = [
@@ -41,6 +42,7 @@ func monitorar_bola():
 	for r in grupo_lixo.get_children():
 		
 		if len(r.hitbox_lixo.get_overlapping_areas()) > 0:
+			audio.play()
 			r.queue_free()
 			player.cont_lixo += 1
 
