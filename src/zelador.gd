@@ -4,6 +4,8 @@ onready var hitbox_zelador = $Area2D
 onready var zelador_task = $task_zelador
 onready var quest = get_node("../Quest")
 onready var pergunta = $pergunta
+onready var self_professora = get_node("../Professora")
+onready var jogo = get_node("../game")
 var interact_id = "quest_npc"
 var dialog_state
 var descr_quest = "Ajudar o zelador a recolhe o lixo"
@@ -82,3 +84,7 @@ func _on_pergunta_sim():
 func _on_pergunta_nao():
 	dialog_state = 2
 	quest.quest_failed(descr_quest)
+	#jogo.target = self_professora não estou conseguindo colocar a seta na professora
+	self_professora.task_professora_2.clear_mesa()
+	self_professora.task_professora_2.maker_mesa(-289)
+	self_professora.dialog_state = 2
