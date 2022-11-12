@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/banco.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/banco.gd" type="Script" id=2]
+
+[node name="bancos" type="YSort"]
+
+[node name="banco" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( -537, 746 )
+script = ExtResource( 2 )
+
+[node name="banco2" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( -734, 746 )
+script = ExtResource( 2 )
+
+[node name="banco3" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( -538, 926 )
+rotation = 3.14159
+script = ExtResource( 2 )
+
+[node name="banco4" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( -735, 926 )
+rotation = 3.14159
+script = ExtResource( 2 )
+
+[node name="banco5" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 524, 596 )
+script = ExtResource( 2 )
+
+[node name="banco6" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 696, 595 )
+script = ExtResource( 2 )
