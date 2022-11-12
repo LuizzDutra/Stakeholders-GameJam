@@ -78,6 +78,8 @@ func find_and_use_dialogue():
 			return
 		5:
 			dialog_player.play_dialog(dialog_missao_concluida)
+		6:
+			dialog_player.play_dialog(dialog_missao_concluida)
 
 func _on_dialogo_ended():
 	
@@ -88,6 +90,8 @@ func _on_dialogo_ended():
 	if dialog_state == 5 or dialog_state == -2:
 		if dialog_state == 5:
 			quest.kill_quest(descr_quest)
+			dialog_state = 6
+			get_tree().get_root().get_node("Game").score += 250
 		return
 	task_pedro.show_janela_task()
 

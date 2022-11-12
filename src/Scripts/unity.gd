@@ -74,6 +74,9 @@ func find_and_use_dialogue():
 		4:
 			dialogue_player.play_dialog(dialog_npc_spc_missao_concluida)
 			return
+		5:
+			dialogue_player.play_dialog(dialog_npc_spc_missao_concluida)
+			return
 
 func _on_missao_concluida():
 	dialog_state = 4
@@ -90,6 +93,8 @@ func _on_dialogo_ended():
 		jogo.target = self_cadeirante
 		self_cadeirante.dialog_state = 0
 		quest.add_quest(self_cadeirante.quest_descricao)
+		get_tree().get_root().get_node("Game").score += 250
+		dialog_state = 5
 
 func _on_pergunta_sim():
 	dialog_state = 1

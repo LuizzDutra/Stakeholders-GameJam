@@ -123,7 +123,9 @@ func _on_dialogo_ended():
 		jogo.target = self_luiza
 		quest.add_quest(self_luiza.quest_descricao)
 		self_luiza.dialog_state = 0
-    
+		get_tree().get_root().get_node("Game").score += 250
+		dialog_state = 7
+	
 func _on_pergunta_sim():
 	dialog_state = 4
 
