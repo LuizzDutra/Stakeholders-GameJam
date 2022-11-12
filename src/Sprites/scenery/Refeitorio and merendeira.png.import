@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/chão do patio.png-de686889a07c3b6b484f4d68c9adb87b.stex"
+path="res://.import/Refeitorio and merendeira.png-80484f2df565d560243b7f66e5a8fa21.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/scenery/chão do patio.png"
-dest_files=[ "res://.import/chão do patio.png-de686889a07c3b6b484f4d68c9adb87b.stex" ]
+source_file="res://Sprites/scenery/Refeitorio and merendeira.png"
+dest_files=[ "res://.import/Refeitorio and merendeira.png-80484f2df565d560243b7f66e5a8fa21.stex" ]
 
 [params]
 

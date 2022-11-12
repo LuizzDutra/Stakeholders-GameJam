@@ -57,9 +57,10 @@ func find_and_use_dialogue():
 	
 	var dialogue_play = get_node("dialogo")
 	
-	if task_professora_2.is_cadeiras_organizadas():
-		task_professora_2.circle_blue_clear()
-		dialog_state = 6
+	if task_professora_2 != null:
+		if task_professora_2.is_cadeiras_organizadas():
+			task_professora_2.circle_blue_clear()
+			dialog_state = 6
 		
 	match dialog_state:
 		
