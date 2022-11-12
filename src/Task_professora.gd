@@ -4,7 +4,7 @@ extends Node2D
 var interact_id = "quest"
 onready var quadro = $CanvasLayer/NinePatchRect
 onready var input_res = $CanvasLayer/NinePatchRect/LineEdit
-onready var professora = get_node("../../Professora")
+onready var professora = get_node("../Professora")
 onready var player = get_node("../YSort/Player")
 
 func _ready():

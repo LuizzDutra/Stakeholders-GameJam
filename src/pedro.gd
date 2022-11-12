@@ -4,7 +4,8 @@ onready var task_pedro = $task_pedro
 onready var pergunta = $pergunta
 var interact_id = "quest_npc"
 var dialog_state
-
+var descr_quest = "Jogar pedra,papel e tesoura"
+onready var quest = get_node("../../Quest")
 
 var dialog_off_pedro = [
 	{"name":"Pedro","text":"O diretor é uma pessoa muito sinistra"},
@@ -43,7 +44,7 @@ var dialog_nao = [
 ]
 
 func _ready():
-	dialog_state = 0
+	dialog_state = -1
 	
 func interact():
 	if task_pedro.janela_task.visible == true:
@@ -85,6 +86,8 @@ func _on_dialogo_ended():
 	if not dialog_state != -1 or dialog_state == 0:
 		return
 	if dialog_state == 5 or dialog_state == -2:
+		if dialog_state == 5:
+			quest.kill_quest(descr_quest)
 		return
 	task_pedro.show_janela_task()
 
@@ -94,3 +97,4 @@ func _on_pergunta_sim():
 
 func _on_pergunta_nao():
 	dialog_state = -2
+	quest.quest_failed(descr_quest)

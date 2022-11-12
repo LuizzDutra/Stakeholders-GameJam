@@ -7,7 +7,7 @@ onready var door = $ColDoor
 onready var area = $Area2D
 onready var sprite =$Sprite
 onready var som = $somPorta
-onready var professora = get_node("../../../Professora")
+onready var professora = get_node("../../Professora")
 
 func _process(delta):
 	if len(area.get_overlapping_areas()) > 0:
