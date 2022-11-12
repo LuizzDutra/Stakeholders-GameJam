@@ -6,20 +6,67 @@
 [ext_resource path="res://Tilesets/janelas.tres" type="TileSet" id=4]
 [ext_resource path="res://Tilesets/coisas.tres" type="TileSet" id=5]
 [ext_resource path="res://Tilesets/paredestiles.tres" type="TileSet" id=6]
-[ext_resource path="res://Scripts/dialogo.gd" type="Script" id=7]
+[ext_resource path="res://Tilesets/paredeBanheiro.tres" type="TileSet" id=7]
 [ext_resource path="res://Tilesets/mais_misc.tres" type="TileSet" id=8]
 [ext_resource path="res://Tilesets/misc.tres" type="TileSet" id=9]
-[ext_resource path="res://Scripts/Estante.gd" type="Script" id=10]
+[ext_resource path="res://Scenes/Estante.gd" type="Script" id=10]
 [ext_resource path="res://Scripts/GigaChad.gd" type="Script" id=11]
 [ext_resource path="res://Sprites/giga/Giga chadd easter egg.png" type="Texture" id=12]
 [ext_resource path="res://Sprites/scenery/estantes novas.png" type="Texture" id=13]
-[ext_resource path="res://Tilesets/banheiroParede.tres" type="TileSet" id=14]
 [ext_resource path="res://Tilesets/grades.tres" type="TileSet" id=15]
-[ext_resource path="res://Tilesets/cabinesBanheiro.tres" type="TileSet" id=16]
 [ext_resource path="res://Sounds/easter/JIGAXADI OFICIAL.wav" type="AudioStream" id=17]
 [ext_resource path="res://Sprites/scenery/Kit do banheiro e chão.png" type="Texture" id=18]
 [ext_resource path="res://Shaders/grayscale.tres" type="Material" id=19]
-[ext_resource path="res://dialogo/ncp_dialog.tres" type="Resource" id=20]
+
+[sub_resource type="ConvexPolygonShape2D" id=46]
+points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=47]
+points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
+
+[sub_resource type="TileSet" id=48]
+0/name = "Kit do banheiro e chão.png 0"
+0/texture = ExtResource( 18 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 96, 0, 32, 32 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 46 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 46 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "Kit do banheiro e chão.png 1"
+1/texture = ExtResource( 18 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 128, 0, 32, 32 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape = SubResource( 47 )
+1/shape_one_way = false
+1/shape_one_way_margin = 1.0
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 47 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
 
 [sub_resource type="RectangleShape2D" id=43]
 extents = Vector2( 80, 16.25 )
@@ -32,9 +79,9 @@ extents = Vector2( 12, 10.5 )
 
 [node name="tileMaps" type="YSort"]
 
-[node name="bancos" type="YSort" parent="." instance=ExtResource( 3 )]
+[node name="bancos" parent="." instance=ExtResource( 3 )]
 
-[node name="Arbustos" type="YSort" parent="." instance=ExtResource( 2 )]
+[node name="Arbustos" parent="." instance=ExtResource( 2 )]
 
 [node name="TileParedes" type="TileMap" parent="."]
 tile_set = ExtResource( 6 )
@@ -52,14 +99,14 @@ format = 1
 tile_data = PoolIntArray( 196628, 6, 0, 393231, 0, 0, 393232, 536870912, 0, 393233, 536870912, 0 )
 
 [node name="TileParedeBanheiro" type="TileMap" parent="."]
-tile_set = ExtResource( 14 )
+tile_set = ExtResource( 7 )
 cell_size = Vector2( 32, 32 )
 cell_y_sort = true
 format = 1
 tile_data = PoolIntArray( 327660, 536870915, 0, 327668, 3, 0, 327669, 536870915, 0, 393196, 536870915, 0, 393204, 3, 0, 393205, 536870915, 0, 458732, 536870915, 0, 458740, 3, 0, 458741, 536870915, 0, 524268, 1, 0, 524269, 1, 0, 524270, 1, 0, 524271, 1, 0, 524272, 1, 0, 524273, 1, 0, 524274, 1, 0, 524276, 3, 0, 524277, 536870915, 0, 524279, 536870913, 0, 524280, 536870913, 0, 524281, 536870913, 0, 524282, 536870913, 0, 524283, 536870913, 0, 524284, 536870913, 0, 524285, 536870913, 0, 589804, 536870915, 0, 589812, 3, 0, 589813, 536870915, 0, 655340, 536870915, 0, 655348, 3, 0, 655349, 536870915, 0, 720876, 536870915, 0, 720884, 3, 0, 720885, 536870915, 0, 786412, 536870914, 0, 786413, 536870913, 0, 786414, 536870913, 0, 786415, 536870913, 0, 786416, 536870913, 0, 786417, 536870913, 0, 786418, 536870913, 0, 786419, 536870913, 0, 786420, 2, 0, 786421, 536870914, 0, 786422, 536870913, 0, 786423, 536870913, 0, 786424, 536870913, 0, 786425, 536870913, 0, 786426, 536870913, 0, 786427, 536870913, 0, 786428, 536870913, 0, 786429, 536870913, 0 )
 
 [node name="cabinesBanheiro" type="TileMap" parent="."]
-tile_set = ExtResource( 16 )
+tile_set = SubResource( 48 )
 cell_size = Vector2( 32, 32 )
 cell_y_sort = true
 format = 1
@@ -253,9 +300,7 @@ collision_mask = 9
 position = Vector2( -13, 13.5 )
 shape = SubResource( 44 )
 
-[node name="dialogo" type="CanvasLayer" parent="propsDiretoria/Estante" instance=ExtResource( 1 )]
-script = ExtResource( 7 )
-dialog_file = ExtResource( 20 )
+[node name="dialogo" parent="propsDiretoria/Estante" instance=ExtResource( 1 )]
 
 [node name="GigaChad" type="Node2D" parent="propsDiretoria"]
 position = Vector2( 385, 80 )

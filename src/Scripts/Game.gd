@@ -59,6 +59,9 @@ func _ready():
 	{"name":player_name,"text":"Mas que sonho estranho."},
 ]
 
+	get_node("YSort/tileMaps/propsDiretoria/GigaChad").connect("easter_end", self, "_on_GigaChad_easter_end")
+	get_node("YSort/tileMaps/propsDiretoria/GigaChad").connect("easter_start", self,"_on_GigaChad_easter_start")
+
 func _process(_delta):
 	if get_parent().get_node_or_null("CanvasLayer/Menu"):
 		if not get_parent().get_node("CanvasLayer/Menu").config_menu.visible:
