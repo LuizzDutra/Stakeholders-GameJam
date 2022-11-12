@@ -7,6 +7,7 @@ onready var door = $ColDoor
 onready var area = $Area2D
 onready var sprite =$Sprite
 onready var som = $somPorta
+onready var professora = get_node("../../../Professora")
 
 func _process(delta):
 	if len(area.get_overlapping_areas()) > 0:
@@ -21,3 +22,8 @@ func _process(delta):
 		open = false
 		sprite.frame = 0
 		door.set_deferred("disabled", false)
+
+
+func _on_Area2D_body_entered(body):
+	if body.is_in_group("player") and professora.porta_interacao:
+		professora.interact()

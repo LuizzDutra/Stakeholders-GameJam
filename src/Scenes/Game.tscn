@@ -1,4 +1,5 @@
-[gd_scene load_steps=87 format=2]
+
+[gd_scene load_steps=88 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=2]
@@ -49,6 +50,7 @@
 [ext_resource path="res://Scripts/GigaChad.gd" type="Script" id=47]
 [ext_resource path="res://Sounds/easter/JIGAXADI OFICIAL.wav" type="AudioStream" id=48]
 [ext_resource path="res://Scripts/interacaoBanheiro.gd" type="Script" id=49]
+[ext_resource path="res://task_professora_2.tscn" type="PackedScene" id=50]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 722, 615, 724, 658, 151.476, 660.896, 151.81, 608.968, -656, -4, 739, -4, 738, 266, 154, 269, 105, 818, 105, 895, -18, 895, -18, 820, -449, 303, -656, 301, -411, 289, -434, 303, -69, 303, 150.471, 816.849, -74, 816, -338, 303, -355, 303, -381, 290 )
@@ -629,6 +631,7 @@ navigation_layers = 4
 [node name="YSort" type="YSort" parent="."]
 
 [node name="mesaEmpurr" parent="YSort" instance=ExtResource( 37 )]
+position = Vector2( 122, -290 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 271, -394 )
@@ -1205,6 +1208,7 @@ position = Vector2( 428.5, 146 )
 shape = SubResource( 47 )
 
 [node name="dialogo" parent="interacaoBanheiro" instance=ExtResource( 5 )]
+[node name="task_professora_2" parent="YSort" instance=ExtResource( 39 )]
 
 [node name="godrays" type="Node2D" parent="."]
 
