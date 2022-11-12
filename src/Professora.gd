@@ -88,6 +88,8 @@ func find_and_use_dialogue():
 		
 		6:
 			dialogue_play.play_dialog(dialog_prof_missao_concluida_2)
+		7:
+			dialogue_play.play_dialog(dialog_prof_missao_concluida_2)
 			
 
 
@@ -111,6 +113,8 @@ func _on_dialogo_ended():
 	if dialog_state == 6:
 		task_professora_2.queue_free()
 		quest.kill_quest(descricao_quest)
+		get_tree().get_root().get_node("Game").score += 250
+		dialog_state = 7
 
 func _on_pergunta_sim():
 	dialog_state = 4

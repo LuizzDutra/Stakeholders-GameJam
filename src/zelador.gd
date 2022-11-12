@@ -65,6 +65,8 @@ func find_and_use_dialogue():
 			dialog_npc.play_dialog(dialog_start_zelador)
 		4:
 			dialog_npc.play_dialog(zelado_dialogo_missao_concluida)
+		5:
+			dialog_npc.play_dialog(zelado_dialogo_missao_concluida)
 
 
 func _on_dialogo_ended():
@@ -76,6 +78,10 @@ func _on_dialogo_ended():
 		quest.kill_quest(descr_quest)
 		self_professora.dialog_state = 2
 		quest.add_quest(self_professora.descricao_quest)
+		get_tree().get_root().get_node("Game").score += 250
+		dialog_state = 5
+		self_professora.task_professora_2.clear_mesa()
+		self_professora.task_professora_2.maker_mesa(-289)
 	
 	if dialog_state == 1:
 		zelador_task.iniciar_task()
@@ -83,8 +89,7 @@ func _on_dialogo_ended():
 
 func _on_pergunta_sim():
 	dialog_state = 1
-	self_professora.task_professora_2.clear_mesa()
-	self_professora.task_professora_2.maker_mesa(-289)
+	
 
 func _on_pergunta_nao():
 	dialog_state = 2
