@@ -38,7 +38,8 @@ var eyes_color_array = [Color(0.141176, 0.047059, 0), Color(0, 0.371094, 0.59375
 var class_cluster
 
 func _ready():
-	sprite.frames = load(sprite_path + str((randi() % 6)+1) + ".tres")
+	var rand_int = (randi() % 6) + 1 
+	sprite.frames = load(sprite_path + str(rand_int) + ".tres")
 	#sprite.frames = load(sprite_path + "3.tres")
 	sprite.play("idle")
 	var color = skin_color_array[randi() % len(skin_color_array)]
@@ -47,6 +48,11 @@ func _ready():
 	sprite.get_material().set_shader_param("hair_modulate", color)
 	color = eyes_color_array[randi() % len(eyes_color_array)]
 	sprite.get_material().set_shader_param("eyes_modulate", color)
+	
+	if rand_int == 1 or rand_int == 4 or rand_int == 5:
+		nav_agent.set_navigation_layers(5)
+	else:
+		nav_agent.set_navigation_layers(3)
 
 func _physics_process(delta):
 	if wander_state and nav_agent.is_navigation_finished() and not hitbox_npc.get_node("dialogo").dialog_ativo:
