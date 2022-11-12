@@ -7,7 +7,7 @@ onready var mesas = get_node("../mesas")
 onready var prof = get_node("../../Professora")
 
 func _ready():
-	pass
+	print(is_self.get_children())
 
 func iniciar_task():
 	draw_circle_blue(-463)
@@ -45,16 +45,23 @@ func monitorar_circulo():
 
 func _physics_process(delta):
 	monitorar_circulo()
-	if is_cadeiras_organizadas() and prof.dialog_state == 5:
-		prof.dialog_state = 6
 	
 
 func is_cadeiras_organizadas():
 	
+	if len(is_self.get_children()) == 0:
+		return
+		
 	for i in is_self.get_children():
+		print(i)
 		if i.visible == true:
 			return false
 		else:
 			pass
 	
 	return true
+
+func circle_blue_clear():
+	
+	for r in is_self.get_children():
+		is_self.remove_child(r)

@@ -5,7 +5,7 @@ onready var zelador_task = $task_zelador
 onready var quest = get_node("../Quest")
 onready var pergunta = $pergunta
 onready var self_professora = get_node("../Professora")
-onready var jogo = get_node("../game")
+onready var jogo = get_node("../")
 var interact_id = "quest_npc"
 var dialog_state
 var descr_quest = "Ajudar o zelador a recolhe o lixo"
@@ -42,6 +42,7 @@ var dialog_start_zelador = [
 
 func _ready():
 	dialog_state = -1
+	print(jogo.name)
 
 func interact():
 	find_and_use_dialogue()
@@ -71,7 +72,10 @@ func _on_dialogo_ended():
 		pergunta.show_pergunta("Você vai ajudar o zelador ?")
 		
 	if dialog_state == 4:
+		jogo.target = self_professora
 		quest.kill_quest(descr_quest)
+		self_professora.dialog_state = 2
+		quest.add_quest(self_professora.descricao_quest)
 	
 	if dialog_state == 1:
 		zelador_task.iniciar_task()
@@ -79,12 +83,14 @@ func _on_dialogo_ended():
 
 func _on_pergunta_sim():
 	dialog_state = 1
-
+	self_professora.task_professora_2.clear_mesa()
+	self_professora.task_professora_2.maker_mesa(-289)
 
 func _on_pergunta_nao():
 	dialog_state = 2
 	quest.quest_failed(descr_quest)
-	#jogo.target = self_professora não estou conseguindo colocar a seta na professora
+	jogo.target = self_professora
 	self_professora.task_professora_2.clear_mesa()
 	self_professora.task_professora_2.maker_mesa(-289)
 	self_professora.dialog_state = 2
+	quest.add_quest(self_professora.descricao_quest)
