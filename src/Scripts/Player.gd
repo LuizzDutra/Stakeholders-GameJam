@@ -28,7 +28,6 @@ var cont_lixo = 0
 var quests = []
 var quest_npcs = []
 var npcs = []
-var props = []
 
 var push_factor = 0.6
 var pushing = false
@@ -103,8 +102,6 @@ func search_interact():
 						quest_npcs.append(parent)
 					if int_id == "quest":
 						quests.append(parent)
-					if int_id == "prop":
-						props.append(parent)
 					
 					if len(quests) > 0:
 						quests[0].interact()
@@ -120,8 +117,6 @@ func search_interact():
 								push_offset = push_body.global_position - global_position
 					elif len(quest_npcs) > 0:
 						quest_npcs[0].interact()
-					elif len(props) > 0:
-						props[0].interact()
 					elif len(npcs) > 0:
 						npcs[0].interact()
 					else:
@@ -129,8 +124,7 @@ func search_interact():
 	npcs = []
 	quests = []
 	quest_npcs = []
-	props = []
-	
+			
 
 
 func _unhandled_input(event):

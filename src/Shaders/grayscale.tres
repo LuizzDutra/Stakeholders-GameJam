@@ -13,4 +13,4 @@ void fragment(){
 
 [resource]
 shader = SubResource( 2 )
-shader_param/clarity = 1.5
+shader_param/clarity = 2.0
