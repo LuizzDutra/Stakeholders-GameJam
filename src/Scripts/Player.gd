@@ -129,7 +129,8 @@ func search_interact():
 	npcs = []
 	quests = []
 	quest_npcs = []
-			
+	props = []
+	
 
 
 func _unhandled_input(event):
