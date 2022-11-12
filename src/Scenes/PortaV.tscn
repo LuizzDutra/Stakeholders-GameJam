@@ -53,7 +53,7 @@ shape = SubResource( 20 )
 position = Vector2( -1, 44 )
 stream = ExtResource( 3 )
 volume_db = -9.0
-max_distance = 1000.0
+max_distance = 400.0
 attenuation = 2.92817
 bus = "Effects"
 

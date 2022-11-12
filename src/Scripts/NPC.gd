@@ -20,6 +20,9 @@ var wander_delay = 8
 var wander_range = 300
 var delay_rand = 3
 
+var last_dir = null
+var dir_change_count = 0
+
 var interact_id = "npc"
 
 var dialogo_npc
@@ -38,7 +41,8 @@ var eyes_color_array = [Color(0.141176, 0.047059, 0), Color(0, 0.371094, 0.59375
 var class_cluster
 
 func _ready():
-	sprite.frames = load(sprite_path + str((randi() % 6)+1) + ".tres")
+	var rand_int = (randi() % 6) + 1 
+	sprite.frames = load(sprite_path + str(rand_int) + ".tres")
 	#sprite.frames = load(sprite_path + "3.tres")
 	sprite.play("idle")
 	var color = skin_color_array[randi() % len(skin_color_array)]
@@ -47,6 +51,11 @@ func _ready():
 	sprite.get_material().set_shader_param("hair_modulate", color)
 	color = eyes_color_array[randi() % len(eyes_color_array)]
 	sprite.get_material().set_shader_param("eyes_modulate", color)
+	
+	if rand_int == 1 or rand_int == 4 or rand_int == 5:
+		nav_agent.set_navigation_layers(5)
+	else:
+		nav_agent.set_navigation_layers(3)
 
 func _physics_process(delta):
 	if wander_state and nav_agent.is_navigation_finished() and not hitbox_npc.get_node("dialogo").dialog_ativo:
@@ -62,7 +71,17 @@ func _physics_process(delta):
 			sprite.scale.x = cur_cluster.facing
 	
 	if moving:
+		last_dir = dir
 		dir = position.direction_to(nav_agent.get_next_location())
+		
+		if last_dir != null:
+			var res_angle = rad2deg(dir.angle()) - rad2deg(last_dir.angle())
+			if res_angle > 150 and res_angle < 210:
+				dir_change_count += 1
+				if dir_change_count >= 2:
+					moving = false
+					dir_change_count = 0
+		
 		if dir.x != 0:
 			if dir.x < 0:
 				sprite.scale.x = -1
@@ -84,6 +103,8 @@ func set_path_location(location):
 
 func _on_NavigationAgent2D_navigation_finished():
 	moving = false
+	dir_change_count = 0
+	last_dir = null
 
 func wander_start_timer():
 	wander_timer.wait_time = rand_range(wander_delay-delay_rand, wander_delay+delay_rand)

@@ -14,6 +14,11 @@ onready var camera = $YSort/Player/Camera2D
 onready var arrows = $Arrows
 onready var target = null
 onready var quest = $Quest
+onready var fila = $refeitorioFila
+onready var cur_music = $musicas/padrao
+onready var musics = $musicas
+
+var musica_pause = 0
 
 var dialogue_intro = []
 
@@ -33,7 +38,7 @@ func _ready():
 		new_npc.class_cluster = clusters.get_child(i%clus_q)
 		
 		npcs.add_child(new_npc)
-	get_node("AudioStreamPlayer").play()
+	cur_music.play()
 	for i in range(npcs.get_child_count()):
 		if npcs.get_child(i).class_cluster != null:
 			npcs.get_child(i).wander_state = false
@@ -60,7 +65,7 @@ func _process(_delta):
 			sub_menu.visible = false
 	
 	
-	#var target = null
+	target = get_node("Professora")
 	if target != null:
 		arrows.get_node("pivot").global_position = player.global_position
 		var rot = target.global_position - arrows.get_node("pivot").global_position
@@ -146,6 +151,14 @@ func _on_clock_interval_signal():
 	for i in range(npcs.get_child_count()):
 		npcs.get_child(i).wander_state = true
 		#npc_set_path(npcs.get_child(i), Vector2(rand_range(-100, 100), rand_range(-100, 100)))
+	
+	var all_npcs = npcs.get_children()
+	for i in range(fila.quantity):
+		var rand_select = randi() % len(all_npcs)
+		var npc = all_npcs[rand_select]
+		all_npcs.remove(rand_select)
+		npc.wander_state = false
+		npc_set_path_cluster(fila, npc, true, true)
 
 
 func _on_clock_lunch_signal():
@@ -161,3 +174,10 @@ func _on_Button_pressed():
 func _on_introTimer_timeout():
 	introDialogue.play_dialog(dialogue_intro)
 
+
+func _on_GigaChad_easter_start():
+	musica_pause = cur_music.get_playback_position()
+	cur_music.stop()
+
+func _on_GigaChad_easter_end():
+	cur_music.play(musica_pause)
