@@ -11,14 +11,13 @@ func _ready():
 
 func iniciar_task():
 	draw_circle_blue(-463)
-	draw_circle_blue(-339)
+	#draw_circle_blue(-339)
 
 func draw_circle_blue(y):
-	
-	for i in range(0,8):
+	var slots = [Vector2(280, -456), Vector2(344, -328), Vector2(472, -456), Vector2(664, -456)]
+	for i in slots:
 		var c = load("res://circulo_azul.tscn").instance()
-		c.position.x = pos_x_constante + pixel_space * i
-		c.position.y = y
+		c.global_position = i
 		is_self.add_child(c)
 
 func maker_mesa(y):
@@ -32,9 +31,13 @@ func maker_mesa(y):
 		mesas.add_child(m)
 
 func clear_mesa():
-	
-	for i in mesas.get_children():
-		mesas.remove_child(i)
+	var all_mesas = ["mesa", "mesa10", "mesa7", "mesa4"]
+	for i in all_mesas:
+		var mesa = load("res://Scenes/mesaEmpurr.tscn").instance()
+		var target_mesa = mesas.get_node(i)
+		mesa.global_position = target_mesa.global_position
+		mesas.add_child(mesa)
+		mesas.remove_child(target_mesa)
 
 func monitorar_circulo():
 	for r in is_self.get_children():

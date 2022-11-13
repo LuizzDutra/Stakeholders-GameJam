@@ -83,12 +83,20 @@ func _on_dialogo_ended():
 		get_tree().get_root().get_node("Game").score += 250
 		dialog_state = 5
 		self_professora.task_professora_2.clear_mesa()
-		self_professora.task_professora_2.maker_mesa(-289)
+		#self_professora.task_professora_2.maker_mesa(-289)
+		var game = get_tree().get_root().get_node("Game")
+		game.cur_music.stop()
+		game.cur_music = game.get_node("musicas").get_node("padrao")
+		game.cur_music.play()
 	
 	if dialog_state == 1:
 		zelador_task.iniciar_task()
 		dialog_state = 3
 		jogo.target = null
+		var game = get_tree().get_root().get_node("Game")
+		game.cur_music.stop()
+		game.cur_music = game.get_node("musicas").get_node("zela")
+		game.cur_music.play()
 
 func _on_pergunta_sim():
 	dialog_state = 1
@@ -99,6 +107,6 @@ func _on_pergunta_nao():
 	quest.quest_failed(descr_quest)
 	jogo.target = self_professora
 	self_professora.task_professora_2.clear_mesa()
-	self_professora.task_professora_2.maker_mesa(-289)
+	#self_professora.task_professora_2.maker_mesa(-289)
 	self_professora.dialog_state = 2
 	quest.add_quest(self_professora.descricao_quest)
