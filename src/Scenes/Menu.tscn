@@ -8,7 +8,7 @@
 [ext_resource path="res://Videos/gotinha_sincronia.webm" type="VideoStream" id=6]
 [ext_resource path="res://Sounds/musicaultraofficial.wav" type="AudioStream" id=7]
 [ext_resource path="res://Sounds/MENUOFFICIAL OFICIAL.wav" type="AudioStream" id=8]
-[ext_resource path="res://Art/fundo-gamejan.png" type="Texture" id=9]
+[ext_resource path="res://imgResources/INICIAL.png" type="Texture" id=9]
 [ext_resource path="res://Sounds/Musica4loopofficial.wav" type="AudioStream" id=10]
 [ext_resource path="res://Shaders/customization.tres" type="Material" id=11]
 [ext_resource path="res://Scenes/ControlsMenu.tscn" type="PackedScene" id=12]
@@ -61,7 +61,6 @@ position = Vector2( 245, 155 )
 scale = Vector2( 2, 2 )
 frames = ExtResource( 2 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="pickers" type="Control" parent="cust"]
@@ -163,34 +162,34 @@ __meta__ = {
 }
 
 [node name="Start" type="Button" parent="Buttons"]
-margin_right = 113.0
-margin_bottom = 31.0
+margin_right = 100.0
+margin_bottom = 26.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 100, 20 )
 text = "Start"
 
 [node name="Controls" type="Button" parent="Buttons"]
-margin_top = 47.0
-margin_right = 113.0
-margin_bottom = 78.0
+margin_top = 42.0
+margin_right = 100.0
+margin_bottom = 68.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 100, 20 )
 text = "Controles"
 
 [node name="Config" type="Button" parent="Buttons"]
-margin_top = 94.0
-margin_right = 113.0
-margin_bottom = 125.0
+margin_top = 84.0
+margin_right = 100.0
+margin_bottom = 110.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Configurações"
 
 [node name="Exit" type="Button" parent="Buttons"]
-margin_top = 141.0
-margin_right = 113.0
-margin_bottom = 172.0
+margin_top = 126.0
+margin_right = 100.0
+margin_bottom = 152.0
 text = "Sair"
 
 [node name="configMenu" type="Control" parent="."]

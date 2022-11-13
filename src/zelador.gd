@@ -8,7 +8,7 @@ onready var self_professora = get_node("../Professora")
 onready var jogo = get_node("../..")
 var interact_id = "quest_npc"
 var dialog_state
-var descr_quest = "Ajudar o zelador a recolhe o lixo"
+var descr_quest = "Ajudar o zelador a recolher o lixo"
 
 var zelador_task_off = [
 	{"name":"Zelador","text":"Bom dia meu filho"},
@@ -22,10 +22,10 @@ var zelador_dialogo_pergunta = [
 var zelador_dialogo_sim = [
 	{"name":"Você","text":"Posso sim, meu brother."},
 	{"name":"Zelador","text":"Muito obrigado!!!"},
-	{"name":"Zelador","text":"Preste bastante atenção"},
-	{"name":"Zelador","text":"Tudo oq vc tem que fazer é o joga o lixo no lixeiro"},
-	{"name":"Zelador","text":"Você tem que fazer isso antes que o tempo limite acabe"},
-	{"name":"Zelador","text":"Você está preparado ?"}
+	{"name":"Zelador","text":"Preste bastante atenção."},
+	{"name":"Zelador","text":"Tudo oque você tem que fazer é o jogar o lixo neste lixeiro aqui do lado."},
+	{"name":"Zelador","text":"Você tem que fazer isso antes que o tempo limite acabe."},
+	{"name":"Zelador","text":"Você está preparado?"}
 ]
 
 var zelado_dialogo_missao_concluida = [
@@ -39,7 +39,7 @@ var zelador_dialogo_nao = [
 ]
 
 var dialog_start_zelador = [
-	{"name":"Zelador","text":"Tic Toc a hora esta acabando"}
+	{"name":"Zelador","text":"Tic Toc a hora esta acabando."}
 ]
 
 func _ready():
