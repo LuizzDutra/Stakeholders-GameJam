@@ -6,6 +6,7 @@ var interact_id = "quest_npc"
 var dialog_state
 var descr_quest = "Jogar pedra,papel e tesoura"
 onready var quest = get_node("../../Quest")
+onready var cadeirante = get_parent().get_node("cadeirante")
 
 var dialog_off_pedro = [
 	{"name":"Pedro","text":"O diretor é uma pessoa muito sinistra"},
@@ -43,8 +44,12 @@ var dialog_nao = [
 	{"name":"Pedro","text":"você não gosta de pedra,papel e tesoura ?"}
 ]
 
+var dialog_bad = [
+	{"name":"Pedro","text":"O diretor queria falar com você."}
+]
+
 func _ready():
-	dialog_state = -1
+	dialog_state = 0
 	
 func interact():
 	if task_pedro.janela_task.visible == true:
@@ -80,18 +85,31 @@ func find_and_use_dialogue():
 			dialog_player.play_dialog(dialog_missao_concluida)
 		6:
 			dialog_player.play_dialog(dialog_missao_concluida)
+		7:
+			dialog_player.play_dialog(dialog_bad)
 
 func _on_dialogo_ended():
 	
 	if dialog_state == 0:
-		pergunta.show_pergunta("Você vai jogar pedra,papel e tesoura com predo ?")
+		pergunta.show_pergunta("Você vai jogar pedra,papel e tesoura com pedro ?")
 	if not dialog_state != -1 or dialog_state == 0:
 		return
 	if dialog_state == 5 or dialog_state == -2:
 		if dialog_state == 5:
+			print("here")
 			quest.kill_quest(descr_quest)
 			dialog_state = 6
 			get_tree().get_root().get_node("Game").score += 250
+			if get_tree().get_root().get_node("Game").score >= 750:
+				get_tree().get_root().get_node("Game").target = cadeirante
+				cadeirante.dialog_state = 6
+				return
+			else:
+				dialog_state = 7
+				get_tree().get_root().get_node("Game").target = get_tree().get_root().get_node("Game/YSort/diretor")
+				get_tree().get_root().get_node("Game/YSort/diretor").dialog_state = 8
+				return
+			return
 		return
 	task_pedro.show_janela_task()
 

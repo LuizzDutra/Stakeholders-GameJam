@@ -131,6 +131,7 @@ func _on_Timer_timeout():
 	ocultar_resul()
 	turn_on_the_player()
 	is_pressed = true
+	get_parent().dialog_state = 5
 
 func turn_on_the_player():
 	var player = get_tree().get_root().find_node("Player", true, false)

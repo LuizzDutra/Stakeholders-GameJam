@@ -124,7 +124,7 @@ tile_set = ExtResource( 9 )
 cell_size = Vector2( 32, 32 )
 cell_y_sort = true
 format = 1
-tile_data = PoolIntArray( 196628, 6, 0, 393231, 0, 0, 393232, 536870912, 0, 393233, 536870912, 0 )
+tile_data = PoolIntArray( 393231, 0, 0, 393232, 536870912, 0, 393233, 536870912, 0 )
 
 [node name="TileParedeBanheiro" type="TileMap" parent="."]
 tile_set = ExtResource( 7 )

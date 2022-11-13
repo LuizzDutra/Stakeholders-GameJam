@@ -35,6 +35,7 @@ shape = SubResource( 2 )
 scale = Vector2( -1, 1 )
 frames = ExtResource( 5 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="dialogo" parent="." instance=ExtResource( 2 )]
