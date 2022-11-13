@@ -18,7 +18,7 @@ func _ready():
 	hitbox_barreira.disabled = false
 var dialog_base_professora = [
 	{"name":"Professora","text":"Já que você não prestou atenção na aula, pois estava dormindo"},
-	{"name":"Professora","text":"resolva esta questão: “Quem pintou o quadro Mona Lisa?”."}
+	{"name":"Professora","text":"resolva esta questão que está no quadro"}
 ]
 
 var dialog_missao_concluida = [
@@ -44,7 +44,7 @@ var dialog_prof_start = [
 ]
 
 var dialog_prof_missao_concluida_2 = [
-	{"name":"Professora","text":"obrigado."},
+	{"name":"Professora","text":"Obrigada."},
 	{"name":"Professora","text":"Você está melhorando sua conduta de forma extraordinária !!!"}
 ]
 
@@ -53,7 +53,7 @@ var dialog_prof_pergunta = [
 ]
 
 var dialog_prof_off = [
-	{"name":"Professora","text":"Você sabia que menos de 5% do dos oceanos foi explorado ?"},
+	{"name":"Professora","text":"Você sabia que menos de 5% dos oceanos foram explorado ?"},
 	{"name":"Professora","text":"Interessante não é ?"}
 ]
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://task_zelador.gd" type="Script" id=1]
 [ext_resource path="res://Sounds/effects/PEGAR LIXO.wav" type="AudioStream" id=2]
+[ext_resource path="res://Themes/default_theme.tres" type="Theme" id=3]
 
 [node name="task_zelador" type="Node2D"]
 script = ExtResource( 1 )
@@ -19,6 +20,7 @@ margin_left = 298.0
 margin_top = 87.0
 margin_right = 338.0
 margin_bottom = 101.0
+theme = ExtResource( 3 )
 text = "null"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

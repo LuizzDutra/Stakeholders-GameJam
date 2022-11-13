@@ -33,7 +33,6 @@ func maker_lixos():
 		grupo_lixo.add_child(lixo_obj)
 
 func clear_lixos():
-	
 	for r in grupo_lixo.get_children():
 		grupo_lixo.remove_child(r)
 
