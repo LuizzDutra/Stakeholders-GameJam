@@ -42,6 +42,11 @@ var dialog_start_zelador = [
 	{"name":"Zelador","text":"Tic Toc a hora esta acabando."}
 ]
 
+var dialog_ferramenta = [{"name":"Você:", "text":"Eu queria ferramentas para fazer uma rampo para o Marcos, você tem ?"},
+						 {"name":"Zelador","text":"Como você tem mudado de comportamento posso lhe dar este martelo, alguns pregos e algumas tábuas"}]
+
+var dialog_end = [{"name":"Zelador","text":"Se precisar de mais alguma coisa estou aqui."}]
+
 func _ready():
 	dialog_state = -1
 	print(jogo.name)
@@ -69,6 +74,8 @@ func find_and_use_dialogue():
 			dialog_npc.play_dialog(zelado_dialogo_missao_concluida)
 		5:
 			dialog_npc.play_dialog(zelado_dialogo_missao_concluida)
+		6:
+			dialog_npc.play_dialog(dialog_ferramenta)
 
 
 func _on_dialogo_ended():
@@ -97,6 +104,12 @@ func _on_dialogo_ended():
 		game.cur_music.stop()
 		game.cur_music = game.get_node("musicas").get_node("zela")
 		game.cur_music.play()
+	
+	if dialog_state == 6:
+		dialog_state = 7
+		get_tree().get_root().get_node("Game").target = get_tree().get_root().get_node("Game").get_node("LugarRampa")
+		
+		
 
 func _on_pergunta_sim():
 	dialog_state = 1

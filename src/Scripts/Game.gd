@@ -1,6 +1,7 @@
 extends Node2D
 
-signal return_to_menu
+signal return_to_menu(result)
+signal credits
 
 export(Resource) var dialog_file
 
@@ -23,7 +24,7 @@ var musica_pause = 0
 var dialogue_intro = []
 
 
-var score = 0 
+var score = 0
 
 func _ready():
 	sub_menu.visible = false
@@ -163,7 +164,7 @@ func _on_clock_lunch_signal():
 
 
 func _on_Button_pressed():
-	emit_signal("return_to_menu")
+	emit_signal("return_to_menu", true)
 
 
 func _on_introTimer_timeout():
@@ -176,3 +177,12 @@ func _on_GigaChad_easter_start():
 
 func _on_GigaChad_easter_end():
 	cur_music.play(musica_pause)
+
+
+func _on_diretor_good_end():
+	emit_signal("credits")
+
+
+func _on_diretor_bad_end():
+	get_tree().get_root().get_node("AudioStreamPlayer").play()
+	emit_signal("return_to_menu", false)
