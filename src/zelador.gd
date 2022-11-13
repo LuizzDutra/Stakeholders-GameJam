@@ -8,6 +8,7 @@ onready var self_professora = get_node("../Professora")
 onready var jogo = get_node("../..")
 var interact_id = "quest_npc"
 var dialog_state
+onready var bancada = get_node("../bancada")
 var descr_quest = "Ajudar o zelador a recolhe o lixo"
 
 var zelador_task_off = [
@@ -30,7 +31,7 @@ var zelador_dialogo_sim = [
 
 var zelado_dialogo_missao_concluida = [
 	{"name":"Zelador","text":"Muito obrigado!!!"},
-	{"name":"zelador","text":"Estou te devendo uma."}
+	{"name":"Zelador","text":"Estou te devendo uma."}
 ]
 
 var zelador_dialogo_nao = [
@@ -40,6 +41,12 @@ var zelador_dialogo_nao = [
 
 var dialog_start_zelador = [
 	{"name":"Zelador","text":"Tic Toc a hora esta acabando"}
+]
+
+var dialog_task_marcos = [
+	{"name":"Zelador","text":"Vc precisa ajudar o seu amigo marcos ?"},
+	{"name":"zelador","text":"Tome aqui minha [color=#808080]caixa de ferramentas[/color]"}
+	#"[color=#006400]"+descr_quest+"[/color]"
 ]
 
 func _ready():
@@ -67,7 +74,8 @@ func find_and_use_dialogue():
 			dialog_npc.play_dialog(dialog_start_zelador)
 		4:
 			dialog_npc.play_dialog(zelado_dialogo_missao_concluida)
-
+		5:
+			dialog_npc.play_dialog(dialog_task_marcos)
 
 func _on_dialogo_ended():
 	if dialog_state == 0:

@@ -23,7 +23,7 @@ func _input(event):
 	
 	if event.is_action_pressed("enter") and professora.dialog_state == 0:
 		
-		if input_res.text.to_lower().strip_edges() == "20":
+		if input_res.text.to_lower().strip_edges() == "leonardo da vinci":
 			input_res.clear()
 			professora.dialog_state = 1
 			quadro.visible = false

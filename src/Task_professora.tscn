@@ -12,7 +12,6 @@ script = ExtResource( 2 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer"]
-visible = false
 margin_left = 74.0
 margin_top = 24.0
 margin_right = 547.0
