@@ -93,7 +93,7 @@ func _on_dialogo_ended():
 		jogo.target = self_cadeirante
 		self_cadeirante.dialog_state = 0
 		quest.add_quest(self_cadeirante.quest_descricao)
-		get_tree().get_root().get_node("Game").score += 250
+		get_tree().get_root().get_node("Global/Game").score += 250
 		dialog_state = 5
 
 func _on_pergunta_sim():

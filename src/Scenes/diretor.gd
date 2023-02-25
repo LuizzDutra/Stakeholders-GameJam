@@ -63,7 +63,7 @@ func _on_dialogo_ended():
 		dialog_state = 1
 		self.self_zelador.dialog_state = 0
 	if dialog_state == 2:
-		get_tree().get_root().get_node("Game").target = self_zelador
+		get_tree().get_root().get_node("Global/Game").target = self_zelador
 		self_zelador.dialog_state = 6
 	if dialog_state == 7:
 		emit_signal("good_end")
