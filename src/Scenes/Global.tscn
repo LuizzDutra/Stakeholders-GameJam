@@ -11,6 +11,7 @@
 script = ExtResource( 2 )
 
 [node name="credits" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="TextureRect" type="TextureRect" parent="credits"]
 margin_right = 640.0
@@ -19,7 +20,6 @@ texture = ExtResource( 6 )
 expand = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Menu" parent="CanvasLayer" instance=ExtResource( 1 )]
 

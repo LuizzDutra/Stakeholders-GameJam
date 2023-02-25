@@ -102,18 +102,18 @@ func _on_dialogo_ended():
 		jogo.target = self_pedro
 		quest.add_quest(self_pedro.descr_quest)
 		self_pedro.dialog_state = 0
-		get_tree().get_root().get_node("Game").score += 250
+		get_tree().get_root().get_node("Global/Game").score += 250
 		dialog_state = 5
 	
 	if dialog_state == 6:
 		pergunta.show_pergunta("Você quer fazer uma rampa para marcos ?")
 
 	if dialog_state == 7:
-		get_tree().get_root().get_node("Game").target = get_tree().get_root().get_node("Game/YSort/diretor")
-		get_tree().get_root().get_node("Game/YSort/diretor").dialog_state = 2
+		get_tree().get_root().get_node("Global/Game").target = get_tree().get_root().get_node("Global/Game/YSort/diretor")
+		get_tree().get_root().get_node("Global/Game/YSort/diretor").dialog_state = 2
 	
 	if dialog_state == 9:
-		get_tree().get_root().get_node("Game").target = get_tree().get_root().get_node("Game/YSort/diretor")
+		get_tree().get_root().get_node("Global/Game").target = get_tree().get_root().get_node("Global/Game/YSort/diretor")
 
 func _on_pergunta_sim():
 	if dialog_state == 6:
@@ -127,6 +127,8 @@ func _on_pergunta_nao():
 	if dialog_state == 6:
 		dialog_state = 2
 		quest.quest_failed(rampa_descr)
+		get_tree().get_root().get_node("Global/Game").target = get_tree().get_root().get_node("Global/Game/YSort/diretor")
+		get_tree().get_root().get_node("Global/Game/YSort/diretor").dialog_state = 8
 		return
 	quest.quest_failed(quest_descricao)
 	jogo.target = self_pedro

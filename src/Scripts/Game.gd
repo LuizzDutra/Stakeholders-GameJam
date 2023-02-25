@@ -184,5 +184,5 @@ func _on_diretor_good_end():
 
 
 func _on_diretor_bad_end():
-	get_tree().get_root().get_node("AudioStreamPlayer").play()
+	get_tree().get_root().get_node("Global/AudioStreamPlayer").play()
 	emit_signal("return_to_menu", false)

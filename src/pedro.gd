@@ -89,7 +89,8 @@ func find_and_use_dialogue():
 			dialog_player.play_dialog(dialog_bad)
 
 func _on_dialogo_ended():
-	
+	if dialog_state == 7:
+		return
 	if dialog_state == 0:
 		pergunta.show_pergunta("Você vai jogar pedra,papel e tesoura com pedro ?")
 	if not dialog_state != -1 or dialog_state == 0:
@@ -99,15 +100,15 @@ func _on_dialogo_ended():
 			print("here")
 			quest.kill_quest(descr_quest)
 			dialog_state = 6
-			get_tree().get_root().get_node("Game").score += 250
-			if get_tree().get_root().get_node("Game").score >= 750:
-				get_tree().get_root().get_node("Game").target = cadeirante
+			get_tree().get_root().get_node("Global/Game").score += 250
+			if get_tree().get_root().get_node("Global/Game").score >= 750:
+				get_tree().get_root().get_node("Global/Game").target = cadeirante
 				cadeirante.dialog_state = 6
 				return
 			else:
 				dialog_state = 7
-				get_tree().get_root().get_node("Game").target = get_tree().get_root().get_node("Game/YSort/diretor")
-				get_tree().get_root().get_node("Game/YSort/diretor").dialog_state = 8
+				get_tree().get_root().get_node("Global/Game").target = get_tree().get_root().get_node("Global/Game/YSort/diretor")
+				get_tree().get_root().get_node("Global/Game/YSort/diretor").dialog_state = 8
 				return
 			return
 		return
@@ -118,5 +119,13 @@ func _on_pergunta_sim():
 	dialog_state = 1
 
 func _on_pergunta_nao():
+	if get_tree().get_root().get_node("Global/Game").score < 750:
+		dialog_state = 7
+		get_tree().get_root().get_node("Global/Game").target = get_tree().get_root().get_node("Global/Game/YSort/diretor")
+		get_tree().get_root().get_node("Global/Game/YSort/diretor").dialog_state = 8
+		return
+	if get_tree().get_root().get_node("Global/Game").score >= 750:
+		get_tree().get_root().get_node("Global/Game").target = cadeirante
+		cadeirante.dialog_state = 6
 	dialog_state = -2
 	quest.quest_failed(descr_quest)
